@@ -1,0 +1,29 @@
+{
+  "name": "kaizen-ui",
+  "version": "0.0.1",
+  "description": "A high-performance, cross-platform UI kit for Svelte 5 apps. Continuously improve your learning experience with fast, accessible components built for web and mobile.",
+  "license": "Apache-2.0",
+  "author": "Arsalan Anwari <arsalan@anwari.nl>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arsalan-anwari/kaizen-ui.git"
+  },
+  "homepage": "https://github.com/arsalan-anwari/kaizen-ui#readme",
+  "bugs": "https://github.com/arsalan-anwari/kaizen-ui/issues",
+  "keywords": [
+    "svelte",
+    "svelte5",
+    "ui",
+    "components",
+    "ui-kit",
+    "design-system"
+  ],
+  "type": "module",
+  "exports": "./index.js",
+  "files": [
+    "index.js"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}
