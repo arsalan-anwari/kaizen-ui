@@ -354,9 +354,15 @@ body {
 body,
 .paper {
   background-color: var(--background);
-  background-image: var(--sunlight), var(--paper-grain), var(--paper-mottle);
-  background-blend-mode: normal, var(--paper-blend), var(--paper-blend);
-  background-attachment: fixed, fixed, fixed;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body,
+  .paper {
+    background-image: var(--sunlight), var(--paper-grain), var(--paper-mottle);
+    background-blend-mode: normal, var(--paper-blend), var(--paper-blend);
+    background-attachment: fixed, fixed, fixed;
+  }
 }
 
 ::selection {
@@ -427,11 +433,16 @@ body,
 
   z-index: -1;
   background-color: var(--background);
-  background-image: var(--sunlight), var(--paper-grain), var(--paper-mottle);
-  background-blend-mode: normal, var(--paper-blend), var(--paper-blend);
-  background-attachment: fixed, fixed, fixed;
   -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - var(--scrim-fade)), transparent);
   mask-image: linear-gradient(to bottom, #000 calc(100% - var(--scrim-fade)), transparent);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .scrim::before {
+    background-image: var(--sunlight), var(--paper-grain), var(--paper-mottle);
+    background-blend-mode: normal, var(--paper-blend), var(--paper-blend);
+    background-attachment: fixed, fixed, fixed;
+  }
 }
 
 .high-contrast .scrim::before {
