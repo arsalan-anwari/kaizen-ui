@@ -29,10 +29,15 @@ optimizeDeps: { exclude: ["kaizen-ui"] }
 
 ## Components
 
-`AppMark` `Badge` `Board` `Button` `Card` `Chip` `ConfirmDialog`
-`CustomNumberChip` `EmptyState` `Icon` `IconButton` `Meter` `NumberRoller`
-`OptionCard` `PlayIcon` `Progress` `RowBar` `Segmented` `Stat` `Switch`
-`TextField` `Waveform`
+`ActionSelect` `AppMark` `Badge` `Board` `Button` `Calendar` `Card` `Chip`
+`ConfirmDialog` `CustomNumberChip` `EmptyState` `Icon` `IconButton` `Meter`
+`NumberRoller` `OptionCard` `PlayIcon` `Popover` `Progress` `RowBar` `Segmented`
+`Select` `Stat` `Switch` `TextField` `Waveform`
+
+`Select` and `Calendar` replace the native `<select>` and `<input type="date">`,
+whose popups the operating system draws in its own style. Both hang off
+`Popover`, which anchors a panel beside its trigger on a wide viewport and turns
+it into a fullscreen sheet on a phone.
 
 
 ## Runtime

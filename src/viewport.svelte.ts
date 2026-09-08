@@ -3,6 +3,14 @@
 const WIDE = "(min-width: 640px)";
 const COARSE = "(pointer: coarse)";
 
+/* Android WebView only reports safe-area-inset-top for a display cutout, so a
+   plain status bar reads as 0 and a fullscreen overlay lands underneath it.
+   Reserve the platform default instead (24dp, and a CSS pixel is a dp there);
+   the theme keeps whichever of the two is larger.
+   ponytail: fixed 24dp default, read the real inset from the platform if a
+   device ever hides more than that behind the bar. */
+const ANDROID_STATUS_BAR = "24px";
+
 class Viewport {
   wide = $state(true);
   touch = $state(false);
@@ -13,6 +21,10 @@ class Viewport {
     this.wide = wide.matches;
     wide.addEventListener("change", (event) => (this.wide = event.matches));
     this.touch = window.matchMedia(COARSE).matches;
+
+    if (/android/i.test(navigator.userAgent)) {
+      document.documentElement.style.setProperty("--status-bar-fallback", ANDROID_STATUS_BAR);
+    }
   }
 }
 

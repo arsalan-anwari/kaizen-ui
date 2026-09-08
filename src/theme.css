@@ -83,6 +83,11 @@
   --shade: color-mix(in srgb, var(--foreground) 30%, transparent);
   --lip-h: 2px;
 
+  /* How much of the top of the screen the system bar covers. The inset covers
+     iOS and Android display cutouts; viewport.svelte.ts fills in the fallback
+     where a WebView reports no inset under a status bar it still draws. */
+  --status-bar: max(env(safe-area-inset-top, 0px), var(--status-bar-fallback, 0px));
+
   --backdrop-fade: 0.1;
   --backdrop-filter: none;
 
@@ -382,12 +387,10 @@ body::before {
   background-blend-mode: normal, var(--paper-blend), var(--paper-blend);
 }
 
-/* Fullscreen overlay padding. Android WebView reports safe-area-inset-top as 0
-   even under a status bar, so the header of a `fixed inset-0` dialog lands
-   beneath the notification bar. Reserve a status-bar gap unconditionally and
-   add the inset on platforms that do report one. */
+/* Fullscreen overlay padding: drop the sheet below the system bar so its header
+   never lands under the clock. */
 .fullscreen-sheet {
-  padding-top: calc(env(safe-area-inset-top, 0px) + 2.25rem);
+  padding-top: var(--status-bar);
   padding-left: env(safe-area-inset-left, 0px);
   padding-right: env(safe-area-inset-right, 0px);
 }

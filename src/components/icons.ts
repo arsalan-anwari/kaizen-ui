@@ -14,6 +14,7 @@ export type IconName =
   | "calendar"
   | "chevron-down"
   | "chevron-right"
+  | "chevron-left"
   | "sliders"
   | "contrast"
   | "volume-on"

@@ -57,6 +57,8 @@
     <path d="M6 9.5l6 6 6-6" />
   {:else if name === "chevron-right"}
     <path d="M9.5 6l6 6-6 6" />
+  {:else if name === "chevron-left"}
+    <path d="M14.5 6l-6 6 6 6" />
   {:else if name === "sliders"}
     <path d="M4 7h10M18 7h2M4 17h4M12 17h8" />
     <circle cx="16" cy="7" r="2.2" />
@@ -81,7 +83,7 @@
   {:else if name === "check"}
     <path d="M5 12.5l4.5 4.5L19 7.5" />
   {:else if name === "flame"}
-    <path d="M12 3.5c3.4 3 5 5.6 5 8.1a5 5 0 0 1-10 0c0-1 .3-2 1-3 .3 1.2.9 1.9 1.8 2.1.5-3 1.2-5.1 2.2-7.2z" />
+    <path d="M12 5.5c3.4 3 5 5.6 5 8.1a5 5 0 0 1-10 0c0-1 .3-2 1-3 .3 1.2.9 1.9 1.8 2.1.5-3 1.2-5.1 2.2-7.2z" />
   {:else if name === "sprout"}
     <path d="M12 20.5v-7" />
     <path d="M12 13.5c0-3 2-5 5-5 0 3-2 5-5 5z" />
