@@ -2,6 +2,7 @@
   import { untrack } from "svelte";
   import { sfx } from "../sfx";
   import Button from "./Button.svelte";
+  import { lockScroll } from "../lockScroll";
 
   let {
     values,
@@ -54,7 +55,7 @@
 
 <svelte:window onkeydown={keydown} />
 
-<div class="fixed inset-0 z-50 flex items-end justify-center">
+<div class="fixed inset-0 z-50 flex items-end justify-center" use:lockScroll>
   <button
     type="button"
     class="absolute inset-0 cursor-default bg-foreground/40 backdrop-blur-[2px]"

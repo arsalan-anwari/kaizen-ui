@@ -2,6 +2,7 @@
   import type { IconName } from "./icons";
   import Icon from "./Icon.svelte";
   import IconButton from "./IconButton.svelte";
+  import { lockScroll } from "../lockScroll";
   import { viewport } from "../viewport.svelte";
 
   type Action = { icon: IconName; label: string; disabled?: boolean; onclick: () => void };
@@ -11,6 +12,7 @@
     options,
     label,
     empty,
+    closeLabel,
     actions,
     onchange
   }: {
@@ -18,11 +20,17 @@
     options: string[];
     label: string;
     empty: string;
+    closeLabel: string;
     actions: Action[];
     onchange?: (value: string) => void;
   } = $props();
 
   let open = $state(false);
+  let panel = $state<HTMLDialogElement | null>(null);
+
+  $effect(() => {
+    panel?.showModal();
+  });
 
   function pick(next: string): void {
     value = next;
@@ -72,22 +80,24 @@
   </button>
 
   {#if open}
-    <div class="fixed inset-0 z-50 flex items-end" role="menu" tabindex="-1">
-      <button
-        type="button"
-        class="absolute inset-0 cursor-default bg-foreground/40"
-        aria-label={label}
-        onclick={() => (open = false)}
-      ></button>
+    <dialog
+      bind:this={panel}
+      class="fixed inset-0 z-50 flex flex-col paper pt-[env(safe-area-inset-top,0px)] pl-[env(safe-area-inset-left,0px)] pr-[env(safe-area-inset-right,0px)]"
+      use:lockScroll
+      aria-label={label}
+      onclose={() => (open = false)}
+    >
+      <header class="flex items-center justify-between gap-3 border-b border-border px-4 py-3">
+        <span class="text-h4 font-bold">{label}</span>
+        <IconButton icon="close" label={closeLabel} onclick={() => (open = false)} />
+      </header>
 
-      <div class="sheet anim-pop relative flex max-h-[75dvh] w-full flex-col gap-2 overflow-y-auto rounded-t-2xl border-t-2 border-border bg-surface p-3 pb-6">
-        <span class="px-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-          {label}
-        </span>
-
+      <div
+        class="flex flex-1 flex-col gap-2 overflow-y-auto px-4 pt-4 pb-[calc(env(safe-area-inset-bottom,0px)+1.25rem)]"
+      >
         <button
           type="button"
-          class="flex h-11 items-center rounded-lg px-3 text-left text-sm {value === ''
+          class="flex h-11 shrink-0 items-center rounded-lg px-3 text-left text-sm {value === ''
             ? 'bg-secondary font-bold'
             : ''}"
           onclick={() => pick("")}
@@ -98,7 +108,7 @@
         {#each options as option (option)}
           <button
             type="button"
-            class="flex h-11 items-center justify-between rounded-lg px-3 text-left text-sm {option ===
+            class="flex h-11 shrink-0 items-center justify-between rounded-lg px-3 text-left text-sm {option ===
             value
               ? 'bg-secondary font-bold'
               : ''}"
@@ -113,7 +123,7 @@
           {#each actions as action (action.label)}
             <button
               type="button"
-              class="flex h-11 items-center gap-3 rounded-lg px-3 text-left text-sm font-semibold disabled:opacity-40"
+              class="flex h-11 shrink-0 items-center gap-3 rounded-lg px-3 text-left text-sm font-semibold disabled:opacity-40"
               disabled={action.disabled === true}
               onclick={() => run(action)}
             >
@@ -123,6 +133,6 @@
           {/each}
         </div>
       </div>
-    </div>
+    </dialog>
   {/if}
 {/if}

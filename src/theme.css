@@ -209,6 +209,12 @@
   --lip-h: 0px;
 }
 
+/* Full-viewport, and dark mode runs it through an invert() filter. Keep it on
+   its own layer so a scroll never drags that filter back through paint. */
+.backdrop {
+  will-change: transform;
+}
+
 .high-contrast .backdrop {
   display: none;
 }
@@ -376,6 +382,24 @@ body::before {
   background-blend-mode: normal, var(--paper-blend), var(--paper-blend);
 }
 
+/* Overlays open with showModal() so the top layer lifts them clear of every
+   stacking context and containing block on the page. Strip the default chrome
+   and backdrop so they can style themselves. */
+dialog {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+}
+
+dialog::backdrop {
+  background: transparent;
+}
+
 ::selection {
   background: var(--foreground);
   color: var(--background);
@@ -435,6 +459,10 @@ body::before {
 
 .scrim {
   --scrim-fade: 2rem;
+  /* The sticky header needs its own compositor layer. Without one the browser
+     repositions it from the main thread, so during a scroll it lands a frame
+     late: it slips up or down, or drops out entirely for a frame. */
+  will-change: transform;
 }
 
 .scrim::before {
