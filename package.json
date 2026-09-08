@@ -1,6 +1,6 @@
 {
   "name": "kaizen-ui",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "A high-performance, cross-platform UI kit for Svelte 5 apps. Continuously improve your learning experience with fast, accessible components built for web and mobile.",
   "license": "Apache-2.0",
   "author": "Arsalan Anwari <arsalan@anwari.nl>",

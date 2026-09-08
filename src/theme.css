@@ -544,3 +544,36 @@ body,
     animation: none;
   }
 }
+
+@keyframes kz-record-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.record-player {
+  filter: drop-shadow(0 10px 18px var(--shade));
+}
+
+.record-player:active {
+  transform: translateY(1px);
+}
+
+.record-spin {
+  animation: kz-record-spin 2.6s linear infinite;
+  will-change: transform;
+}
+
+.record-arm {
+  transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .record-spin {
+    animation: none;
+  }
+
+  .record-arm {
+    transition: none;
+  }
+}

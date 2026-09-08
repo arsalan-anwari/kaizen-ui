@@ -1,3 +1,4 @@
+export { default as ActionSelect } from "./components/ActionSelect.svelte";
 export { default as AppMark } from "./components/AppMark.svelte";
 export { default as Badge } from "./components/Badge.svelte";
 export { default as Board } from "./components/Board.svelte";
@@ -15,6 +16,7 @@ export { default as OptionCard } from "./components/OptionCard.svelte";
 export { default as PageBackdrop } from "./components/PageBackdrop.svelte";
 export { default as PlayIcon } from "./components/PlayIcon.svelte";
 export { default as Progress } from "./components/Progress.svelte";
+export { default as RecordPlayer } from "./components/RecordPlayer.svelte";
 export { default as RowBar } from "./components/RowBar.svelte";
 export { default as Segmented } from "./components/Segmented.svelte";
 export { default as Stat } from "./components/Stat.svelte";
