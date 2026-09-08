@@ -29,6 +29,7 @@ export type { IconName } from "./components/icons";
 
 export { applyAppearance, clampZoom, zoomMax, zoomMin, zoomStep, type Theme } from "./appearance";
 export { heatColor, heatFill } from "./heat";
+export { lockScroll } from "./lockScroll";
 export {
   audioContext,
   fanfareGrades,

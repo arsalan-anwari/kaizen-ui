@@ -356,13 +356,24 @@ body,
   background-color: var(--background);
 }
 
-@media (hover: hover) and (pointer: fine) {
-  body,
-  .paper {
-    background-image: var(--sunlight), var(--paper-grain), var(--paper-mottle);
-    background-blend-mode: normal, var(--paper-blend), var(--paper-blend);
-    background-attachment: fixed, fixed, fixed;
-  }
+/* Texture lives on a fixed pseudo-layer: painted once, composited, never
+   repainted on scroll. `background-attachment: fixed` cannot be composited and
+   repaints the whole viewport every scroll frame. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-color: var(--background);
+  background-image: var(--sunlight), var(--paper-grain), var(--paper-mottle);
+  background-blend-mode: normal, var(--paper-blend), var(--paper-blend);
+}
+
+/* .paper is a `fixed inset-0` overlay, so its box already is the viewport. */
+.paper {
+  background-image: var(--sunlight), var(--paper-grain), var(--paper-mottle);
+  background-blend-mode: normal, var(--paper-blend), var(--paper-blend);
 }
 
 ::selection {
@@ -437,12 +448,12 @@ body,
   mask-image: linear-gradient(to bottom, #000 calc(100% - var(--scrim-fade)), transparent);
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .scrim::before {
-    background-image: var(--sunlight), var(--paper-grain), var(--paper-mottle);
-    background-blend-mode: normal, var(--paper-blend), var(--paper-blend);
-    background-attachment: fixed, fixed, fixed;
-  }
+/* Sticky element: a fixed-attachment background lags behind the box during
+   scroll. Size the gradient to the viewport instead; grain and mottle tile. */
+.scrim::before {
+  background-image: var(--sunlight), var(--paper-grain), var(--paper-mottle);
+  background-size: 100% 100dvh, auto, auto;
+  background-blend-mode: normal, var(--paper-blend), var(--paper-blend);
 }
 
 .high-contrast .scrim::before {

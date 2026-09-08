@@ -15,8 +15,8 @@
     onplay?: () => void;
   } = $props();
 
-  const wide = { w: 200, h: 200, cx: 100, cy: 84, r: 60, px: 40, py: 168, pr: 19, wx: 68, ww: 112, wy: 168, wh: 34 };
-  const slim = { w: 230, h: 100, cx: 50, cy: 50, r: 40, px: 112, py: 50, pr: 16, wx: 140, ww: 76, wy: 50, wh: 48 };
+  const wide = { w: 200, h: 200, cx: 100, cy: 84, r: 60, px: 161, py: 170, pr: 19, wx: 24, ww: 102, wy: 170, wh: 24 };
+  const slim = { w: 260, h: 100, cx: 50, cy: 50, r: 40, px: 222, py: 50, pr: 16, wx: 110, ww: 82, wy: 50, wh: 34 };
 
   const L = $derived(compact ? slim : wide);
 
