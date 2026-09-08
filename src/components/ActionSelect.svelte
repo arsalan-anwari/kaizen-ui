@@ -82,7 +82,7 @@
   {#if open}
     <dialog
       bind:this={panel}
-      class="fixed inset-0 z-50 flex flex-col paper pt-[env(safe-area-inset-top,0px)] pl-[env(safe-area-inset-left,0px)] pr-[env(safe-area-inset-right,0px)]"
+      class="fixed inset-0 z-50 flex flex-col paper pt-[calc(env(safe-area-inset-top,0px)+var(--edge-y,0.75rem))] pl-[env(safe-area-inset-left,0px)] pr-[env(safe-area-inset-right,0px)]"
       use:lockScroll
       aria-label={label}
       onclose={() => (open = false)}
