@@ -27,16 +27,16 @@
   --border: #dccbb2;
   --wire: #c8b498;
   --input: #dccbb2;
-  --ring: #a4774f;
+  --ring: #1a1a1a;
   --sidebar: #eee2cf;
   --sidebar-foreground: #3a2c1e;
   --sidebar-border: #dccbb2;
   --radius: 0.875rem;
 
-  --brand: #a4774f;
-  --brand-foreground: #fffaf0;
-  --brand-shadow: #7d5a38;
-  --brand-soft: #f0e2cf;
+  --brand: #1a1a1a;
+  --brand-foreground: #ffffff;
+  --brand-shadow: #000000;
+  --brand-soft: color-mix(in srgb, #1a1a1a 8%, var(--surface));
 
   --seal: #b8402f;
   --seal-foreground: #fdfaf3;
@@ -113,15 +113,15 @@
   --border: #3f362b;
   --wire: #4f4335;
   --input: #3f362b;
-  --ring: #d0a170;
+  --ring: #ffffff;
   --sidebar: #1e1913;
   --sidebar-foreground: #efe3d0;
   --sidebar-border: #3f362b;
 
-  --brand: #d0a170;
-  --brand-foreground: #241708;
-  --brand-shadow: #8a6540;
-  --brand-soft: #33271b;
+  --brand: #ffffff;
+  --brand-foreground: #191410;
+  --brand-shadow: #8f8f8f;
+  --brand-soft: color-mix(in srgb, #ffffff 12%, var(--surface));
 
   --board: #2b332e;
   --board-foreground: #e9ece0;
@@ -244,15 +244,15 @@
     --border: #3f362b;
     --wire: #4f4335;
     --input: #3f362b;
-    --ring: #d0a170;
+    --ring: #ffffff;
     --sidebar: #1e1913;
     --sidebar-foreground: #efe3d0;
     --sidebar-border: #3f362b;
 
-    --brand: #d0a170;
-    --brand-foreground: #241708;
-    --brand-shadow: #8a6540;
-    --brand-soft: #33271b;
+    --brand: #ffffff;
+    --brand-foreground: #191410;
+    --brand-shadow: #8f8f8f;
+    --brand-soft: color-mix(in srgb, #ffffff 12%, var(--surface));
 
     --board: #2b332e;
     --board-foreground: #e9ece0;
