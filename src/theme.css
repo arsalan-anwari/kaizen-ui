@@ -464,9 +464,16 @@ dialog::backdrop {
 .tile-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(var(--tile-min, 4.25rem), 1fr));
+  gap: var(--tile-gap, 0.5rem);
 }
 
+/* Tiles fill their cell: children with their own fixed size (a Chip is
+   min-w-13 h-13) would otherwise sit small in a wide cell and leave the row
+   ragged on narrow screens. */
 .tile-grid > * {
+  width: 100%;
+  height: auto;
+  min-width: 0;
   aspect-ratio: var(--tile-ratio, 1);
   min-height: fit-content;
 }

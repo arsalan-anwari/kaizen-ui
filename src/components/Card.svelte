@@ -18,10 +18,12 @@
     children: Snippet;
     action?: Snippet;
   } = $props();
+
+  const hasHeader = $derived(title !== "" || action !== undefined);
 </script>
 
 <section class="sheet ruled rounded-2xl border-2 border-border bg-surface {className}">
-  {#if title !== "" || action}
+  {#if hasHeader}
     <header class="flex flex-wrap items-start justify-between gap-4 px-5 pt-5 pb-4 sm:px-6 sm:pt-6">
       <div class="flex min-w-0 items-start gap-3.5">
         {#if icon}
@@ -43,7 +45,7 @@
       {/if}
     </header>
   {/if}
-  <div class="px-5 pb-5 sm:px-6 sm:pb-6 {contentClass}">
+  <div class="px-5 pb-5 sm:px-6 sm:pb-6 {hasHeader ? '' : 'pt-5 sm:pt-6'} {contentClass}">
     {@render children()}
   </div>
 </section>

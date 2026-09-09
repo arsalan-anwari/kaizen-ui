@@ -187,12 +187,15 @@
           items={[
             { value: "light", label: "Light" },
             { value: "dark", label: "Dark" },
-            { value: "system", label: "System" }
+            { value: "system", label: "System" },
+            { value: "contrast", label: "Contrast" }
           ]}
-          value={theme}
-          onpick={(v) => (theme = v as Theme)}
+          value={contrast ? "contrast" : theme}
+          onpick={(v) => {
+            contrast = v === "contrast";
+            if (!contrast) theme = v as Theme;
+          }}
         />
-        <Chip active={contrast} size="sm" onclick={() => (contrast = !contrast)}>Contrast</Chip>
         <Chip active={sound} size="sm" onclick={() => (sound = !sound)}>Sound</Chip>
         <Button
           variant="outline"
