@@ -12,6 +12,7 @@ export { default as EmptyState } from "./components/EmptyState.svelte";
 export { default as Icon } from "./components/Icon.svelte";
 export { default as IconButton } from "./components/IconButton.svelte";
 export { default as Meter } from "./components/Meter.svelte";
+export { default as NumberField } from "./components/NumberField.svelte";
 export { default as NumberRoller } from "./components/NumberRoller.svelte";
 export { default as OptionCard } from "./components/OptionCard.svelte";
 export { default as PageBackdrop } from "./components/PageBackdrop.svelte";

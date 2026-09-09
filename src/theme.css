@@ -87,6 +87,7 @@
      iOS and Android display cutouts; viewport.svelte.ts fills in the fallback
      where a WebView reports no inset under a status bar it still draws. */
   --status-bar: max(env(safe-area-inset-top, 0px), var(--status-bar-fallback, 0px));
+  --nav-bar: max(env(safe-area-inset-bottom, 0px), var(--nav-bar-fallback, 0px));
 
   --backdrop-fade: 0.1;
   --backdrop-filter: none;

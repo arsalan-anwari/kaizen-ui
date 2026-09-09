@@ -2,6 +2,7 @@
   import { viewport } from "../viewport.svelte";
   import Chip from "./Chip.svelte";
   import Icon from "./Icon.svelte";
+  import NumberField from "./NumberField.svelte";
   import NumberRoller from "./NumberRoller.svelte";
 
   let {
@@ -45,13 +46,6 @@
     onpick(start);
   }
 
-  function commit(event: Event & { currentTarget: HTMLInputElement }): void {
-    const next = clamp(Number(event.currentTarget.value));
-
-    event.currentTarget.value = String(next);
-    onpick(next);
-  }
-
   function picked(next: number): void {
     rolling = false;
     onpick(next);
@@ -59,22 +53,7 @@
 </script>
 
 {#if active && !viewport.touch}
-  <label
-    class="flex h-9 items-center gap-1 rounded-lg border-2 border-selected bg-selected-soft px-2 text-xs font-bold text-selected"
-  >
-    <span class="sr-only">{title}</span>
-    <input
-      type="number"
-      inputmode="numeric"
-      {min}
-      {max}
-      {value}
-      onchange={commit}
-      onblur={commit}
-      class="w-10 min-w-0 bg-transparent text-center tabular-nums outline-none"
-    />
-    <span aria-hidden="true">{unit}</span>
-  </label>
+  <NumberField {value} {min} {max} {unit} label={title} oncommit={onpick} />
 {:else}
   <Chip size="sm" {active} {title} onclick={open}>
     {#if active}

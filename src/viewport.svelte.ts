@@ -10,6 +10,7 @@ const COARSE = "(pointer: coarse)";
    ponytail: fixed 24dp default, read the real inset from the platform if a
    device ever hides more than that behind the bar. */
 const ANDROID_STATUS_BAR = "24px";
+const ANDROID_NAV_BAR = "48px";
 
 class Viewport {
   wide = $state(true);
@@ -24,6 +25,7 @@ class Viewport {
 
     if (/android/i.test(navigator.userAgent)) {
       document.documentElement.style.setProperty("--status-bar-fallback", ANDROID_STATUS_BAR);
+      document.documentElement.style.setProperty("--nav-bar-fallback", ANDROID_NAV_BAR);
     }
   }
 }

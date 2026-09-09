@@ -64,7 +64,7 @@
   ></button>
 
   <div
-    class="anim-sheet sheet relative flex w-full max-w-md flex-col gap-3 rounded-t-2xl border-2 border-border bg-surface p-4 pb-6"
+    class="anim-sheet sheet relative flex w-full max-w-md flex-col gap-3 rounded-t-2xl border-2 border-border bg-surface p-4 pb-[calc(var(--nav-bar)+1.5rem)]"
     role="dialog"
     aria-modal="true"
     aria-label={title}
