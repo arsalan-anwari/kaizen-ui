@@ -65,7 +65,7 @@
 
 <dialog
   bind:this={panel}
-  use:lockScroll
+  use:lockScroll={close}
   aria-label={label}
   {onclose}
   onclick={(event) => {

@@ -37,7 +37,7 @@
 
 <svelte:window onkeydown={keydown} />
 
-<div class="fixed inset-0 z-50 flex items-center justify-center p-4" use:lockScroll>
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4" use:lockScroll={oncancel}>
   <button
     type="button"
     class="absolute inset-0 cursor-default bg-foreground/40 backdrop-blur-[2px]"
