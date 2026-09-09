@@ -27,6 +27,8 @@
     onpick: (value: number) => void;
   } = $props();
 
+  const roller = $derived(viewport.touch && !viewport.short);
+
   const values = $derived(Array.from({ length: max - min + 1 }, (_, index) => min + index));
 
   let rolling = $state(false);
@@ -39,7 +41,7 @@
   const start = $derived(clamp(value > 0 ? value : min));
 
   function open(): void {
-    if (viewport.touch) {
+    if (roller) {
       rolling = true;
       return;
     }
@@ -52,7 +54,7 @@
   }
 </script>
 
-{#if active && !viewport.touch}
+{#if active && !roller}
   <NumberField {value} {min} {max} {unit} label={title} oncommit={onpick} />
 {:else}
   <Chip size="sm" {active} {title} onclick={open}>
