@@ -26,7 +26,9 @@
 
 <div
   role="tablist"
-  class="inline-flex gap-1 border-2 border-wire bg-surface {full ? 'flex' : ''} {className}"
+  class="inline-flex max-w-full gap-1 overflow-x-auto border-2 border-wire bg-surface {full
+    ? 'flex'
+    : ''} {className}"
   style="padding: {pad[size]}; border-radius: calc({inner[size]} + {pad[size]})"
 >
   {#each items as item (item.value)}

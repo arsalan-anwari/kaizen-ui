@@ -3,10 +3,6 @@
   import { i18n } from "../i18n.svelte";
   import { sfx } from "../sfx";
 
-  /* Month grid over "YYYY-MM-DD" keys, in local time. Replaces <input
-     type="date">, whose popup is drawn by the OS and ignores the theme.
-     Month, weekday and week start come from Intl, so it needs no strings. */
-
   let {
     value = $bindable(""),
     min = "",

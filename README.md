@@ -29,8 +29,9 @@ built for web and mobile.
 npm install kaizen-ui
 ```
 
-The package ships Svelte source, so the consuming app compiles it. With Vite,
-exclude it from pre-bundling:
+The package ships Svelte source, so the consuming app compiles it. 
+
+If using Vite, exclude it from pre-bundling:
 
 ```js
 optimizeDeps: { exclude: ["kaizen-ui"] }
@@ -60,17 +61,11 @@ the high-contrast theme keeps its own yellow either way.
 
 ## Components
 
-`ActionSelect` `AppMark` `Badge` `Board` `Button` `Calendar` `Card` `Chip`
-`ConfirmDialog` `CustomNumberChip` `EmptyState` `Icon` `IconButton` `Meter`
-`NumberField` `NumberRoller` `OptionCard` `PageBackdrop` `PlayIcon` `Popover`
-`Progress` `RecordPlayer` `RowBar` `Segmented` `Select` `Stat` `Switch`
-`TextField` `TileGrid` `Waveform`
-
-`Select` and `Calendar` replace the native `<select>` and `<input type="date">`,
-whose popups the operating system draws in its own style. Both hang off
-`Popover`, which anchors a panel beside its trigger on a wide viewport and turns
-it into a fullscreen sheet on a phone.
-
+`ActionSelect` `AppControls` `AppHeader` `AppMark` `Badge` `Board` `Button` `Calendar`
+`Card` `Chip` `ConfirmDialog` `CustomNumberChip` `EmptyState` `Icon`
+`IconButton` `Meter` `NumberField` `NumberRoller` `OptionCard` `PageBackdrop`
+`PlayIcon` `Popover` `Progress` `RecordPlayer` `RowBar` `Segmented` `Select`
+`Stat` `Switch` `TextField` `TileGrid` `Waveform`
 
 ## Runtime
 
@@ -86,30 +81,6 @@ registerLocales({
 });
 setLocale("auto");
 ```
-
-## Docs site
-
-The gallery in `docs/` is a small Vite + Svelte app that imports the library
-straight from `src/`. GitHub Actions publishes it to GitHub Pages on every push
-to `main` (`.github/workflows/pages.yml`); enable Pages with the "GitHub
-Actions" source once.
-
-```sh
-cd docs
-npm install
-npm run dev            # local gallery
-npm run build          # static site in docs/dist
-npx playwright install chromium
-npm run shots          # regenerates ../screenshots from the built site
-```
-
-`Waveform` and `RecordPlayer` in the gallery run on five spoken kana clips in
-`docs/public/audio`, decoded through `audioContext()` from the library's own
-audio bus. The clips come from the
-[Kana Sounds](https://huggingface.co/datasets/arsalan-anwari/kana-sounds) dataset,
-recorded by [FUN Japanese Learning](https://funjapaneselearning.com) and used under
-[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/); they are docs assets and
-are not published with the package.
 
 ## Licence
 

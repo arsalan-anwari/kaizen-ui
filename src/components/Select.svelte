@@ -4,9 +4,6 @@
   import Popover from "./Popover.svelte";
   import { sfx } from "../sfx";
 
-  /* Replaces the native <select>: the platform popup ignores the theme, and on
-     Android it draws its own arrow and row chrome on top of it. */
-
   type Option = { value: string; label: string };
 
   let {

@@ -4,12 +4,6 @@ const WIDE = "(min-width: 640px)";
 const COARSE = "(pointer: coarse)";
 const SHORT = "(max-height: 560px)";
 
-/* Android WebView only reports safe-area-inset-top for a display cutout, so a
-   plain status bar reads as 0 and a fullscreen overlay lands underneath it.
-   Reserve the platform default instead (24dp, and a CSS pixel is a dp there);
-   the theme keeps whichever of the two is larger.
-   ponytail: fixed 24dp default, read the real inset from the platform if a
-   device ever hides more than that behind the bar. */
 const ANDROID_STATUS_BAR = "24px";
 const ANDROID_NAV_BAR = "48px";
 

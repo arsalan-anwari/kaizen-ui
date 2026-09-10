@@ -1,4 +1,6 @@
 export { default as ActionSelect } from "./components/ActionSelect.svelte";
+export { default as AppControls } from "./components/AppControls.svelte";
+export { default as AppHeader } from "./components/AppHeader.svelte";
 export { default as AppMark } from "./components/AppMark.svelte";
 export { default as Badge } from "./components/Badge.svelte";
 export { default as Board } from "./components/Board.svelte";
@@ -20,6 +22,7 @@ export { default as PlayIcon } from "./components/PlayIcon.svelte";
 export { default as Popover } from "./components/Popover.svelte";
 export { default as Progress } from "./components/Progress.svelte";
 export { default as RecordPlayer } from "./components/RecordPlayer.svelte";
+export { default as ResultSplash } from "./components/ResultSplash.svelte";
 export { default as RowBar } from "./components/RowBar.svelte";
 export { default as Segmented } from "./components/Segmented.svelte";
 export { default as Select } from "./components/Select.svelte";
@@ -34,6 +37,7 @@ export type { IconName } from "./components/icons";
 export { applyAppearance, clampZoom, zoomMax, zoomMin, zoomStep, type Theme } from "./appearance";
 export { heatColor, heatFill } from "./heat";
 export { lockScroll } from "./lockScroll";
+export { prefs, prefsKey, zoomBy, type Prefs } from "./prefs.svelte";
 export {
   audioContext,
   fanfareGrades,
@@ -42,6 +46,7 @@ export {
   type FanfareGrade
 } from "./sfx";
 export { shared } from "./shared";
+export { dismissSplash } from "./splash";
 export { loadJson, storeJson } from "./storage";
 export { viewport } from "./viewport.svelte";
 export {

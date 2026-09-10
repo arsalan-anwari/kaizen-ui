@@ -11,8 +11,14 @@ async function shoot(name, { dark = false, mobile = false, selector = null, at =
     viewport: mobile ? { width: 390, height: 844 } : { width: 1280, height: 900 },
     deviceScaleFactor: 1
   });
+  // The header controls read their prefs from localStorage, so set the theme
+  // before the page boots rather than clicking through the cycle.
+  if (dark) {
+    await page.addInitScript(() =>
+      localStorage.setItem("kaizen-prefs", JSON.stringify({ theme: "dark" }))
+    );
+  }
   await page.goto(url + (at ?? ""), { waitUntil: "networkidle" });
-  if (dark) await page.getByRole("button", { name: "Dark" }).click();
   if (before !== null) await before(page);
   await page.waitForTimeout(800);
   const target = selector === null ? page : page.locator(selector);

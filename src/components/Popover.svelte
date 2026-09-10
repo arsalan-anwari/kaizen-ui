@@ -4,11 +4,6 @@
   import { lockScroll } from "../lockScroll";
   import { viewport } from "../viewport.svelte";
 
-  /* A panel hung off whatever opened it: anchored under the trigger when the
-     room below it is usable, a fullscreen sheet otherwise. Both run through
-     showModal(), so the top layer lifts them clear of every stacking context on
-     the page and Escape closes them without a key handler here. */
-
   let {
     anchor,
     label,
@@ -37,11 +32,6 @@
     panel?.showModal();
   });
 
-  /* Placed against the viewport rather than the trigger's offset parent: the
-     panel is in the top layer, where a page transform, an overflow or a sticky
-     header cannot reach it. It only ever opens downwards; too little room under
-     the trigger for that hands the whole thing to the fullscreen sheet, which
-     beats a panel flipped over the trigger on a short landscape screen. */
   const box = $derived.by(() => {
     resized;
     const rect = anchor?.getBoundingClientRect();
