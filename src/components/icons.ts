@@ -27,4 +27,5 @@ export type IconName =
   | "sprout"
   | "target"
   | "trophy"
-  | "info";
+  | "info"
+  | "keyboard";

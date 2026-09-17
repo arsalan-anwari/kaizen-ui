@@ -66,6 +66,9 @@
       title: "Data",
       items: [
         ["Stat", "One number, one label, five tones."],
+        ["AccuracyGrid", "Characters ranked weakest first, each tile shaded by how solid it is."],
+        ["RowHeatmap", "The whole table, one row per line, shaded cell by cell."],
+        ["HeatLegend", "What the shades mean. Both charts draw one already."],
         ["Meter", "A gauge with the percentage spelled out. Leave the tone off and it colours by value."],
         ["Progress", "Just the bar. No label unless you pass one."]
       ]
@@ -85,6 +88,8 @@
         ["AppHeader", "The bar every app starts with: mark, name, tabs, controls. Sizes off its own container, so it folds here the same way it folds on a phone."],
         ["AppControls", "Language, theme, contrast, sound and zoom. Owns the prefs and writes them onto the document, so dropping it in is the whole wiring."],
         ["AppMark", "One glyph in a square. Ink, or seal red."],
+        ["Glyph", "Japanese text, tagged as Japanese so a screen reader speaks it."],
+        ["Announcer", "Says something to a screen reader without drawing anything."],
         ["Icon", "All 29 of them. Pass a name, get a stroke icon."]
       ]
     }

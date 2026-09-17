@@ -1,5 +1,6 @@
 <script lang="ts" generics="T extends string">
   import Button from "./Button.svelte";
+  import { roving } from "../roving";
 
   // A strip of mutually exclusive tabs.
 
@@ -8,6 +9,7 @@
     value,
     size = "sm",
     full = false,
+    label = "",
     class: className = "",
     onpick
   }: {
@@ -15,6 +17,7 @@
     value: T;
     size?: "sm" | "md";
     full?: boolean;
+    label?: string;
     class?: string;
     onpick: (value: T) => void;
   } = $props();
@@ -26,6 +29,8 @@
 
 <div
   role="tablist"
+  aria-label={label === "" ? undefined : label}
+  use:roving={{ selector: "[role='tab']", wrap: true }}
   class="inline-flex max-w-full gap-1 overflow-x-auto border-2 border-wire bg-surface {full
     ? 'flex'
     : ''} {className}"
@@ -35,6 +40,8 @@
     <Button
       {size}
       raised={false}
+      role="tab"
+      aria-selected={item.value === value}
       class={full ? "flex-1" : ""}
       variant={item.value === value ? "brand" : "ghost"}
       onclick={() => onpick(item.value)}

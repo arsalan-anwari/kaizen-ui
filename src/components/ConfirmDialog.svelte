@@ -50,11 +50,14 @@
     role="alertdialog"
     aria-modal="true"
     aria-labelledby="confirm-title"
+    aria-describedby={children === undefined ? undefined : "confirm-body"}
   >
     <div class="flex flex-col gap-2">
       <h2 id="confirm-title" class="text-h3 font-bold leading-tight">{title}</h2>
       {#if children}
-        <div class="text-sm leading-snug text-muted-foreground">{@render children()}</div>
+        <div id="confirm-body" class="flex flex-col gap-2 text-sm leading-snug text-muted-foreground">
+          {@render children()}
+        </div>
       {/if}
     </div>
 

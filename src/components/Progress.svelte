@@ -29,11 +29,11 @@
 
 <div
   class="w-full overflow-hidden rounded-full bg-secondary inset-shadow-sm {sizes[size]} {className}"
-  role="progressbar"
+  role={label === "" ? undefined : "progressbar"}
   aria-label={label === "" ? undefined : label}
-  aria-valuenow={Math.round(share * 100)}
-  aria-valuemin={0}
-  aria-valuemax={100}
+  aria-valuenow={label === "" ? undefined : Math.round(share * 100)}
+  aria-valuemin={label === "" ? undefined : 0}
+  aria-valuemax={label === "" ? undefined : 100}
 >
   <div
     class="h-full rounded-full transition-[width] duration-500 ease-out {tones[tone]}"

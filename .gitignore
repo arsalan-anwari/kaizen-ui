@@ -1,3 +1,6 @@
 node_modules
 .metadata_cache/
 docs/dist
+docs/test-results
+docs/playwright-report
+.test_ci.log

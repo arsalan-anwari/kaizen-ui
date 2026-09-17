@@ -99,5 +99,8 @@
   {:else if name === "info"}
     <circle cx="12" cy="12" r="8.5" />
     <path d="M12 11v5.5M12 7.8v.4" />
+  {:else if name === "keyboard"}
+    <rect x="2.5" y="5.5" width="19" height="13" rx="2.5" />
+    <path d="M6.5 9.5h.01M10 9.5h.01M13.5 9.5h.01M17 9.5h.01M8 12.8h.01M11.5 12.8h.01M15 12.8h.01M8 15.8h8" />
   {/if}
 </svg>

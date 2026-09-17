@@ -6,6 +6,11 @@
 
 <PlayIcon class="size-8" />
 <PlayIcon playing class="size-8" />
-<button type="button" class="cursor-pointer" onclick={() => (playing = !playing)}>
+<button
+  type="button"
+  class="cursor-pointer"
+  aria-label={playing ? "Pause" : "Play"}
+  onclick={() => (playing = !playing)}
+>
   <PlayIcon {playing} class="size-8" />
 </button>

@@ -25,6 +25,8 @@
   // row height in px, must match the h-11 on each row below
   const ITEM = 44;
 
+  const uid = $props.id();
+
   let wheel = $state<HTMLDivElement | null>(null);
   let current = $state(0);
 
@@ -36,6 +38,7 @@
       const index = Math.max(0, values.indexOf(value));
       current = values[index];
       element.scrollTop = index * ITEM;
+      element.focus({ preventScroll: true });
     });
   });
 
@@ -50,6 +53,27 @@
 
   function keydown(event: KeyboardEvent): void {
     if (event.key === "Escape") onclose();
+  }
+
+  function step(by: number): void {
+    if (wheel === null) return;
+    const at = Math.max(0, values.indexOf(current));
+    wheel.scrollTop = Math.min(values.length - 1, Math.max(0, at + by)) * ITEM;
+  }
+
+  const steps: Record<string, number> = {
+    ArrowDown: 1,
+    ArrowUp: -1,
+    PageDown: 5,
+    PageUp: -5
+  };
+
+  function rolled(event: KeyboardEvent): void {
+    if (event.key === "Home") step(-values.length);
+    else if (event.key === "End") step(values.length);
+    else if (event.key in steps) step(steps[event.key]);
+    else return;
+    event.preventDefault();
   }
 </script>
 
@@ -80,13 +104,16 @@
       <div
         bind:this={wheel}
         onscroll={scrolled}
-        class="h-full snap-y snap-mandatory overflow-y-auto overscroll-contain py-[88px] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        onkeydown={rolled}
+        class="h-full snap-y snap-mandatory overflow-y-auto overscroll-contain py-[88px] [scrollbar-width:none] focus-visible:outline-none [&::-webkit-scrollbar]:hidden"
         role="listbox"
         aria-label={title}
-        tabindex="-1"
+        aria-activedescendant="{uid}-{current}"
+        tabindex="0"
       >
         {#each values as option (option)}
           <div
+            id="{uid}-{option}"
             role="option"
             aria-selected={option === current}
             class="flex h-11 snap-center items-center justify-center text-h3 font-bold tabular-nums transition-opacity {option ===

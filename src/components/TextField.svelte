@@ -4,6 +4,7 @@
 
   let {
     value = $bindable(""),
+    label = "",
     placeholder = "",
     disabled = false,
     big = false,
@@ -12,6 +13,7 @@
     onenter
   }: {
     value?: string;
+    label?: string;
     placeholder?: string;
     disabled?: boolean;
     big?: boolean;
@@ -21,6 +23,8 @@
   } = $props();
 
   let element = $state<HTMLInputElement | null>(null);
+
+  const name = $derived(label !== "" ? label : placeholder !== "" ? placeholder : undefined);
 
   $effect(() => {
     if (focusOnMount && element !== null && !disabled) element.focus();
@@ -46,6 +50,7 @@
   bind:value
   {placeholder}
   {disabled}
+  aria-label={name}
   autocomplete="off"
   autocapitalize="off"
   autocorrect="off"

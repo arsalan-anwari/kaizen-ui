@@ -28,6 +28,7 @@
   --wire: #c8b498;
   --input: #dccbb2;
   --ring: #1a1a1a;
+  --focus: #2b7fff;
   --sidebar: #eee2cf;
   --sidebar-foreground: #3a2c1e;
   --sidebar-border: #dccbb2;
@@ -38,13 +39,13 @@
   --brand-shadow: #000000;
   --brand-soft: color-mix(in srgb, #1a1a1a 8%, var(--surface));
 
-  --seal: #b8402f;
+  --seal: #a83828;
   --seal-foreground: #fdfaf3;
   --seal-soft: #f6e3de;
 
-  --success: #5c7a4f;
+  --success: #4a6340;
   --success-foreground: #fdf8ed;
-  --danger: #b04a37;
+  --danger: #963826;
   --danger-foreground: #fdf8ed;
 
   --success-soft: color-mix(in srgb, var(--success) 13%, transparent);
@@ -54,7 +55,7 @@
   --chart-3: #8e6647;
   --chart-4: #615a4d;
   --chart-5: #3a2c1e;
-  --gold: #c08a2e;
+  --gold: #8a5e12;
   --gold-soft: #f6ecd2;
 
   --board: #4b5650;
@@ -135,7 +136,7 @@
 
   --success: #8caa7e;
   --success-foreground: #191410;
-  --danger: #d9765f;
+  --danger: #e08571;
   --danger-foreground: #191410;
   --success-soft: color-mix(in srgb, var(--success) 16%, transparent);
   --danger-soft: color-mix(in srgb, var(--danger) 16%, transparent);
@@ -266,7 +267,7 @@
 
     --success: #8caa7e;
     --success-foreground: #191410;
-    --danger: #d9765f;
+    --danger: #e08571;
     --danger-foreground: #191410;
     --success-soft: color-mix(in srgb, var(--success) 16%, transparent);
     --danger-soft: color-mix(in srgb, var(--danger) 16%, transparent);
@@ -307,6 +308,7 @@
   --color-wire: var(--wire);
   --color-input: var(--input);
   --color-ring: var(--ring);
+  --color-focus: var(--focus);
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-border: var(--sidebar-border);
@@ -341,6 +343,8 @@
   --radius-xl: var(--radius);
   --radius-2xl: calc(var(--radius) + 6px);
   --font-sans: ui-sans-serif, system-ui, sans-serif;
+  --font-jp: "Hiragino Kaku Gothic ProN", "Noto Sans CJK JP", "Noto Sans JP",
+    "Yu Gothic", Meiryo, ui-sans-serif, system-ui, sans-serif;
   --text-ui: 0.875rem;
   --text-ui--line-height: 1.6;
   --text-body: 1rem;
@@ -353,6 +357,35 @@
 
 html {
   -webkit-text-size-adjust: 100%;
+}
+
+.jp {
+  font-family: var(--font-jp);
+  font-feature-settings: "palt" off;
+}
+
+.kbd-nav :focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.kbd-nav [data-keynav] {
+  outline: 2px solid color-mix(in srgb, var(--focus) 55%, transparent);
+  outline-offset: 5px;
+  border-radius: var(--radius);
+}
+
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: -9999px;
+  z-index: 60;
+}
+
+.skip-link:focus {
+  position: fixed;
+  top: calc(var(--status-bar) + 0.75rem);
+  left: 0.75rem;
 }
 
 body {
@@ -412,6 +445,10 @@ dialog {
 
 dialog::backdrop {
   background: transparent;
+}
+
+dialog.dim::backdrop {
+  background: rgb(0 0 0 / 0.5);
 }
 
 ::selection {

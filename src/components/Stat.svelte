@@ -36,7 +36,7 @@
     {/if}
     {value}
   </span>
-  <span class="truncate text-xs font-semibold uppercase tracking-wide opacity-70">
+  <span class="truncate text-xs font-semibold uppercase tracking-wide">
     {label}
   </span>
 </div>

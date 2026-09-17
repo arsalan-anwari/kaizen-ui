@@ -46,11 +46,11 @@
         : size === 'lg'
           ? 'h-4'
           : 'h-3'}"
-      role="progressbar"
+      role={label === "" ? undefined : "progressbar"}
       aria-label={label === "" ? undefined : label}
-      aria-valuenow={percent}
-      aria-valuemin={0}
-      aria-valuemax={100}
+      aria-valuenow={label === "" ? undefined : percent}
+      aria-valuemin={label === "" ? undefined : 0}
+      aria-valuemax={label === "" ? undefined : 100}
     >
       <div
         class="h-full rounded-full transition-[width] duration-500 ease-out"

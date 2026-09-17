@@ -16,7 +16,8 @@
     silent = false,
     class: className = "",
     onclick,
-    children
+    children,
+    ...rest
   }: {
     variant?: Variant;
     size?: Size;
@@ -29,6 +30,7 @@
     class?: string;
     onclick?: () => void;
     children: Snippet;
+    [key: string]: unknown;
   } = $props();
 
   const base =
@@ -71,6 +73,7 @@
   {disabled}
   class="{base} {variants[variant]} {sizes[size]} {full ? 'w-full' : ''} {className}"
   onclick={handle}
+  {...rest}
 >
   {@render children()}
 </button>

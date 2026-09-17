@@ -67,6 +67,29 @@ the high-contrast theme keeps its own yellow either way.
 `PlayIcon` `Popover` `Progress` `RecordPlayer` `RowBar` `Segmented` `Select`
 `Stat` `Switch` `TextField` `TileGrid` `Waveform`
 
+## Keyboard
+
+`keynav` owns the app-wide keys: `Ctrl+/` starts keyboard mode and `Ctrl+Shift+/` stops it,
+`Shift+Arrow` walks sections, `Ctrl+Arrow` scrolls, `Tab` cycles inside the current section or
+open dialog, and `?` sets `keynav.help` so a `ShortcutHelp` sheet can open. Forward every key
+press to it once, then render the sheet off that flag:
+
+```svelte
+<svelte:window onkeydown={(event) => keynav.handle(event)} />
+
+<KeyNavBadge label="Keyboard mode" />
+
+{#if keynav.help}
+  <ShortcutHelp title="Keyboard shortcuts" closeLabel="Close" groups={[
+    { title: "Menus and pages", items: keynavShortcuts(labels) }
+  ]} onclose={() => (keynav.help = false)} />
+{/if}
+```
+
+`keynavShortcuts` returns the rows describing those bindings, so the keys stay next to the code
+that implements them and the app only supplies translated labels. Give one `AppHeader` per page
+`paging` and it walks its own tabs on `Ctrl+Left` / `Ctrl+Right` and on sideways swipes.
+
 ## Runtime
 
 ```ts

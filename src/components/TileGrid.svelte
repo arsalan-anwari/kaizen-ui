@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { Snippet } from "svelte";
+  import { roving } from "../roving";
 
   // A row of same-size boxes.
   //
@@ -14,6 +15,7 @@
 </script>
 
 <div
+  use:roving
   class="tile-grid {className}"
   style={size === "extra-wide" ? "--tile-min: 6rem; --tile-ratio: 4 / 3" : ""}
 >

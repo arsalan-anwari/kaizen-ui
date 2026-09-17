@@ -22,7 +22,8 @@
 
   const sizes = {
     sm: "h-10 min-w-10 px-3.5 text-sm rounded-lg",
-    md: "h-13 min-w-13 px-3 text-base rounded-xl"
+    // Wide enough for two full-width glyphs (2em at text-base) plus padding.
+    md: "h-13 min-w-15 px-2 text-base rounded-xl"
   };
 
   function handle(): void {
