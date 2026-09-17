@@ -120,3 +120,35 @@ test("the heat charts describe every cell in words", async ({ page }) => {
   await expect(grid.getByRole("img", { name: "a: 14 of 14 right, Mastered" })).toBeVisible();
   await expect(grid.getByRole("img").first()).toHaveAccessibleName(/right/);
 });
+
+test("keyboard mode starts on ctrl+/ and ? opens the shortcut menu", async ({ page }, info) => {
+  test.skip(info.project.name === "mobile", "keynav stays off on a touch screen");
+  await openGallery(page);
+
+  await page.keyboard.press("Control+Slash");
+  await expect(page.locator("html")).toHaveClass(/kbd-nav/);
+  await expect(page.getByText("Keyboard mode", { exact: true })).toBeVisible();
+
+  await page.keyboard.press("Shift+Slash");
+  const sheet = page.locator("dialog[open]");
+  await expect(sheet.getByText("Start keyboard mode")).toBeVisible();
+  await page.keyboard.press("Escape");
+  await expect(sheet).toHaveCount(0);
+
+  await page.keyboard.press("Control+Shift+Slash");
+  await expect(page.locator("html")).not.toHaveClass(/kbd-nav/);
+});
+
+test("shift+arrow walks the sections of the page", async ({ page }, info) => {
+  test.skip(info.project.name === "mobile", "keynav stays off on a touch screen");
+  await openGallery(page);
+
+  await page.keyboard.press("Control+Slash");
+  await page.keyboard.press("Shift+ArrowDown");
+  const first = await page.evaluate(() => document.querySelector("[data-keynav]")?.tagName);
+  expect(first).toBeDefined();
+
+  await page.keyboard.press("Shift+ArrowDown");
+  await expect(page.locator("[data-keynav]")).toHaveCount(1);
+  await expect(page.locator("[data-keynav]")).toContainText(/\w/);
+});

@@ -1,6 +1,17 @@
 <script lang="ts">
   import type { Component } from "svelte";
-  import { AppControls, AppHeader, Badge, Button, PageBackdrop, Select } from "kaizen-ui";
+  import {
+    AppControls,
+    AppHeader,
+    Badge,
+    Button,
+    keynav,
+    KeyNavBadge,
+    keynavShortcuts,
+    PageBackdrop,
+    Select,
+    ShortcutHelp
+  } from "kaizen-ui";
   import Code from "./lib/Code.svelte";
   import Demo from "./lib/Demo.svelte";
   import { version } from "../../package.json";
@@ -83,6 +94,15 @@
       ]
     },
     {
+      title: "Keyboard",
+      items: [
+        ["keynav", "The app-wide keys. Ctrl+/ starts keyboard mode, ? opens the menu, and this page is wired to it, so every shortcut below works here."],
+        ["ShortcutHelp", "The menu itself: a sheet of key and label rows. keynavShortcuts fills the first group for you."],
+        ["roving", "One tab stop for a whole grid or strip, arrow keys inside it. Every list component already uses it."],
+        ["focusMain", "Sends focus to the main region after a route change, so a screen reader reads the new screen."]
+      ]
+    },
+    {
       title: "Brand",
       items: [
         ["AppHeader", "The bar every app starts with: mark, name, tabs, controls. Sizes off its own container, so it folds here the same way it folds on a phone."],
@@ -96,8 +116,8 @@
   ];
 
   const all = groups.flatMap((group) => group.items);
-  // Every entry but `sfx` and `dismissSplash` is a component.
-  const componentCount = all.length - 2;
+  // The runtime pieces are named in camelCase, the components in PascalCase.
+  const componentCount = all.filter(([name]) => name[0] === name[0].toUpperCase()).length;
 
   let active = $state(all[0][0].toLowerCase());
 
@@ -127,14 +147,42 @@
   });
 
   const installShell = "npm install kaizen-ui";
+  const shortcutGroups = [
+    {
+      title: "Moving around",
+      items: keynavShortcuts({
+        start: "Start keyboard mode",
+        stop: "Stop keyboard mode",
+        section: "Previous or next group",
+        next: "Next control",
+        previous: "Previous control",
+        edges: "First or last control of the group",
+        scroll: "Scroll the page",
+        select: "Pick the focused control",
+        confirm: "Confirm",
+        page: "Previous or next group of the header",
+        close: "Close what is open"
+      })
+    },
+    {
+      title: "This page",
+      items: [{ keys: ["?"], label: "Open this list" }]
+    }
+  ];
+
   const installCss = `@import "tailwindcss";
 @import "kaizen-ui/theme.css";
 @source "../node_modules/kaizen-ui/src";`;
 </script>
 
+<svelte:window onkeydown={(event) => keynav.handle(event)} />
+
 <PageBackdrop />
+<KeyNavBadge label="Keyboard mode" />
 
 <AppHeader
+  paging
+  skipLabel="Skip to the components"
   glyph="改"
   title="kaizen-ui"
   subtitle="Svelte 5 UI kit · v{version}"
@@ -173,7 +221,7 @@
     {/each}
   </nav>
 
-  <main class="flex min-w-0 flex-1 flex-col gap-12">
+  <main id="main" tabindex="-1" class="flex min-w-0 flex-1 flex-col gap-12 focus:outline-none">
     <section class="flex flex-col gap-6">
       <div class="flex flex-col gap-3">
         <h1 class="text-h1 font-bold tracking-tight">Kaizen UI</h1>
@@ -256,3 +304,12 @@
     </footer>
   </main>
 </div>
+
+{#if keynav.help}
+  <ShortcutHelp
+    title="Keyboard shortcuts"
+    closeLabel="Close"
+    groups={shortcutGroups}
+    onclose={() => (keynav.help = false)}
+  />
+{/if}

@@ -13,7 +13,8 @@ const overlays = [
   "confirmdialog",
   "numberroller",
   "select",
-  "actionselect"
+  "actionselect",
+  "shortcuthelp"
 ];
 
 for (const name of overlays) {

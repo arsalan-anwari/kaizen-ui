@@ -4,3 +4,5 @@ docs/dist
 docs/test-results
 docs/playwright-report
 .test_ci.log
+.zed/
+.serena/

@@ -90,6 +90,30 @@ press to it once, then render the sheet off that flag:
 that implements them and the app only supplies translated labels. Give one `AppHeader` per page
 `paging` and it walks its own tabs on `Ctrl+Left` / `Ctrl+Right` and on sideways swipes.
 
+Desktop only: on a touch screen `keynav.available` is false and the mode never starts. Outside
+the mode only `Ctrl+/`, `?` and dialog trapping are live, so the keys below stay out of the way
+of the browser until asked for. The docs page runs the whole set, so every row is testable at
+[the live gallery](https://arsalan-anwari.github.io/kaizen-ui/).
+
+| Key | Does |
+| --- | --- |
+| `Ctrl+/` | Start keyboard mode |
+| `Ctrl+Shift+/` | Stop keyboard mode |
+| `Shift+up` / `Shift+down` | Move between sections, the current one outlined in blue |
+| `Tab` / `Shift+Tab` | Next or previous element, inside that section or the open dialog |
+| `up` / `down` | First or last element of the section |
+| `Ctrl+up` / `Ctrl+down` | Scroll the page |
+| `Space` | Select what is focused |
+| `Enter` | Confirm what is focused |
+| `Ctrl+left` / `Ctrl+right` | Walk the tabs of the `paging` `AppHeader` |
+| `Escape` | Close a dialog, sheet or picker |
+| `?` | Show the `ShortcutHelp` sheet |
+
+Components bring their own keys on top of that: `roving` makes a grid or strip one tab stop and
+moves inside it on the arrow keys, `Home` and `End` for its edges, and in keyboard mode every
+item becomes a tab stop instead. Pass your own rows to `ShortcutHelp` for whatever the app adds,
+the way the gallery adds its page keys after the `keynavShortcuts` group.
+
 ## Runtime
 
 ```ts
