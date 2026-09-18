@@ -34,6 +34,15 @@ function mark(element: HTMLElement | null): void {
   element?.setAttribute("data-keynav", "");
 }
 
+// Where the user actually is: focus wins over the mark, which goes stale as
+// soon as they click or focus something in another section.
+function current(): HTMLElement | null {
+  const here =
+    (document.activeElement as HTMLElement | null)?.closest<HTMLElement>(SECTIONS) ?? marked();
+  if (here !== null && here !== marked()) mark(here);
+  return here;
+}
+
 function enter(element: HTMLElement): void {
   mark(element);
   const first = focusable(element)[0];
@@ -45,13 +54,13 @@ function enter(element: HTMLElement): void {
 function step(by: number): void {
   const all = sections();
   if (all.length === 0) return;
-  const here = marked() ?? (document.activeElement as HTMLElement | null)?.closest<HTMLElement>(SECTIONS);
-  const at = here === null || here === undefined ? -1 : all.indexOf(here);
+  const here = current();
+  const at = here === null ? -1 : all.indexOf(here);
   enter(all[at < 0 ? 0 : Math.max(0, Math.min(all.length - 1, at + by))]);
 }
 
 function edge(root: HTMLElement | null, last: boolean): void {
-  const section = root ?? marked();
+  const section = root ?? current();
   if (section === null) return;
   const items = focusable(section);
   items[last ? items.length - 1 : 0]?.focus();
@@ -71,7 +80,7 @@ function modal(): HTMLElement | null {
 }
 
 function cycle(root: HTMLElement | null, back: boolean): boolean {
-  const section = root ?? marked();
+  const section = root ?? current();
   if (section === null) return false;
   const items = focusable(section);
   if (items.length === 0) {
@@ -100,7 +109,16 @@ class KeyNav {
     if (!this.available) return;
     this.active = on;
     document.documentElement.classList.toggle("kbd-nav", on);
-    if (!on) mark(null);
+    // Anchor on a section straight away: Tab and the arrows are no-ops until
+    // one is marked, so without this the first presses fall through to the
+    // browser until some Shift+Arrow happens to mark one.
+    mark(
+      on
+        ? ((document.activeElement as HTMLElement | null)?.closest<HTMLElement>(SECTIONS) ??
+            sections()[0] ??
+            null)
+        : null
+    );
     getSelection()?.removeAllRanges();
     document.dispatchEvent(new Event("keynav"));
   }

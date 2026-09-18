@@ -64,7 +64,7 @@ the high-contrast theme keeps its own yellow either way.
 `ActionSelect` `AppControls` `AppHeader` `AppMark` `Badge` `Board` `Button` `Calendar`
 `Card` `Chip` `ConfirmDialog` `CustomNumberChip` `EmptyState` `Icon`
 `IconButton` `Meter` `NumberField` `NumberRoller` `OptionCard` `PageBackdrop`
-`PlayIcon` `Popover` `Progress` `RecordPlayer` `RowBar` `Segmented` `Select`
+`Pagination` `PlayIcon` `Popover` `Progress` `RecordPlayer` `RowBar` `Segmented` `Select`
 `Stat` `Switch` `TextField` `TileGrid` `Waveform`
 
 ## Keyboard

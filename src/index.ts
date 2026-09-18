@@ -23,6 +23,7 @@ export { default as NumberField } from "./components/NumberField.svelte";
 export { default as NumberRoller } from "./components/NumberRoller.svelte";
 export { default as OptionCard } from "./components/OptionCard.svelte";
 export { default as PageBackdrop } from "./components/PageBackdrop.svelte";
+export { default as Pagination } from "./components/Pagination.svelte";
 export { default as PlayIcon } from "./components/PlayIcon.svelte";
 export { default as Popover } from "./components/Popover.svelte";
 export { default as Progress } from "./components/Progress.svelte";

@@ -152,3 +152,21 @@ test("shift+arrow walks the sections of the page", async ({ page }, info) => {
   await expect(page.locator("[data-keynav]")).toHaveCount(1);
   await expect(page.locator("[data-keynav]")).toContainText(/\w/);
 });
+
+test("pagination marks the current page and walks on the arrow keys", async ({ page }) => {
+  const pager = (await section(page, "pagination")).getByRole("navigation");
+  const at = (name) => pager.getByRole("button", { name, exact: true });
+
+  await expect(at("1")).toHaveAttribute("aria-current", "page");
+  await expect(pager.getByRole("button", { name: "Previous page" })).toBeDisabled();
+
+  await pager.getByRole("button", { name: "Next page" }).click();
+  await expect(at("2")).toHaveAttribute("aria-current", "page");
+  await expect(at("1")).not.toHaveAttribute("aria-current", "page");
+
+  await at("1").focus();
+  await page.keyboard.press("ArrowRight");
+  await expect(at("2")).toBeFocused();
+  await page.keyboard.press("Home");
+  await expect(pager.getByRole("button", { name: "Previous page" })).toBeFocused();
+});

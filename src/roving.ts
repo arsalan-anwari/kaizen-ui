@@ -22,10 +22,12 @@ export function roving(node: HTMLElement, options: RovingOptions = {}): {
   function scan(): void {
     items = [...node.querySelectorAll<HTMLElement>(settings.selector ?? FOCUSABLE)];
     if (items.length === 0) return;
-    const chosen = items.findIndex(
-      (item) =>
-        item.getAttribute("aria-selected") === "true" || item.getAttribute("aria-current") === "true"
-    );
+    const chosen = items.findIndex((item) => {
+      const current = item.getAttribute("aria-current");
+      return (
+        item.getAttribute("aria-selected") === "true" || (current !== null && current !== "false")
+      );
+    });
     active = chosen >= 0 ? chosen : Math.min(active, items.length - 1);
     mark();
   }
