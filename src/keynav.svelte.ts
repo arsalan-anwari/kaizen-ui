@@ -124,7 +124,12 @@ class KeyNav {
   }
 
   handle(event: KeyboardEvent): boolean {
-    if (event.ctrlKey && !event.altKey && !event.metaKey && (event.key === "/" || event.key === "?")) {
+    if (
+      event.ctrlKey &&
+      !event.altKey &&
+      !event.metaKey &&
+      (event.key === "/" || event.key === "?")
+    ) {
       event.preventDefault();
       this.set(!event.shiftKey);
       return true;
@@ -152,16 +157,27 @@ class KeyNav {
 
     if (!this.active) return false;
 
-    if (event.shiftKey && !event.ctrlKey && (event.key === "ArrowDown" || event.key === "ArrowUp")) {
+    if (
+      event.shiftKey &&
+      !event.ctrlKey &&
+      (event.key === "ArrowDown" || event.key === "ArrowUp")
+    ) {
       event.preventDefault();
       if (locked === null) step(event.key === "ArrowDown" ? 1 : -1);
       return true;
     }
 
-    if (event.ctrlKey && !event.shiftKey && (event.key === "ArrowDown" || event.key === "ArrowUp")) {
+    if (
+      event.ctrlKey &&
+      !event.shiftKey &&
+      (event.key === "ArrowDown" || event.key === "ArrowUp")
+    ) {
       event.preventDefault();
       if (locked === null) {
-        scrollBy({ top: (event.key === "ArrowDown" ? 1 : -1) * innerHeight * 0.4, behavior: "smooth" });
+        scrollBy({
+          top: (event.key === "ArrowDown" ? 1 : -1) * innerHeight * 0.4,
+          behavior: "smooth"
+        });
       }
       return true;
     }
@@ -171,7 +187,11 @@ class KeyNav {
       return true;
     }
 
-    if (!event.ctrlKey && !event.shiftKey && (event.key === "ArrowDown" || event.key === "ArrowUp")) {
+    if (
+      !event.ctrlKey &&
+      !event.shiftKey &&
+      (event.key === "ArrowDown" || event.key === "ArrowUp")
+    ) {
       if (event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement) {
         return false;
       }

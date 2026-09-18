@@ -1,5 +1,4 @@
 <script lang="ts">
-
   let {
     value = 0,
     tone = "brand",

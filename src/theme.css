@@ -343,8 +343,9 @@
   --radius-xl: var(--radius);
   --radius-2xl: calc(var(--radius) + 6px);
   --font-sans: ui-sans-serif, system-ui, sans-serif;
-  --font-jp: "Hiragino Kaku Gothic ProN", "Noto Sans CJK JP", "Noto Sans JP",
-    "Yu Gothic", Meiryo, ui-sans-serif, system-ui, sans-serif;
+  --font-jp:
+    "Hiragino Kaku Gothic ProN", "Noto Sans CJK JP", "Noto Sans JP", "Yu Gothic", Meiryo,
+    ui-sans-serif, system-ui, sans-serif;
   --text-ui: 0.875rem;
   --text-ui--line-height: 1.6;
   --text-body: 1rem;
@@ -459,8 +460,7 @@ dialog.dim::backdrop {
 .ruled {
   background-image:
     linear-gradient(to right, var(--rule) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--rule) 1px, transparent 1px),
-    var(--paper-grain);
+    linear-gradient(to bottom, var(--rule) 1px, transparent 1px), var(--paper-grain);
   background-size:
     var(--rule-pitch) var(--rule-pitch),
     var(--rule-pitch) var(--rule-pitch),
@@ -538,7 +538,10 @@ dialog.dim::backdrop {
    scroll. Size the gradient to the viewport instead; grain and mottle tile. */
 .scrim::before {
   background-image: var(--sunlight), var(--paper-grain), var(--paper-mottle);
-  background-size: 100% 100dvh, auto, auto;
+  background-size:
+    100% 100dvh,
+    auto,
+    auto;
   background-blend-mode: normal, var(--paper-blend), var(--paper-blend);
 }
 
@@ -588,7 +591,9 @@ dialog.dim::backdrop {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .press:active:not(:disabled) { transform: none; }
+  .press:active:not(:disabled) {
+    transform: none;
+  }
 }
 
 .seal {
@@ -598,39 +603,81 @@ dialog.dim::backdrop {
 }
 
 @keyframes pop-in {
-  from { opacity: 0; transform: translateY(10px) scale(0.98); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 @keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  20% { transform: translateX(-7px); }
-  40% { transform: translateX(7px); }
-  60% { transform: translateX(-4px); }
-  80% { transform: translateX(4px); }
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-7px);
+  }
+  40% {
+    transform: translateX(7px);
+  }
+  60% {
+    transform: translateX(-4px);
+  }
+  80% {
+    transform: translateX(4px);
+  }
 }
 
 @keyframes cheer {
-  0% { transform: scale(1); }
-  40% { transform: scale(1.04); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.04);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 @keyframes sheet-up {
-  from { transform: translateY(100%); }
-  to { transform: translateY(0); }
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
 }
 
 @keyframes fill-in {
-  from { transform: scaleX(0); }
-  to { transform: scaleX(1); }
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
 }
 
-.anim-pop { animation: pop-in 0.22s ease-out both; }
-.anim-shake { animation: shake 0.35s ease-in-out both; }
-.anim-cheer { animation: cheer 0.35s ease-out both; }
-.anim-sheet { animation: sheet-up 0.24s ease-out both; }
-.anim-fill { animation: fill-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; transform-origin: left; }
+.anim-pop {
+  animation: pop-in 0.22s ease-out both;
+}
+.anim-shake {
+  animation: shake 0.35s ease-in-out both;
+}
+.anim-cheer {
+  animation: cheer 0.35s ease-out both;
+}
+.anim-sheet {
+  animation: sheet-up 0.24s ease-out both;
+}
+.anim-fill {
+  animation: fill-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  transform-origin: left;
+}
 
 @media (prefers-reduced-motion: reduce) {
   .anim-pop,
@@ -676,108 +723,248 @@ dialog.dim::backdrop {
 }
 
 @keyframes splash-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes splash-out {
-  from { opacity: 1; transform: scale(1); }
-  to { opacity: 0; transform: scale(1.04); }
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.04);
+  }
 }
 
 @keyframes splash-body {
-  0% { opacity: 0; transform: translateY(14px) scale(0.94); }
-  55% { opacity: 1; transform: translateY(0) scale(1.02); }
-  100% { opacity: 1; transform: translateY(0) scale(1); }
+  0% {
+    opacity: 0;
+    transform: translateY(14px) scale(0.94);
+  }
+  55% {
+    opacity: 1;
+    transform: translateY(0) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 @keyframes splash-emoji {
-  0% { transform: scale(0.3) rotate(-14deg); opacity: 0; }
-  45% { transform: scale(1.22) rotate(6deg); opacity: 1; }
-  70% { transform: scale(0.96) rotate(-3deg); }
-  100% { transform: scale(1) rotate(0deg); }
+  0% {
+    transform: scale(0.3) rotate(-14deg);
+    opacity: 0;
+  }
+  45% {
+    transform: scale(1.22) rotate(6deg);
+    opacity: 1;
+  }
+  70% {
+    transform: scale(0.96) rotate(-3deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
 }
 
 @keyframes confetti-fall {
-  0% { opacity: 0; transform: translate3d(0, -12vh, 0) rotate(0deg); }
-  8% { opacity: 1; }
-  100% { opacity: 0; transform: translate3d(var(--drift, 0px), 108vh, 0) rotate(var(--spin, 180deg)); }
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -12vh, 0) rotate(0deg);
+  }
+  8% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--drift, 0px), 108vh, 0) rotate(var(--spin, 180deg));
+  }
 }
 
 @keyframes firework {
-  0% { opacity: 0; transform: translate3d(0, 0, 0) scale(0.4); }
-  5% { opacity: 1; transform: translate3d(0, 0, 0) scale(1.35); }
-  35% { opacity: 1; transform: translate3d(calc(var(--dx, 0px) * 0.72), calc(var(--dy, 0px) * 0.72), 0) scale(1); }
-  62% { opacity: 0.9; }
-  76% { opacity: 0.35; }
-  86% { opacity: 0.85; }
-  100% { opacity: 0; transform: translate3d(var(--dx, 0px), calc(var(--dy, 0px) + 90px), 0) scale(0.45); }
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) scale(0.4);
+  }
+  5% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1.35);
+  }
+  35% {
+    opacity: 1;
+    transform: translate3d(calc(var(--dx, 0px) * 0.72), calc(var(--dy, 0px) * 0.72), 0) scale(1);
+  }
+  62% {
+    opacity: 0.9;
+  }
+  76% {
+    opacity: 0.35;
+  }
+  86% {
+    opacity: 0.85;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--dx, 0px), calc(var(--dy, 0px) + 90px), 0) scale(0.45);
+  }
 }
 
 @keyframes firework-flash {
-  0% { opacity: 0; transform: scale(0.2); }
-  6% { opacity: 0.9; }
-  100% { opacity: 0; transform: scale(5); }
+  0% {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+  6% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(5);
+  }
 }
 
 @keyframes sparkle-rise {
-  0% { opacity: 0; transform: translate3d(0, 0, 0) scale(0.3); }
-  20% { opacity: 1; transform: translate3d(0, -18vh, 0) scale(1); }
-  70% { opacity: 0.9; }
-  100% { opacity: 0; transform: translate3d(var(--drift, 0px), -85vh, 0) scale(0.5); }
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) scale(0.3);
+  }
+  20% {
+    opacity: 1;
+    transform: translate3d(0, -18vh, 0) scale(1);
+  }
+  70% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--drift, 0px), -85vh, 0) scale(0.5);
+  }
 }
 
 @keyframes drift-float {
-  0% { opacity: 0; transform: translate3d(0, -6vh, 0); }
-  15% { opacity: 0.85; }
-  50% { transform: translate3d(var(--drift, 0px), 45vh, 0); }
-  100% { opacity: 0; transform: translate3d(calc(var(--drift, 0px) * -1), 104vh, 0); }
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -6vh, 0);
+  }
+  15% {
+    opacity: 0.85;
+  }
+  50% {
+    transform: translate3d(var(--drift, 0px), 45vh, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(calc(var(--drift, 0px) * -1), 104vh, 0);
+  }
 }
 
 @keyframes rain-fall {
-  0% { opacity: 0; transform: translate3d(0, -14vh, 0); }
-  12% { opacity: 0.65; }
-  100% { opacity: 0.1; transform: translate3d(var(--drift, 0px), 112vh, 0); }
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -14vh, 0);
+  }
+  12% {
+    opacity: 0.65;
+  }
+  100% {
+    opacity: 0.1;
+    transform: translate3d(var(--drift, 0px), 112vh, 0);
+  }
 }
 
 @keyframes burst {
-  0% { opacity: 0.75; transform: scale(0.2); }
-  100% { opacity: 0; transform: scale(2.6); }
+  0% {
+    opacity: 0.75;
+    transform: scale(0.2);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2.6);
+  }
 }
 
 @keyframes bounce-hold {
-  0%, 100% { transform: translateY(0) scale(1); }
-  30% { transform: translateY(-10%) scale(1.06); }
-  60% { transform: translateY(0) scale(0.98); }
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  30% {
+    transform: translateY(-10%) scale(1.06);
+  }
+  60% {
+    transform: translateY(0) scale(0.98);
+  }
 }
 
 @keyframes splash-emoji-spin {
-  0% { transform: scale(0.15) rotate(-200deg); opacity: 0; }
-  50% { transform: scale(1.4) rotate(14deg); opacity: 1; }
-  72% { transform: scale(0.9) rotate(-8deg); }
-  100% { transform: scale(1) rotate(0deg); }
+  0% {
+    transform: scale(0.15) rotate(-200deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.4) rotate(14deg);
+    opacity: 1;
+  }
+  72% {
+    transform: scale(0.9) rotate(-8deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
 }
 
 @keyframes nod {
-  0%, 100% { transform: rotate(0deg) translateY(0); }
-  35% { transform: rotate(8deg) translateY(-5%); }
-  70% { transform: rotate(-6deg) translateY(0); }
+  0%,
+  100% {
+    transform: rotate(0deg) translateY(0);
+  }
+  35% {
+    transform: rotate(8deg) translateY(-5%);
+  }
+  70% {
+    transform: rotate(-6deg) translateY(0);
+  }
 }
 
 @keyframes wobble {
-  0%, 100% { transform: rotate(-4deg); }
-  50% { transform: rotate(4deg); }
+  0%,
+  100% {
+    transform: rotate(-4deg);
+  }
+  50% {
+    transform: rotate(4deg);
+  }
 }
 
 @keyframes slump {
-  0% { transform: translateY(-8%) rotate(0deg); }
-  55% { transform: translateY(7%) rotate(-10deg); }
-  100% { transform: translateY(5%) rotate(-7deg); }
+  0% {
+    transform: translateY(-8%) rotate(0deg);
+  }
+  55% {
+    transform: translateY(7%) rotate(-10deg);
+  }
+  100% {
+    transform: translateY(5%) rotate(-7deg);
+  }
 }
 
 @keyframes glow-pulse {
-  0%, 100% { opacity: 0.3; transform: scale(1); }
-  50% { opacity: 0.65; transform: scale(1.15); }
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.65;
+    transform: scale(1.15);
+  }
 }
 
 .anim-splash-in {

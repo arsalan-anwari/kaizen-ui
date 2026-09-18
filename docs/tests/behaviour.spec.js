@@ -112,9 +112,7 @@ test("the announcer speaks the same text twice", async ({ page }) => {
 test("the heat charts describe every cell in words", async ({ page }) => {
   const heatmap = await section(page, "rowheatmap");
   await expect(heatmap.getByRole("img", { name: "o, never came up" })).toBeVisible();
-  await expect(
-    heatmap.getByRole("img", { name: "nu: 2 of 9 right, Shaky" })
-  ).toBeVisible();
+  await expect(heatmap.getByRole("img", { name: "nu: 2 of 9 right, Shaky" })).toBeVisible();
 
   const grid = await section(page, "accuracygrid");
   await expect(grid.getByRole("img", { name: "a: 14 of 14 right, Mastered" })).toBeVisible();
@@ -151,22 +149,28 @@ test("shift+arrow walks the sections of the page", async ({ page }, info) => {
   await page.keyboard.press("Shift+ArrowDown");
   await expect(page.locator("[data-keynav]")).toHaveCount(1);
   await expect(page.locator("[data-keynav]")).toContainText(/\w/);
+
+  // One stop per component, not per group: the first two steps land on the
+  // intro and then on the first demo, so the third is the demo after it.
+  await page.keyboard.press("Shift+ArrowDown");
+  await expect(page.locator("[data-keynav]")).toHaveAttribute("id", "iconbutton");
 });
 
-test("pagination marks the current page and walks on the arrow keys", async ({ page }) => {
+test("pagination steps through the pages and walks on the arrow keys", async ({ page }) => {
   const pager = (await section(page, "pagination")).getByRole("navigation");
-  const at = (name) => pager.getByRole("button", { name, exact: true });
+  const previous = pager.getByRole("button", { name: "Previous page" });
+  const next = pager.getByRole("button", { name: "Next page" });
 
-  await expect(at("1")).toHaveAttribute("aria-current", "page");
-  await expect(pager.getByRole("button", { name: "Previous page" })).toBeDisabled();
+  await expect(pager).toContainText("1 / 12");
+  await expect(previous).toBeDisabled();
 
-  await pager.getByRole("button", { name: "Next page" }).click();
-  await expect(at("2")).toHaveAttribute("aria-current", "page");
-  await expect(at("1")).not.toHaveAttribute("aria-current", "page");
+  await next.click();
+  await expect(pager).toContainText("2 / 12");
+  await expect(previous).toBeEnabled();
 
-  await at("1").focus();
+  await previous.focus();
   await page.keyboard.press("ArrowRight");
-  await expect(at("2")).toBeFocused();
+  await expect(next).toBeFocused();
   await page.keyboard.press("Home");
-  await expect(pager.getByRole("button", { name: "Previous page" })).toBeFocused();
+  await expect(previous).toBeFocused();
 });

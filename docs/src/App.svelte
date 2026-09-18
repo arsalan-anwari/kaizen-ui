@@ -46,7 +46,10 @@
         ["OptionCard", "Pick one, but big enough for a thumb. For setup screens."],
         ["TextField", "Three tones: idle, correct, wrong. Turn it green when they get it right."],
         ["NumberField", "Clamps to min/max. Commits on blur or Enter, not on every keystroke."],
-        ["Select", "The native select ignores your theme and Android draws its own arrow. This one doesn't. Panel on desktop, sheet on a phone."],
+        [
+          "Select",
+          "The native select ignores your theme and Android draws its own arrow. This one doesn't. Panel on desktop, sheet on a phone."
+        ],
         ["ActionSelect", "A Select with buttons in the panel: new deck, delete deck."],
         ["Calendar", "A month grid, because input[type=date] can't be styled."],
         ["CustomNumberChip", "A Chip for when none of the presets fit. Opens a roller."],
@@ -58,7 +61,10 @@
       items: [
         ["Popover", "The panel Select, ActionSelect and Calendar all hang off."],
         ["ConfirmDialog", "Two buttons, one of them destructive. Blocks until answered."],
-        ["ResultSplash", "The full-screen celebration after a run. Five grades, five particle effects. Plays over whatever is behind it and dismisses itself."]
+        [
+          "ResultSplash",
+          "The full-screen celebration after a run. Five grades, five particle effects. Plays over whatever is behind it and dismisses itself."
+        ]
       ]
     },
     {
@@ -67,11 +73,20 @@
         ["Card", "Ruled paper. Title, icon and action are all optional."],
         ["RowBar", "A list row. Give it children and it expands instead of pressing."],
         ["TileGrid", "Equal tiles, as many per row as fit."],
-        ["Pagination", "Arrows and numbers for a long list. Beats a nested scrollbar at any window size."],
-        ["Board", "A chalkboard for the character being drilled. Compact is the half-height shape a phone in landscape gets."],
+        [
+          "Pagination",
+          "Arrows and numbers for a long list. Beats a nested scrollbar at any window size."
+        ],
+        [
+          "Board",
+          "A chalkboard for the character being drilled. Compact is the half-height shape a phone in landscape gets."
+        ],
         ["EmptyState", "What a list shows before there is anything in it."],
         ["PageBackdrop", "The illustration behind this page. Mount it once and forget it."],
-        ["dismissSplash", "The pre-boot splash: markup and CSS in index.html so it paints before the bundle loads. Call this after mount to fade it out."]
+        [
+          "dismissSplash",
+          "The pre-boot splash: markup and CSS in index.html so it paints before the bundle loads. Call this after mount to fade it out."
+        ]
       ]
     },
     {
@@ -81,7 +96,10 @@
         ["AccuracyGrid", "Characters ranked weakest first, each tile shaded by how solid it is."],
         ["RowHeatmap", "The whole table, one row per line, shaded cell by cell."],
         ["HeatLegend", "What the shades mean. Both charts draw one already."],
-        ["Meter", "A gauge with the percentage spelled out. Leave the tone off and it colours by value."],
+        [
+          "Meter",
+          "A gauge with the percentage spelled out. Leave the tone off and it colours by value."
+        ],
         ["Progress", "Just the bar. No label unless you pass one."]
       ]
     },
@@ -97,17 +115,35 @@
     {
       title: "Keyboard",
       items: [
-        ["keynav", "The app-wide keys. Ctrl+/ starts keyboard mode, ? opens the menu, and this page is wired to it, so every shortcut below works here."],
-        ["ShortcutHelp", "The menu itself: a sheet of key and label rows. keynavShortcuts fills the first group for you."],
-        ["roving", "One tab stop for a whole grid or strip, arrow keys inside it. Every list component already uses it."],
-        ["focusMain", "Sends focus to the main region after a route change, so a screen reader reads the new screen."]
+        [
+          "keynav",
+          "The app-wide keys. Ctrl+/ starts keyboard mode, ? opens the menu, and this page is wired to it, so every shortcut below works here."
+        ],
+        [
+          "ShortcutHelp",
+          "The menu itself: a sheet of key and label rows. keynavShortcuts fills the first group for you."
+        ],
+        [
+          "roving",
+          "One tab stop for a whole grid or strip, arrow keys inside it. Every list component already uses it."
+        ],
+        [
+          "focusMain",
+          "Sends focus to the main region after a route change, so a screen reader reads the new screen."
+        ]
       ]
     },
     {
       title: "Brand",
       items: [
-        ["AppHeader", "The bar every app starts with: mark, name, tabs, controls. Sizes off its own container, so it folds here the same way it folds on a phone."],
-        ["AppControls", "Language, theme, contrast, sound and zoom. Owns the prefs and writes them onto the document, so dropping it in is the whole wiring."],
+        [
+          "AppHeader",
+          "The bar every app starts with: mark, name, tabs, controls. Sizes off its own container, so it folds here the same way it folds on a phone."
+        ],
+        [
+          "AppControls",
+          "Language, theme, contrast, sound and zoom. Owns the prefs and writes them onto the document, so dropping it in is the whole wiring."
+        ],
         ["AppMark", "One glyph in a square. Ink, or seal red."],
         ["Glyph", "Japanese text, tagged as Japanese so a screen reader speaks it."],
         ["Announcer", "Says something to a screen reader without drawing anything."],
@@ -154,10 +190,10 @@
       items: keynavShortcuts({
         start: "Start keyboard mode",
         stop: "Stop keyboard mode",
-        section: "Previous or next group",
+        section: "Previous or next section",
         next: "Next control",
         previous: "Previous control",
-        edges: "First or last control of the group",
+        edges: "First or last control of the section",
         scroll: "Scroll the page",
         select: "Pick the focused control",
         confirm: "Confirm",
@@ -183,7 +219,6 @@
 
 <AppHeader
   paging
-  skipLabel="Skip to the components"
   glyph="改"
   title="kaizen-ui"
   subtitle="Svelte 5 UI kit · v{version}"
@@ -201,7 +236,9 @@
     class="sticky top-28 hidden h-[calc(100dvh-8rem)] w-52 shrink-0 overflow-y-auto pb-8 lg:block"
   >
     {#each groups as group (group.title)}
-      <p class="mt-5 mb-1.5 text-xs font-bold tracking-wide text-foreground/70 uppercase first:mt-0">
+      <p
+        class="mt-5 mb-1.5 text-xs font-bold tracking-wide text-foreground/70 uppercase first:mt-0"
+      >
         {group.title}
       </p>
       <ul class="flex flex-col gap-0.5 text-sm">
@@ -227,7 +264,8 @@
       <div class="flex flex-col gap-3">
         <h1 class="text-h1 font-bold tracking-tight">Kaizen UI</h1>
         <p class="max-w-2xl text-body text-foreground/80">
-            A UI kit for Svelte 5 language-learning apps: washi-paper theme, chunky touch-friendly controls, and small runtime pieces (sounds, locale lookup, appearance, viewport)
+          A UI kit for Svelte 5 language-learning apps: washi-paper theme, chunky touch-friendly
+          controls, and small runtime pieces (sounds, locale lookup, appearance, viewport)
         </p>
         <div class="flex flex-wrap gap-2">
           <Badge tone="brand">{componentCount} components</Badge>
@@ -273,7 +311,9 @@
     </section>
 
     {#each groups as group (group.title)}
-      <section class="flex flex-col gap-10">
+      <!-- A div, not a section: keynav treats every top-level section as one
+           stop, and a stop per component beats a stop per group. -->
+      <div class="flex flex-col gap-10">
         <h2 class="text-h2 font-bold tracking-tight border-b-2 border-border pb-2">
           {group.title}
         </h2>
@@ -285,10 +325,12 @@
             source={sources[`./demos/${name}.svelte`]}
           />
         {/each}
-      </section>
+      </div>
     {/each}
 
-    <footer class="flex flex-col gap-1 border-t-2 border-border pt-6 pb-10 text-sm text-foreground/75">
+    <footer
+      class="flex flex-col gap-1 border-t-2 border-border pt-6 pb-10 text-sm text-foreground/75"
+    >
       <span>
         Kana clips from the
         <a class="underline" href="https://huggingface.co/datasets/arsalan-anwari/kana-sounds">

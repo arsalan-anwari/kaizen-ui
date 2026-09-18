@@ -12,11 +12,7 @@ export function clampZoom(value: number): number {
   return Math.min(zoomMax, Math.max(zoomMin, Number(stepped.toFixed(2))));
 }
 
-export function applyAppearance(options: {
-  theme: Theme;
-  contrast: boolean;
-  zoom: number;
-}): void {
+export function applyAppearance(options: { theme: Theme; contrast: boolean; zoom: number }): void {
   if (typeof document === "undefined") return;
   const root = document.documentElement;
   root.classList.remove("light", "dark");

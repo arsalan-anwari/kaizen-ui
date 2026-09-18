@@ -15,8 +15,34 @@
     onplay?: () => void;
   } = $props();
 
-  const wide = { w: 200, h: 200, cx: 100, cy: 84, r: 60, px: 161, py: 170, pr: 19, wx: 24, ww: 102, wy: 170, wh: 24 };
-  const slim = { w: 260, h: 100, cx: 50, cy: 50, r: 40, px: 222, py: 50, pr: 16, wx: 110, ww: 82, wy: 50, wh: 34 };
+  const wide = {
+    w: 200,
+    h: 200,
+    cx: 100,
+    cy: 84,
+    r: 60,
+    px: 161,
+    py: 170,
+    pr: 19,
+    wx: 24,
+    ww: 102,
+    wy: 170,
+    wh: 24
+  };
+  const slim = {
+    w: 260,
+    h: 100,
+    cx: 50,
+    cy: 50,
+    r: 40,
+    px: 222,
+    py: 50,
+    pr: 16,
+    wx: 110,
+    ww: 82,
+    wy: 50,
+    wh: 34
+  };
 
   const L = $derived(compact ? slim : wide);
 
@@ -56,8 +82,26 @@
       </linearGradient>
     </defs>
 
-    <rect x="2" y="2" width={L.w - 4} height={L.h - 4} rx="14" fill="url(#kz-case)" stroke="#7c847f" stroke-width="2" />
-    <rect x="7" y="7" width={L.w - 14} height={L.h - 14} rx="10" fill="none" stroke="#ffffff" stroke-opacity="0.55" />
+    <rect
+      x="2"
+      y="2"
+      width={L.w - 4}
+      height={L.h - 4}
+      rx="14"
+      fill="url(#kz-case)"
+      stroke="#7c847f"
+      stroke-width="2"
+    />
+    <rect
+      x="7"
+      y="7"
+      width={L.w - 14}
+      height={L.h - 14}
+      rx="10"
+      fill="none"
+      stroke="#ffffff"
+      stroke-opacity="0.55"
+    />
 
     {#each [[14, 14], [L.w - 14, 14], [14, L.h - 14], [L.w - 14, L.h - 14]] as [x, y] (`${x}-${y}`)}
       <g>
@@ -66,7 +110,14 @@
       </g>
     {/each}
 
-    <circle cx={L.cx} cy={L.cy} r={L.r + 6} fill="url(#kz-rim)" stroke="#767e79" stroke-width="1.5" />
+    <circle
+      cx={L.cx}
+      cy={L.cy}
+      r={L.r + 6}
+      fill="url(#kz-rim)"
+      stroke="#767e79"
+      stroke-width="1.5"
+    />
 
     <g
       class:record-spin={playing}
@@ -113,11 +164,24 @@
         fill="#6f7772"
         transform="rotate(32 {L.cx + L.r * 0.5} {L.cy - L.r * 0.38})"
       />
-      <circle cx={L.cx + L.r + 2} cy={L.cy - L.r * 0.72} r="7" fill="url(#kz-rim)" stroke="#767e79" />
+      <circle
+        cx={L.cx + L.r + 2}
+        cy={L.cy - L.r * 0.72}
+        r="7"
+        fill="url(#kz-rim)"
+        stroke="#767e79"
+      />
     </g>
 
     <g class="record-button">
-      <circle cx={L.px} cy={L.py} r={L.pr} fill="url(#kz-rim)" stroke="#6f7772" stroke-width="1.5" />
+      <circle
+        cx={L.px}
+        cy={L.py}
+        r={L.pr}
+        fill="url(#kz-rim)"
+        stroke="#6f7772"
+        stroke-width="1.5"
+      />
       <circle cx={L.px} cy={L.py} r={L.pr - 4} fill="#4d5450" />
       {#if playing}
         <path
@@ -129,7 +193,15 @@
       {/if}
     </g>
 
-    <rect x={L.wx - 6} y={L.wy - L.wh / 2 - 4} width={L.ww + 12} height={L.wh + 8} rx="6" fill="#3f4642" stroke="#767e79" />
+    <rect
+      x={L.wx - 6}
+      y={L.wy - L.wh / 2 - 4}
+      width={L.ww + 12}
+      height={L.wh + 8}
+      rx="6"
+      fill="#3f4642"
+      stroke="#767e79"
+    />
     {#each bars as peak, index (index)}
       {@const step = L.ww / bars.length}
       {@const height = Math.max(2, peak * L.wh)}
@@ -137,7 +209,7 @@
         x={L.wx + index * step}
         y={L.wy - height / 2}
         width={Math.max(1, step - 1.4)}
-        height={height}
+        {height}
         rx="0.8"
         fill={index / bars.length < progress ? "#8fd67f" : "#8f9995"}
       />

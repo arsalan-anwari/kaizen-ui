@@ -36,8 +36,8 @@
   </Button>
 
   <p class="text-sm text-foreground/75">
-    <code>keynavShortcuts</code> writes the first group, so the keys stay next to the code that
-    handles them and you only pass translated labels. Add your own groups after it.
+    <code>keynavShortcuts</code> writes the first group, so the keys stay next to the code that handles
+    them and you only pass translated labels. Add your own groups after it.
   </p>
 </div>
 

@@ -5,7 +5,10 @@ export type RovingOptions = {
   wrap?: boolean;
 };
 
-export function roving(node: HTMLElement, options: RovingOptions = {}): {
+export function roving(
+  node: HTMLElement,
+  options: RovingOptions = {}
+): {
   update(next: RovingOptions): void;
   destroy(): void;
 } {

@@ -45,13 +45,7 @@ export type { IconName } from "./components/icons";
 export { applyAppearance, clampZoom, zoomMax, zoomMin, zoomStep, type Theme } from "./appearance";
 export { focusMain } from "./focus";
 export { heatColor, heatFill } from "./heat";
-export {
-  FOCUSABLE,
-  keynav,
-  keynavShortcuts,
-  modalOpen,
-  type KeyNavLabels
-} from "./keynav.svelte";
+export { FOCUSABLE, keynav, keynavShortcuts, modalOpen, type KeyNavLabels } from "./keynav.svelte";
 export {
   masteryLevels,
   masteryOf,
@@ -65,13 +59,7 @@ export {
 export { lockScroll } from "./lockScroll";
 export { prefs, prefsKey, zoomBy, type Prefs } from "./prefs.svelte";
 export { roving, type RovingOptions } from "./roving";
-export {
-  audioContext,
-  fanfareGrades,
-  setEffectsEnabled,
-  sfx,
-  type FanfareGrade
-} from "./sfx";
+export { audioContext, fanfareGrades, setEffectsEnabled, sfx, type FanfareGrade } from "./sfx";
 export { shared } from "./shared";
 export { dismissSplash } from "./splash";
 export { loadJson, storeJson } from "./storage";

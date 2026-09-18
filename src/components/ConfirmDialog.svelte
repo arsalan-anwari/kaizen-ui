@@ -55,7 +55,10 @@
     <div class="flex flex-col gap-2">
       <h2 id="confirm-title" class="text-h3 font-bold leading-tight">{title}</h2>
       {#if children}
-        <div id="confirm-body" class="flex flex-col gap-2 text-sm leading-snug text-muted-foreground">
+        <div
+          id="confirm-body"
+          class="flex flex-col gap-2 text-sm leading-snug text-muted-foreground"
+        >
           {@render children()}
         </div>
       {/if}

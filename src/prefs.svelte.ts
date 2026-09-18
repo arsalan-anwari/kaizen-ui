@@ -1,5 +1,3 @@
-
-
 import { clampZoom, zoomStep, type Theme } from "./appearance";
 import { loadJson } from "./storage";
 

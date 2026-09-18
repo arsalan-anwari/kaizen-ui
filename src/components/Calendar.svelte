@@ -45,8 +45,9 @@
 
   // 1 = Monday .. 7 = Sunday. Older webviews have no getWeekInfo; assume Monday.
   const weekStart = $derived(
-    (new Intl.Locale(i18n.locale) as Intl.Locale & { getWeekInfo?: () => { firstDay: number } })
-      .getWeekInfo?.().firstDay ?? 1
+    (
+      new Intl.Locale(i18n.locale) as Intl.Locale & { getWeekInfo?: () => { firstDay: number } }
+    ).getWeekInfo?.().firstDay ?? 1
   );
 
   const weekdays = $derived.by(() => {

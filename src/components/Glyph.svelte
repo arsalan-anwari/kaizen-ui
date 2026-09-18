@@ -14,4 +14,10 @@
   } = $props();
 </script>
 
-<span class="jp {className}" {lang} {style} role={label === "" ? undefined : "img"} aria-label={label === "" ? undefined : label}>{text}</span>
+<span
+  class="jp {className}"
+  {lang}
+  {style}
+  role={label === "" ? undefined : "img"}
+  aria-label={label === "" ? undefined : label}>{text}</span
+>

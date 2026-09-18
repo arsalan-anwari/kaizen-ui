@@ -36,11 +36,7 @@
   const base =
     "inline-flex items-center justify-center gap-2 font-bold tracking-tight select-none cursor-pointer transition-[transform,box-shadow,background-color,color,opacity] duration-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-40";
 
-  const lip = $derived(
-    raised
-      ? "lip press hover:brightness-105"
-      : "hover:brightness-105"
-  );
+  const lip = $derived(raised ? "lip press hover:brightness-105" : "hover:brightness-105");
 
   const variants: Record<Variant, string> = $derived({
     primary: `bg-primary text-primary-foreground [--lip:var(--brand-shadow)] ${lip}`,

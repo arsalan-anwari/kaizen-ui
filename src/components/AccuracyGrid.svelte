@@ -37,7 +37,9 @@
           style="background: {heatFill(row.strength)}"
         >
           <Glyph text={row.label} {lang} class="text-h4 font-bold leading-none" />
-          <span class="w-full truncate text-center text-[0.625rem] leading-none text-muted-foreground">
+          <span
+            class="w-full truncate text-center text-[0.625rem] leading-none text-muted-foreground"
+          >
             {row.sub}
           </span>
           <div class="h-1.5 w-full overflow-hidden rounded-full bg-foreground/10">

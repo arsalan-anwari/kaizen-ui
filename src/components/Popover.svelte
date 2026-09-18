@@ -79,9 +79,7 @@
       <IconButton icon="close" label={closeLabel} onclick={close} />
     </header>
 
-    <div
-      class="flex flex-1 flex-col overflow-y-auto px-4 pt-4 pb-[calc(var(--nav-bar)+1.25rem)]"
-    >
+    <div class="flex flex-1 flex-col overflow-y-auto px-4 pt-4 pb-[calc(var(--nav-bar)+1.25rem)]">
       {@render children(close)}
     </div>
   {/if}

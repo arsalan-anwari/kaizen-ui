@@ -18,7 +18,6 @@ export function lockScroll(_node: HTMLElement, dismiss?: () => void): { destroy(
   const root = document.documentElement;
 
   if (depth++ === 0) {
-
     gutter = window.innerWidth - root.clientWidth > 0 ? "stable" : "";
     root.style.overflow = "hidden";
     root.style.scrollbarGutter = gutter;

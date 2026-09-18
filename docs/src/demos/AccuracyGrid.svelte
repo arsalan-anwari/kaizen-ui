@@ -37,7 +37,6 @@
     {rows}
     {labels}
     empty="Finish a run to see character stats."
-    describe={(row) =>
-      `${row.sub}: ${row.correct} of ${row.total} right, ${labels[row.mastery]}`}
+    describe={(row) => `${row.sub}: ${row.correct} of ${row.total} right, ${labels[row.mastery]}`}
   />
 </div>

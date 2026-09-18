@@ -6,7 +6,10 @@ const server = await preview({ preview: { port: 4173 } });
 const url = server.resolvedUrls.local[0];
 const browser = await chromium.launch();
 
-async function shoot(name, { dark = false, mobile = false, selector = null, at = null, before = null } = {}) {
+async function shoot(
+  name,
+  { dark = false, mobile = false, selector = null, at = null, before = null } = {}
+) {
   const page = await browser.newPage({
     viewport: mobile ? { width: 390, height: 844 } : { width: 1280, height: 900 },
     deviceScaleFactor: 1

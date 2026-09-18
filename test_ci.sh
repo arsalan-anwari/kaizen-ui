@@ -4,12 +4,12 @@
 #
 #   ./test_ci.sh            # the test job under act
 #   ./test_ci.sh --no-act   # every check on the host, no containers
-#   ./test_ci.sh --fix      # throw away node_modules and the browsers, then run
+#   ./test_ci.sh --fix      # format the code, throw away node_modules and the browsers, then run
 #
 
 set -uo pipefail
 
-cd "$(dirname "${BASH_SOURCE[0]}")"
+cd "$(dirname "${BASH_SOURCE[0]}")" || exit 1
 
 USE_ACT=1
 FIX=0
@@ -74,6 +74,10 @@ docs_checks() {
 }
 
 if ((FIX)); then
+  # format first, so a stray indent never shows up as a check failure
+  step "npm install (root)" npm install
+  step "prettier" npm run format
+
   bold "fix: clean docs/node_modules and docs/test-results"
   rm -rf docs/node_modules docs/test-results
   step "playwright browser (forced)" npx --prefix docs playwright install --force chromium

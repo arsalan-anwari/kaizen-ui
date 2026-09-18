@@ -58,15 +58,7 @@
 {:else}
   <!-- A phone has no room for the select and four buttons side by side, so the
        actions ride along in the sheet the select already opens. -->
-  <Select
-    bind:value
-    options={choices}
-    {label}
-    {closeLabel}
-    placeholder={empty}
-    full
-    {onchange}
-  >
+  <Select bind:value options={choices} {label} {closeLabel} placeholder={empty} full {onchange}>
     {#snippet footer(close)}
       {#each actions as action (action.label)}
         <button

@@ -1,5 +1,4 @@
 <script lang="ts">
-
   type Tone = "idle" | "correct" | "wrong";
 
   let {

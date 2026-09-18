@@ -12,7 +12,7 @@
   </div>
 
   <p class="text-sm text-foreground/75">
-    Ten chips, one tab stop. Arrow keys move inside, up and down cross a whole row, Home and End
-    hit the edges. In keyboard mode every chip becomes a tab stop instead, so Tab alone walks them.
+    Ten chips, one tab stop. Arrow keys move inside, up and down cross a whole row, Home and End hit
+    the edges. In keyboard mode every chip becomes a tab stop instead, so Tab alone walks them.
   </p>
 </div>

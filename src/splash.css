@@ -1,5 +1,3 @@
-
-
 :root {
   --splash-background: #f2e8d7;
   --splash-foreground: #3a2c1e;
@@ -29,7 +27,6 @@
     --splash-wire: #3f362b;
   }
 }
-
 
 html,
 body {

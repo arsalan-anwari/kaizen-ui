@@ -21,7 +21,9 @@
 </script>
 
 <span
-  class="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-bold {tones[tone]} {className}"
+  class="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-bold {tones[
+    tone
+  ]} {className}"
 >
   {@render children()}
 </span>

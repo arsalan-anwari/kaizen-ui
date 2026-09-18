@@ -1,5 +1,4 @@
 <script lang="ts">
-
   import classroom from "../assets/classroom.svg";
 
   let { class: className = "" }: { class?: string } = $props();

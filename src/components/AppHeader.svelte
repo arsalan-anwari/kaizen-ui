@@ -6,7 +6,6 @@
   import Segmented from "./Segmented.svelte";
   import { keynav, modalOpen } from "../keynav.svelte";
 
-
   let {
     glyph,
     title,
@@ -87,7 +86,6 @@
 </script>
 
 <svelte:window onkeydown={keydown} ontouchstart={touchstart} ontouchend={touchend} />
-
 
 {#snippet bar()}
   <header

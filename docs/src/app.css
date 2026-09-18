@@ -2,7 +2,6 @@
 @import "../../src/theme.css";
 @source "../../src";
 
-
 .code-block > pre {
   margin: 0;
   max-height: 30rem;

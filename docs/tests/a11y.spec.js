@@ -21,9 +21,9 @@ for (const name of overlays) {
   test(`${name} passes WCAG 2.2 AA while it is open`, async ({ page }) => {
     await openGallery(page);
     await page.locator(`main section#${name}`).getByRole("button").first().click();
-    await expect(
-      page.locator("dialog[open], [role='dialog'], [role='alertdialog']")
-    ).toHaveCount(1);
+    await expect(page.locator("dialog[open], [role='dialog'], [role='alertdialog']")).toHaveCount(
+      1
+    );
     expect(await violations(page)).toEqual([]);
   });
 }
@@ -31,9 +31,9 @@ for (const name of overlays) {
 test("every component the gallery lists is rendered and named", async ({ page }) => {
   await openGallery(page);
 
-  const listed = await page.locator("nav a[href^='#']").evaluateAll((links) =>
-    links.map((link) => link.getAttribute("href").slice(1))
-  );
+  const listed = await page
+    .locator("nav a[href^='#']")
+    .evaluateAll((links) => links.map((link) => link.getAttribute("href").slice(1)));
   const rendered = await page
     .locator("main section[id]")
     .evaluateAll((sections) => sections.map((element) => element.id));

@@ -3,25 +3,19 @@
 A UI kit for Svelte 5 language-learning apps: washi-paper theme, chunky
 touch-friendly controls, and small runtime pieces (sounds, locale lookup, appearance, viewport).
 
+[![npm](https://img.shields.io/npm/v/kaizen-ui)](https://www.npmjs.com/package/kaizen-ui)
+[![npm downloads](https://img.shields.io/npm/dt/kaizen-ui)](https://www.npmjs.com/package/kaizen-ui)
+[![CI](https://github.com/arsalan-anwari/kaizen-ui/actions/workflows/ci.yml/badge.svg)](https://github.com/arsalan-anwari/kaizen-ui/actions/workflows/ci.yml)
+[![license](https://img.shields.io/npm/l/kaizen-ui)](LICENSE)
+
 Continuously improve your learning experience with fast, accessible components
 built for web and mobile.
 
-
 **[Live docs and component gallery →](https://arsalan-anwari.github.io/kaizen-ui/)**
 
-| Light | Dark |
-| --- | --- |
+| Light                                                      | Dark                                                           |
+| ---------------------------------------------------------- | -------------------------------------------------------------- |
 | ![Components in the light theme](screenshots/overview.png) | ![Components in the dark theme](screenshots/overview-dark.png) |
-
-| Select and Calendar | Cards |
-| --- | --- |
-| ![Select panel open above a calendar](screenshots/select.png) | ![Card examples](screenshots/cards.png) |
-
-| Chalkboards | Meters | Phone |
-| --- | --- | --- |
-| ![Board sizes](screenshots/board.png) | ![Meter tones](screenshots/progress.png) | ![Phone layout](screenshots/mobile.png) |
-
-![Record player and waveform driven by a decoded clip](screenshots/audio.png)
 
 ## Install
 
@@ -29,12 +23,14 @@ built for web and mobile.
 npm install kaizen-ui
 ```
 
-The package ships Svelte source, so the consuming app compiles it. 
+The package ships Svelte source, so the consuming app compiles it.
 
 If using Vite, exclude it from pre-bundling:
 
 ```js
-optimizeDeps: { exclude: ["kaizen-ui"] }
+optimizeDeps: {
+  exclude: ["kaizen-ui"];
+}
 ```
 
 ## Theme
@@ -80,9 +76,12 @@ press to it once, then render the sheet off that flag:
 <KeyNavBadge label="Keyboard mode" />
 
 {#if keynav.help}
-  <ShortcutHelp title="Keyboard shortcuts" closeLabel="Close" groups={[
-    { title: "Menus and pages", items: keynavShortcuts(labels) }
-  ]} onclose={() => (keynav.help = false)} />
+  <ShortcutHelp
+    title="Keyboard shortcuts"
+    closeLabel="Close"
+    groups={[{ title: "Menus and pages", items: keynavShortcuts(labels) }]}
+    onclose={() => (keynav.help = false)}
+  />
 {/if}
 ```
 
@@ -95,19 +94,19 @@ the mode only `Ctrl+/`, `?` and dialog trapping are live, so the keys below stay
 of the browser until asked for. The docs page runs the whole set, so every row is testable at
 [the live gallery](https://arsalan-anwari.github.io/kaizen-ui/).
 
-| Key | Does |
-| --- | --- |
-| `Ctrl+/` | Start keyboard mode |
-| `Ctrl+Shift+/` | Stop keyboard mode |
-| `Shift+up` / `Shift+down` | Move between sections, the current one outlined in blue |
-| `Tab` / `Shift+Tab` | Next or previous element, inside that section or the open dialog |
-| `up` / `down` | First or last element of the section |
-| `Ctrl+up` / `Ctrl+down` | Scroll the page |
-| `Space` | Select what is focused |
-| `Enter` | Confirm what is focused |
-| `Ctrl+left` / `Ctrl+right` | Walk the tabs of the `paging` `AppHeader` |
-| `Escape` | Close a dialog, sheet or picker |
-| `?` | Show the `ShortcutHelp` sheet |
+| Key                        | Does                                                             |
+| -------------------------- | ---------------------------------------------------------------- |
+| `Ctrl+/`                   | Start keyboard mode                                              |
+| `Ctrl+Shift+/`             | Stop keyboard mode                                               |
+| `Shift+up` / `Shift+down`  | Move between sections, the current one outlined in blue          |
+| `Tab` / `Shift+Tab`        | Next or previous element, inside that section or the open dialog |
+| `up` / `down`              | First or last element of the section                             |
+| `Ctrl+up` / `Ctrl+down`    | Scroll the page                                                  |
+| `Space`                    | Select what is focused                                           |
+| `Enter`                    | Confirm what is focused                                          |
+| `Ctrl+left` / `Ctrl+right` | Walk the tabs of the `paging` `AppHeader`                        |
+| `Escape`                   | Close a dialog, sheet or picker                                  |
+| `?`                        | Show the `ShortcutHelp` sheet                                    |
 
 Components bring their own keys on top of that: `roving` makes a grid or strip one tab stop and
 moves inside it on the arrow keys, `Home` and `End` for its edges, and in keyboard mode every

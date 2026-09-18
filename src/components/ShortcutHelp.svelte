@@ -56,10 +56,14 @@
         </p>
         <dl class="flex flex-col">
           {#each group.items as item (item.label)}
-            <div class="flex items-center justify-between gap-4 border-b border-border py-2 last:border-0">
+            <div
+              class="flex items-center justify-between gap-4 border-b border-border py-2 last:border-0"
+            >
               <dt class="flex shrink-0 flex-wrap items-center gap-1">
                 {#each item.keys as key (key)}
-                  <kbd class="rounded-md border border-border bg-secondary px-1.5 py-0.5 text-xs font-bold">
+                  <kbd
+                    class="rounded-md border border-border bg-secondary px-1.5 py-0.5 text-xs font-bold"
+                  >
                     {key}
                   </kbd>
                 {/each}

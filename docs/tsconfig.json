@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "lib": ["esnext", "dom", "dom.iterable"],
+    "types": ["svelte", "node", "vite/client"],
+    "allowJs": true,
+    "checkJs": false,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "paths": {
+      "kaizen-ui": ["../src/index.ts"]
+    }
+  },
+  "include": ["src/**/*", "tests/**/*", "*.js", "*.mjs", "../src/**/*"]
+}

@@ -4,7 +4,13 @@ import { shared } from "./shared";
 
 let enabled = true;
 
-type Step = [frequency: number, duration: number, type: OscillatorType, volume: number, delay: number];
+type Step = [
+  frequency: number,
+  duration: number,
+  type: OscillatorType,
+  volume: number,
+  delay: number
+];
 
 // How far ahead nodes are scheduled, so a ramp is not cut off mid block.
 const LEAD_SECONDS = 0.02;

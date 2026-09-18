@@ -2,10 +2,35 @@
   import { Icon, type IconName } from "kaizen-ui";
 
   const names: IconName[] = [
-    "sun", "moon", "monitor", "select-all", "select-none", "folder-open", "download",
-    "trash", "plus", "save", "restore", "filter", "calendar", "chevron-down",
-    "chevron-right", "chevron-left", "sliders", "contrast", "volume-on", "volume-off",
-    "zoom-in", "zoom-out", "close", "check", "flame", "sprout", "target", "trophy", "info"
+    "sun",
+    "moon",
+    "monitor",
+    "select-all",
+    "select-none",
+    "folder-open",
+    "download",
+    "trash",
+    "plus",
+    "save",
+    "restore",
+    "filter",
+    "calendar",
+    "chevron-down",
+    "chevron-right",
+    "chevron-left",
+    "sliders",
+    "contrast",
+    "volume-on",
+    "volume-off",
+    "zoom-in",
+    "zoom-out",
+    "close",
+    "check",
+    "flame",
+    "sprout",
+    "target",
+    "trophy",
+    "info"
   ];
 </script>
 

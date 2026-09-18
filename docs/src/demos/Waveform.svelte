@@ -8,7 +8,8 @@
 <div class="flex w-full flex-wrap items-center gap-2">
   {#each clips as name (name)}
     <Chip size="sm" active={player.clip === name} onclick={() => pick(name)}>
-      {kana[name]} {name}
+      {kana[name]}
+      {name}
     </Chip>
   {/each}
   <Button size="sm" variant="outline" onclick={play}>
