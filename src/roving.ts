@@ -94,7 +94,13 @@ export function roving(node: HTMLElement, options: RovingOptions = {}): {
   scan();
 
   const observer = new MutationObserver(() => scan());
-  observer.observe(node, { childList: true, subtree: true });
+  // Also watch `disabled`: arrows that enable or disable mid-use change the item list.
+  observer.observe(node, {
+    childList: true,
+    subtree: true,
+    attributes: true,
+    attributeFilter: ["disabled"]
+  });
   node.addEventListener("keydown", keydown);
   node.addEventListener("focusin", focusin);
   document.addEventListener("keynav", mark);
