@@ -105,6 +105,9 @@
   {:else if name === "info"}
     <circle cx="12" cy="12" r="8.5" />
     <path d="M12 11v5.5M12 7.8v.4" />
+  {:else if name === "lightbulb"}
+    <path d="M9.2 17.5h5.6M10 20.5h4" />
+    <path d="M12 3.5a5.8 5.8 0 0 0-3.4 10.5c.5.4.8 1 .8 1.6h5.2c0-.6.3-1.2.8-1.6A5.8 5.8 0 0 0 12 3.5z" />
   {:else if name === "keyboard"}
     <rect x="2.5" y="5.5" width="19" height="13" rx="2.5" />
     <path

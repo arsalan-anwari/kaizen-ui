@@ -28,4 +28,5 @@ export type IconName =
   | "target"
   | "trophy"
   | "info"
-  | "keyboard";
+  | "keyboard"
+  | "lightbulb";
