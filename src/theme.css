@@ -343,9 +343,10 @@
   --radius-xl: var(--radius);
   --radius-2xl: calc(var(--radius) + 6px);
   --font-sans: ui-sans-serif, system-ui, sans-serif;
+  /* "Kaizen JP" is the bundled subset; import "kaizen-ui/fonts.css" to ship it. */
   --font-jp:
     "Hiragino Kaku Gothic ProN", "Noto Sans CJK JP", "Noto Sans JP", "Yu Gothic", Meiryo,
-    ui-sans-serif, system-ui, sans-serif;
+    "Kaizen JP", ui-sans-serif, system-ui, sans-serif;
   --text-ui: 0.875rem;
   --text-ui--line-height: 1.6;
   --text-body: 1rem;

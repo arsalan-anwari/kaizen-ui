@@ -2,7 +2,15 @@
   import type { Snippet } from "svelte";
   import { sfx } from "../sfx";
 
-  type Variant = "primary" | "brand" | "seal" | "secondary" | "outline" | "ghost" | "danger";
+  type Variant =
+    | "primary"
+    | "brand"
+    | "seal"
+    | "secondary"
+    | "outline"
+    | "ghost"
+    | "success"
+    | "danger";
   type Size = "sm" | "md" | "lg" | "xl";
 
   let {
@@ -42,6 +50,7 @@
     primary: `bg-primary text-primary-foreground [--lip:var(--brand-shadow)] ${lip}`,
     brand: `bg-brand text-brand-foreground [--lip:var(--brand-shadow)] ${lip}`,
     seal: `bg-seal text-seal-foreground [--lip:color-mix(in_srgb,var(--seal)_65%,black)] ${lip}`,
+    success: `bg-success text-success-foreground [--lip:color-mix(in_srgb,var(--success)_65%,black)] ${lip}`,
     danger: `bg-danger text-danger-foreground [--lip:color-mix(in_srgb,var(--danger)_65%,black)] ${lip}`,
     secondary:
       "lip press border border-wire bg-secondary text-secondary-foreground [--lip:var(--color-wire)] hover:bg-accent",

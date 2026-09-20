@@ -1,0 +1,15 @@
+/*
+ * The bundled Japanese face: Noto Sans JP, subset to the kana and the jōyō
+ * kanji. Import it when the app must render Japanese on a machine that ships
+ * no CJK font of its own — a minimal WebKitGTK install is the usual case.
+ *
+ * SIL Open Font License 1.1; the text travels with the file in
+ * src/assets/fonts/OFL.txt. Rebuild with `npm run build:font`.
+ */
+@font-face {
+  font-family: "Kaizen JP";
+  src: url("./assets/fonts/noto-sans-jp.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}

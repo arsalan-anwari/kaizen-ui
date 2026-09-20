@@ -9,10 +9,12 @@ export { default as Board } from "./components/Board.svelte";
 export { default as Button } from "./components/Button.svelte";
 export { default as Calendar } from "./components/Calendar.svelte";
 export { default as Card } from "./components/Card.svelte";
+export { default as ChoiceTile } from "./components/ChoiceTile.svelte";
 export { default as Chip } from "./components/Chip.svelte";
 export { default as ConfirmDialog } from "./components/ConfirmDialog.svelte";
 export { default as CustomNumberChip } from "./components/CustomNumberChip.svelte";
 export { default as EmptyState } from "./components/EmptyState.svelte";
+export { default as FitText } from "./components/FitText.svelte";
 export { default as Glyph } from "./components/Glyph.svelte";
 export { default as HeatLegend } from "./components/HeatLegend.svelte";
 export { default as Icon } from "./components/Icon.svelte";
@@ -33,6 +35,7 @@ export { default as RowBar } from "./components/RowBar.svelte";
 export { default as RowHeatmap } from "./components/RowHeatmap.svelte";
 export { default as Segmented } from "./components/Segmented.svelte";
 export { default as Select } from "./components/Select.svelte";
+export { default as SettingsMenu } from "./components/SettingsMenu.svelte";
 export { default as ShortcutHelp } from "./components/ShortcutHelp.svelte";
 export { default as Stat } from "./components/Stat.svelte";
 export { default as Switch } from "./components/Switch.svelte";
@@ -41,6 +44,7 @@ export { default as TileGrid } from "./components/TileGrid.svelte";
 export { default as Waveform } from "./components/Waveform.svelte";
 
 export type { IconName } from "./components/icons";
+export type { ChoiceState } from "./choice";
 
 export { applyAppearance, clampZoom, zoomMax, zoomMin, zoomStep, type Theme } from "./appearance";
 export { focusMain } from "./focus";

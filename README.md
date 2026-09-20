@@ -55,13 +55,26 @@ the high-contrast theme keeps its own yellow either way.
 }
 ```
 
+## Japanese text
+
+Anything with `class="jp"` renders through `--font-jp`, which prefers the
+system's Japanese face. Add the bundled one for machines that have none
+
+```css
+@import "kaizen-ui/fonts.css";
+```
+
+That ships Noto Sans JP subset to the kana and the 2136 jōyō kanji, 725 kB of
+woff2 under SIL OFL 1.1. `npm run build:font` rebuilds it from the pinned
+upstream releases.
+
 ## Components
 
 `ActionSelect` `AppControls` `AppHeader` `AppMark` `Badge` `Board` `Button` `Calendar`
-`Card` `Chip` `ConfirmDialog` `CustomNumberChip` `EmptyState` `Icon`
+`Card` `Chip` `ChoiceTile` `ConfirmDialog` `CustomNumberChip` `EmptyState` `Icon`
 `IconButton` `Meter` `NumberField` `NumberRoller` `OptionCard` `PageBackdrop`
 `Pagination` `PlayIcon` `Popover` `Progress` `RecordPlayer` `RowBar` `Segmented` `Select`
-`Stat` `Switch` `TextField` `TileGrid` `Waveform`
+`SettingsMenu` `Stat` `Switch` `TextField` `TileGrid` `Waveform`
 
 ## Keyboard
 
