@@ -70,11 +70,12 @@ upstream releases.
 
 ## Components
 
-`ActionSelect` `AppControls` `AppHeader` `AppMark` `Badge` `Board` `Button` `Calendar`
-`Card` `Chip` `ChoiceTile` `ConfirmDialog` `CustomNumberChip` `EmptyState` `Icon`
-`IconButton` `Meter` `NumberField` `NumberRoller` `OptionCard` `PageBackdrop`
-`Pagination` `PlayIcon` `Popover` `Progress` `RecordPlayer` `RowBar` `Segmented` `Select`
-`SettingsMenu` `Stat` `Switch` `TextField` `TileGrid` `Waveform`
+`AccuracyGrid` `ActionSelect` `Announcer` `AppControls` `AppHeader` `AppMark` `Badge`
+`Board` `Button` `Calendar` `Card` `Chip` `ChoiceTile` `ConfirmDialog` `CustomNumberChip`
+`EmptyState` `FitText` `Glyph` `HeatLegend` `Icon` `IconButton` `KeyNavBadge` `Meter`
+`NumberField` `NumberRoller` `OptionCard` `PageBackdrop` `Pagination` `PlayIcon` `Popover`
+`Progress` `RecordPlayer` `ResultSplash` `RowBar` `RowHeatmap` `Segmented` `Select`
+`SettingsMenu` `ShortcutHelp` `Stat` `Switch` `TextField` `TileGrid` `Waveform`
 
 ## Keyboard
 

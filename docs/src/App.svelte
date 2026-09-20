@@ -44,6 +44,10 @@
         ["Switch", "Fills the row, so the whole row is the hit target."],
         ["Segmented", "Pick one of a few. The Preview/Code tabs above are this."],
         ["OptionCard", "Pick one, but big enough for a thumb. For setup screens."],
+        [
+          "ChoiceTile",
+          "One answer of a multiple-choice question. Numbered so a key answers it, and it says whether the answer was right."
+        ],
         ["TextField", "Three tones: idle, correct, wrong. Turn it green when they get it right."],
         ["NumberField", "Clamps to min/max. Commits on blur or Enter, not on every keystroke."],
         [
@@ -62,6 +66,10 @@
         ["Popover", "The panel Select, ActionSelect and Calendar all hang off."],
         ["ConfirmDialog", "Two buttons, one of them destructive. Blocks until answered."],
         [
+          "SettingsMenu",
+          "What AppControls holds, as a full-screen sheet. Owns the prefs itself, so a phone layout with no header still gets them."
+        ],
+        [
           "ResultSplash",
           "The full-screen celebration after a run. Five grades, five particle effects. Plays over whatever is behind it and dismisses itself."
         ]
@@ -73,6 +81,10 @@
         ["Card", "Ruled paper. Title, icon and action are all optional."],
         ["RowBar", "A list row. Give it children and it expands instead of pressing."],
         ["TileGrid", "Equal tiles, as many per row as fit."],
+        [
+          "FitText",
+          "Text sized to its container in pure CSS, from the glyph count. No measuring pass, no reflow."
+        ],
         [
           "Pagination",
           "Arrows and numbers for a long list. Beats a nested scrollbar at any window size."

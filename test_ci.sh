@@ -80,7 +80,9 @@ if ((FIX)); then
 
   bold "fix: clean docs/node_modules and docs/test-results"
   rm -rf docs/node_modules docs/test-results
-  step "playwright browser (forced)" npx --prefix docs playwright install --force chromium
+  # no --force: the browsers live in ~/.cache/ms-playwright, not node_modules,
+  # so this is a no-op unless package.json moved to a build that is not cached
+  step "playwright browser" npx --prefix docs playwright install chromium
 fi
 
 if ((USE_ACT)); then

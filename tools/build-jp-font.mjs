@@ -74,9 +74,7 @@ const [font, licence, archive] = await Promise.all([
   download(KANJIDIC_URL)
 ]);
 
-const kanjidic = JSON.parse(
-  new TextDecoder().decode(readSingleTarEntry(gunzipSync(archive)))
-);
+const kanjidic = JSON.parse(new TextDecoder().decode(readSingleTarEntry(gunzipSync(archive))));
 const kept = charactersToKeep(kanjidic);
 const subset = await subsetFont(font, kept, { targetFormat: "woff2" });
 

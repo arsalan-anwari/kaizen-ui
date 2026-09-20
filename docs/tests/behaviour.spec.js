@@ -99,9 +99,20 @@ test("the announcer speaks the same text twice", async ({ page }) => {
   await say.click();
   await expect(live).toHaveText("Exported 1 runs");
 
+  // The blank frame that re-fires the live region lasts 60ms, too short to
+  // catch by polling, so record every change to the node instead.
+  const changes = live.evaluate(
+    (node) =>
+      new Promise((resolve) => {
+        const seen = [];
+        new MutationObserver(() => {
+          seen.push(node.textContent);
+          if (seen.length === 2) resolve(seen);
+        }).observe(node, { characterData: true, childList: true, subtree: true });
+      })
+  );
   await say.click();
-  await expect(live).toHaveText("");
-  await expect(live).toHaveText("Exported 2 runs");
+  expect(await changes).toEqual(["", "Exported 2 runs"]);
 
   await demo.getByRole("button", { name: "Interrupt" }).click();
   const urgent = demo.locator("[role='alert']");
@@ -173,4 +184,58 @@ test("pagination steps through the pages and walks on the arrow keys", async ({ 
   await expect(next).toBeFocused();
   await page.keyboard.press("Home");
   await expect(previous).toBeFocused();
+});
+
+test("an answer tile carries its slot number and says how the answer went", async ({ page }) => {
+  const demo = await section(page, "choicetile");
+  const tiles = demo.getByRole("button");
+
+  await expect(tiles).toHaveCount(4);
+  // The number is decoration: the tile is named by its answer alone.
+  await expect(tiles.first()).toHaveAccessibleName("a");
+  await expect(tiles.first().locator("[aria-hidden='true']")).toHaveText("1");
+
+  await tiles.first().click();
+  for (const tile of await tiles.all()) await expect(tile).toBeDisabled();
+  await expect(tiles.nth(2)).toHaveClass(/border-success/);
+  await expect(tiles.first()).toHaveClass(/border-danger/);
+  await expect(tiles.nth(1)).toHaveClass(/opacity-40/);
+});
+
+test("fitted text shrinks as the text gets longer and never wraps", async ({ page }) => {
+  const demo = await section(page, "fittext");
+  const fitted = demo.locator("span[style*='font-size']").first();
+
+  const size = async () =>
+    Number.parseFloat(await fitted.evaluate((node) => getComputedStyle(node).fontSize));
+
+  await expect(fitted).toHaveCSS("white-space", "nowrap");
+  const before = await size();
+
+  await demo.getByRole("textbox").fill("counterintuitively unabbreviated");
+  await expect.poll(size).toBeLessThan(before);
+
+  // One line, whatever the length: the box height never grows with the text.
+  await expect(fitted).toHaveCSS("white-space", "nowrap");
+});
+
+test("the settings sheet writes the theme it is given", async ({ page }) => {
+  const demo = await section(page, "settingsmenu");
+  await demo.getByRole("button", { name: "Open settings" }).click();
+
+  const sheet = page.locator("dialog[open]");
+  await expect(sheet).toHaveAttribute("aria-label", "Settings");
+
+  await sheet.getByRole("button", { name: "Dark", exact: true }).click();
+  await expect(page.locator("html")).toHaveClass(/dark/);
+
+  await sheet.getByRole("switch", { name: "High contrast" }).click();
+  await expect(page.locator("html")).toHaveClass(/high-contrast/);
+  await expect(page.locator("html")).not.toHaveClass(/dark/);
+
+  await page.keyboard.press("Escape");
+  await expect(sheet).toHaveCount(0);
+  // The sheet owns the prefs, so what it set survives a reload.
+  await page.reload();
+  await expect(page.locator("html")).toHaveClass(/high-contrast/);
 });

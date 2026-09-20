@@ -14,7 +14,8 @@ const overlays = [
   "numberroller",
   "select",
   "actionselect",
-  "shortcuthelp"
+  "shortcuthelp",
+  "settingsmenu"
 ];
 
 for (const name of overlays) {

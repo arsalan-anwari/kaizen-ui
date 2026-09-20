@@ -72,7 +72,7 @@
   class="paper fullscreen-sheet fixed inset-0 z-50 flex flex-col"
   use:lockScroll={onclose}
   aria-label={text.title}
-  onclose={onclose}
+  {onclose}
 >
   <header class="flex items-center justify-between gap-3 border-b border-border px-4 py-3">
     <span class="text-h4 font-bold">{text.title}</span>

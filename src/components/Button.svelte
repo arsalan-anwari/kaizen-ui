@@ -3,14 +3,7 @@
   import { sfx } from "../sfx";
 
   type Variant =
-    | "primary"
-    | "brand"
-    | "seal"
-    | "secondary"
-    | "outline"
-    | "ghost"
-    | "success"
-    | "danger";
+    "primary" | "brand" | "seal" | "secondary" | "outline" | "ghost" | "success" | "danger";
   type Size = "sm" | "md" | "lg" | "xl";
 
   let {
