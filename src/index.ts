@@ -29,6 +29,7 @@ export { default as Pagination } from "./components/Pagination.svelte";
 export { default as PlayIcon } from "./components/PlayIcon.svelte";
 export { default as Popover } from "./components/Popover.svelte";
 export { default as Progress } from "./components/Progress.svelte";
+export { default as Projector } from "./components/Projector.svelte";
 export { default as RecordPlayer } from "./components/RecordPlayer.svelte";
 export { default as ResultSplash } from "./components/ResultSplash.svelte";
 export { default as RowBar } from "./components/RowBar.svelte";
