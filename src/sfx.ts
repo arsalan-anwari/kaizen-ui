@@ -123,6 +123,11 @@ const fanfares: Record<FanfareGrade, Step[]> = {
 export const sfx = {
   click: (): void => play([[420, 0.05, "triangle", 0.08, 0]]),
   select: (): void => play([[620, 0.06, "triangle", 0.08, 0]]),
+  hint: (): void =>
+    play([
+      [740, 0.08, "sine", 0.09, 0],
+      [988, 0.14, "sine", 0.08, 0.07]
+    ]),
   correct: (): void =>
     play([
       [660, 0.1, "sine", 0.12, 0],

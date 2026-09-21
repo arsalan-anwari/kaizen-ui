@@ -70,12 +70,13 @@ upstream releases.
 
 ## Components
 
-`AccuracyGrid` `ActionSelect` `Announcer` `AppControls` `AppHeader` `AppMark` `Badge`
-`Board` `Button` `Calendar` `Card` `Chip` `ChoiceTile` `ConfirmDialog` `CustomNumberChip`
-`EmptyState` `FitText` `Glyph` `HeatLegend` `Icon` `IconButton` `KeyNavBadge` `Meter`
-`NumberField` `NumberRoller` `OptionCard` `PageBackdrop` `Pagination` `PlayIcon` `Popover`
-`Progress` `RecordPlayer` `ResultSplash` `RowBar` `RowHeatmap` `Segmented` `Select`
-`SettingsMenu` `ShortcutHelp` `Stat` `Switch` `TextField` `TileGrid` `Waveform`
+`AccuracyGrid` `ActionSelect` `Announcer` `AppControls` `AppHeader` `AppMark` `AreaSpark`
+`AreaSparkGrid` `Badge` `Board` `BulletGraph` `Button` `Calendar` `Card` `Chip` `ChoiceTile`
+`ConfirmDialog` `CustomNumberChip` `EmptyState` `FitText` `Glyph` `HeatLegend` `Icon`
+`IconButton` `KeyNavBadge` `Meter` `MissBoard` `NumberField` `NumberRoller` `OptionCard`
+`PageBackdrop` `Pagination` `PlayIcon` `Popover` `Progress` `RecordPlayer` `ResultSplash`
+`RowBar` `RowHeatmap` `Segmented` `Select` `SettingsMenu` `ShortcutHelp` `Stat` `Switch`
+`TextField` `TileGrid` `TreeTable` `Waveform`
 
 ## Keyboard
 
