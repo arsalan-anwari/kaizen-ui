@@ -22,12 +22,13 @@
     class="projector-housing absolute top-0 left-1/2 -translate-x-1/2 -translate-y-2/3"
     aria-hidden="true"
   >
-    <span
-      class="projector-lens absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2"
-    ></span>
+    <span class="projector-lens absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2"></span>
   </div>
   <Board {size} {guide} {compact} class="projector-screen {className}">
-    <div class="projector-beam pointer-events-none absolute inset-x-0 top-0" aria-hidden="true"></div>
+    <div
+      class="projector-beam pointer-events-none absolute inset-x-0 top-0"
+      aria-hidden="true"
+    ></div>
     {@render children()}
   </Board>
 </div>

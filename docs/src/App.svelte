@@ -93,6 +93,10 @@
           "Board",
           "A chalkboard for the character being drilled. Compact is the half-height shape a phone in landscape gets."
         ],
+        [
+          "Projector",
+          "A Board framed by a slide projector, for the question thrown up on the wall in a group quiz."
+        ],
         ["EmptyState", "What a list shows before there is anything in it."],
         ["PageBackdrop", "The illustration behind this page. Mount it once and forget it."],
         [
@@ -112,7 +116,12 @@
           "Meter",
           "A gauge with the percentage spelled out. Leave the tone off and it colours by value."
         ],
-        ["Progress", "Just the bar. No label unless you pass one."]
+        ["Progress", "Just the bar. No label unless you pass one."],
+        ["BulletGraph", "One bar per row against a mastery-banded track, for a report page."],
+        ["TreeTable", "Sets that expand into their rows, accuracy and score per level."],
+        ["AreaSpark", "A trend line for one series, no axes, sized to sit inline."],
+        ["AreaSparkGrid", "AreaSpark per series, grouped, for a full report page."],
+        ["MissBoard", "The characters missed most, tiled by section with a miss count."]
       ]
     },
     {

@@ -219,6 +219,23 @@ test("fitted text shrinks as the text gets longer and never wraps", async ({ pag
   await expect(fitted).toHaveCSS("white-space", "nowrap");
 });
 
+test("a tree table group collapses and expands its rows", async ({ page }) => {
+  const demo = await section(page, "treetable");
+  const group = demo.getByRole("button", { name: "Hiragana" });
+  const child = demo.getByText("NA-row", { exact: true });
+
+  await expect(group).toHaveAttribute("aria-expanded", "true");
+  await expect(child).toBeVisible();
+
+  await group.click();
+  await expect(group).toHaveAttribute("aria-expanded", "false");
+  await expect(child).toBeHidden();
+
+  await group.click();
+  await expect(group).toHaveAttribute("aria-expanded", "true");
+  await expect(child).toBeVisible();
+});
+
 test("the settings sheet writes the theme it is given", async ({ page }) => {
   const demo = await section(page, "settingsmenu");
   await demo.getByRole("button", { name: "Open settings" }).click();

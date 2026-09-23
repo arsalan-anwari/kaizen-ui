@@ -40,7 +40,14 @@
       stroke-linecap="round"
     />
     {#if last}
-      <circle cx={last.x} cy={last.y} r="4" fill={color} stroke="var(--color-surface)" stroke-width="2" />
+      <circle
+        cx={last.x}
+        cy={last.y}
+        r="4"
+        fill={color}
+        stroke="var(--color-surface)"
+        stroke-width="2"
+      />
     {/if}
   {/if}
 </svg>

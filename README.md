@@ -74,7 +74,7 @@ upstream releases.
 `AreaSparkGrid` `Badge` `Board` `BulletGraph` `Button` `Calendar` `Card` `Chip` `ChoiceTile`
 `ConfirmDialog` `CustomNumberChip` `EmptyState` `FitText` `Glyph` `HeatLegend` `Icon`
 `IconButton` `KeyNavBadge` `Meter` `MissBoard` `NumberField` `NumberRoller` `OptionCard`
-`PageBackdrop` `Pagination` `PlayIcon` `Popover` `Progress` `RecordPlayer` `ResultSplash`
+`PageBackdrop` `Pagination` `PlayIcon` `Popover` `Progress` `Projector` `RecordPlayer` `ResultSplash`
 `RowBar` `RowHeatmap` `Segmented` `Select` `SettingsMenu` `ShortcutHelp` `Stat` `Switch`
 `TextField` `TileGrid` `TreeTable` `Waveform`
 
