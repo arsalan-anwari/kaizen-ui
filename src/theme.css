@@ -171,11 +171,7 @@
   --gold-soft: #30281a;
 
   --paper-blend: soft-light;
-  --sunlight: radial-gradient(
-    130% 100% at 20% -12%,
-    color-mix(in srgb, #d0a170 11%, transparent) 0%,
-    transparent 62%
-  );
+  --sunlight: none;
   --shade: color-mix(in srgb, #000000 55%, transparent);
   --backdrop-fade: 0.09;
   --backdrop-filter: invert(1);
@@ -318,11 +314,7 @@
     --gold: #d9ab3c;
     --gold-soft: #30281a;
     --paper-blend: soft-light;
-    --sunlight: radial-gradient(
-      130% 100% at 20% -12%,
-      color-mix(in srgb, #d0a170 11%, transparent) 0%,
-      transparent 62%
-    );
+    --sunlight: none;
     --shade: color-mix(in srgb, #000000 55%, transparent);
     --backdrop-fade: 0.09;
     --backdrop-filter: invert(1);
