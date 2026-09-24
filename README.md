@@ -72,10 +72,10 @@ upstream releases.
 
 `AccuracyGrid` `ActionSelect` `Announcer` `AppControls` `AppHeader` `AppMark` `AreaSpark`
 `AreaSparkGrid` `Badge` `Board` `BulletGraph` `Button` `Calendar` `Card` `Chip` `ChoiceTile`
-`ConfirmDialog` `CustomNumberChip` `EmptyState` `FitText` `Glyph` `HeatLegend` `Icon`
+`ConfirmDialog` `CustomNumberChip` `Dialog` `EmptyState` `FitText` `Glyph` `HeatLegend` `Icon`
 `IconButton` `KeyNavBadge` `Meter` `MissBoard` `NumberField` `NumberRoller` `OptionCard`
 `PageBackdrop` `Pagination` `PlayIcon` `Popover` `Progress` `Projector` `RecordPlayer` `ResultSplash`
-`RowBar` `RowHeatmap` `Segmented` `Select` `SettingsMenu` `ShortcutHelp` `Stat` `Switch`
+`RowBar` `RowHeatmap` `Segmented` `Select` `SettingsMenu` `ShelfCard` `ShortcutHelp` `Stat` `Switch`
 `TextField` `TileGrid` `TreeTable` `Waveform`
 
 ## Keyboard

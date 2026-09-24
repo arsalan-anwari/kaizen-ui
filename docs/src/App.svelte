@@ -66,6 +66,10 @@
         ["Popover", "The panel Select, ActionSelect and Calendar all hang off."],
         ["ConfirmDialog", "Two buttons, one of them destructive. Blocks until answered."],
         [
+          "Dialog",
+          "A titled sheet over the page. Leave onclose off and it cannot be dismissed, for a step that has to finish first."
+        ],
+        [
           "SettingsMenu",
           "What AppControls holds, as a full-screen sheet. Owns the prefs itself, so a phone layout with no header still gets them."
         ],
@@ -79,6 +83,10 @@
       title: "Layout",
       items: [
         ["Card", "Ruled paper. Title, icon and action are all optional."],
+        [
+          "ShelfCard",
+          "A storefront tile: art on top, title, facts and one action below. For browsing things to add, not things already open."
+        ],
         ["RowBar", "A list row. Give it children and it expands instead of pressing."],
         ["TileGrid", "Equal tiles, as many per row as fit."],
         [
