@@ -63,7 +63,7 @@
       {#each actions as action (action.label)}
         <button
           type="button"
-          class="flex h-11 shrink-0 cursor-pointer items-center gap-3 rounded-lg px-3 text-left text-sm font-semibold disabled:opacity-40"
+          class="flex h-11 shrink-0 cursor-pointer items-center gap-3 rounded-lg px-3 text-start text-sm font-semibold disabled:opacity-40"
           disabled={action.disabled === true}
           onclick={() => {
             close();

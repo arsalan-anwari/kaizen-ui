@@ -55,16 +55,16 @@
         >
           <div
             aria-hidden="true"
-            class="absolute inset-y-0 -inset-x-1.5 overflow-hidden rounded-md"
+            class="absolute inset-y-0 -inset-x-1.5 overflow-hidden rounded-md rtl:-scale-x-100"
             style="background: {trackGradient};"
           ></div>
           <div
-            class="absolute inset-y-[28%] left-0.5 rounded-sm bg-foreground shadow-[0_0_0_2px_var(--color-surface)]"
+            class="absolute inset-y-[28%] start-0.5 rounded-sm bg-foreground shadow-[0_0_0_2px_var(--color-surface)]"
             style="width: {Math.min(1, row.strength) * 100}%"
           ></div>
         </div>
         <span
-          class="w-12 shrink-0 text-right text-xs tabular-nums text-muted-foreground"
+          class="w-12 shrink-0 text-end text-xs tabular-nums text-muted-foreground"
           style="grid-row: {index + 1}; grid-column: 3;"
         >
           {row.correct}/{row.total}

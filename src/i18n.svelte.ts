@@ -55,9 +55,15 @@ export function resolveLocale(wanted: string): string {
   return fallback;
 }
 
+// Base languages written right to left; Intl.Locale's textInfo would say so
+// too, but not every webview ships it yet.
+const RTL = new Set(["ar", "fa", "he", "ur", "ps", "yi", "ckb", "dv"]);
+
 export function setLocale(wanted: string): void {
   i18n.locale = resolveLocale(wanted);
-  if (typeof document !== "undefined") document.documentElement.lang = i18n.locale;
+  if (typeof document === "undefined") return;
+  document.documentElement.lang = i18n.locale;
+  document.documentElement.dir = RTL.has(i18n.locale.split("-")[0]) ? "rtl" : "ltr";
 }
 
 function lookup(locale: string, key: string): string | null {

@@ -94,7 +94,7 @@
     onclick={() => (prefs.sound = !prefs.sound)}
   />
 
-  <span class="ml-1.5 flex items-center gap-1.5 border-l border-border pl-1.5">
+  <span class="ms-1.5 flex items-center gap-1.5 border-s border-border ps-1.5">
     <IconButton
       {size}
       icon="zoom-out"

@@ -68,7 +68,7 @@
                   </kbd>
                 {/each}
               </dt>
-              <dd class="min-w-0 flex-1 text-right text-xs">{item.label}</dd>
+              <dd class="min-w-0 flex-1 text-end text-xs">{item.label}</dd>
             </div>
           {/each}
         </dl>

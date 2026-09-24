@@ -111,7 +111,7 @@
 
       {#if onsettings !== undefined}
         <IconButton
-          class="ml-auto @min-[73rem]:hidden"
+          class="ms-auto @min-[73rem]:hidden"
           icon="sliders"
           label={settingsLabel}
           onclick={onsettings}
@@ -136,7 +136,7 @@
 
       <span
         class="hidden items-center @min-[73rem]:flex {tabs.length > 0
-          ? 'ml-3 border-l border-border pl-3 @min-[73rem]:ml-4 @min-[73rem]:pl-4'
+          ? 'ms-3 border-s border-border ps-3 @min-[73rem]:ms-4 @min-[73rem]:ps-4'
           : ''}"
       >
         {#if controls === undefined}

@@ -51,7 +51,7 @@
             role="img"
             aria-label={describeRow(row)}
             title={describeRow(row)}
-            class="w-12 shrink-0 text-right text-xs font-bold leading-none tabular-nums"
+            class="w-12 shrink-0 text-end text-xs font-bold leading-none tabular-nums"
           >
             {row.correct}/{row.total}
           </span>

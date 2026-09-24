@@ -51,22 +51,22 @@
     {:else if glyph !== ""}
       <span
         aria-hidden="true"
-        class="jp absolute -right-2 -bottom-6 text-[7.5rem] leading-none font-bold opacity-25 select-none"
+        class="jp absolute -end-2 -bottom-6 text-[7.5rem] leading-none font-bold opacity-25 select-none"
       >
         {glyph}
       </span>
       <span
         aria-hidden="true"
-        class="jp absolute top-1/2 left-5 -translate-y-1/2 text-[3.5rem] leading-none font-bold select-none"
+        class="jp absolute top-1/2 start-5 -translate-y-1/2 text-[3.5rem] leading-none font-bold select-none"
       >
         {glyph}
       </span>
     {/if}
     {#if corner}
-      <div class="absolute top-3 left-3 flex flex-wrap gap-1.5">{@render corner()}</div>
+      <div class="absolute top-3 start-3 flex flex-wrap gap-1.5">{@render corner()}</div>
     {/if}
     {#if badge}
-      <div class="absolute top-3 right-3 flex flex-wrap justify-end gap-1.5">{@render badge()}</div>
+      <div class="absolute top-3 end-3 flex flex-wrap justify-end gap-1.5">{@render badge()}</div>
     {/if}
   </div>
 

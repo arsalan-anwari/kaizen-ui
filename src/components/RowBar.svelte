@@ -49,7 +49,7 @@
     <button
       type="button"
       aria-pressed={onpress === undefined ? undefined : active}
-      class="flex min-w-0 flex-1 cursor-pointer items-center gap-2.5 px-3.5 py-3 text-left transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+      class="flex min-w-0 flex-1 cursor-pointer items-center gap-2.5 px-3.5 py-3 text-start transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
       onclick={press}
     >
       <span class="text-base font-bold tracking-tight">{label}</span>
@@ -61,7 +61,7 @@
       type="button"
       aria-expanded={open}
       aria-label={(open ? collapseLabel : expandLabel) ?? label}
-      class="flex w-12 shrink-0 cursor-pointer items-center justify-center border-l-2 border-wire text-muted-foreground transition-colors hover:bg-accent hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+      class="flex w-12 shrink-0 cursor-pointer items-center justify-center border-s-2 border-wire text-muted-foreground transition-colors hover:bg-accent hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
       onclick={toggle}
     >
       <Icon name="chevron-down" class="size-4 transition-transform {open ? 'rotate-180' : ''}" />

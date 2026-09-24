@@ -75,7 +75,7 @@
             type="button"
             role="option"
             aria-selected={option.value === value}
-            class="flex h-11 shrink-0 cursor-pointer items-center justify-between gap-2 rounded-lg px-3 text-left text-sm {option.value ===
+            class="flex h-11 shrink-0 cursor-pointer items-center justify-between gap-2 rounded-lg px-3 text-start text-sm {option.value ===
             value
               ? 'bg-selected-soft font-bold text-selected'
               : 'hover:bg-accent'}"

@@ -27,7 +27,7 @@
   role="switch"
   aria-checked={checked}
   {disabled}
-  class="flex w-full cursor-pointer items-center justify-between gap-4 rounded-xl border-2 px-4 py-4 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-40 {checked
+  class="flex w-full cursor-pointer items-center justify-between gap-4 rounded-xl border-2 px-4 py-4 text-start transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-40 {checked
     ? 'border-selected bg-selected-soft'
     : 'border-wire bg-surface hover:bg-accent'}"
   onclick={toggle}
@@ -45,8 +45,8 @@
   >
     <span
       class="absolute size-4 rounded-full transition-transform duration-150 {checked
-        ? 'translate-x-[26px] bg-background'
-        : 'translate-x-[4px] bg-muted-foreground'}"
+        ? 'translate-x-[26px] rtl:-translate-x-[26px] bg-background'
+        : 'translate-x-[4px] rtl:-translate-x-[4px] bg-muted-foreground'}"
     ></span>
   </span>
 </button>
