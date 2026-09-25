@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Button } from "kaizen-ui";
+  import { IconButton } from "kaizen-ui";
   import { highlight } from "../highlight";
 
   let {
@@ -33,11 +33,14 @@
 </script>
 
 <div class="code-block relative">
-  <div class="absolute top-2 right-2 z-10">
-    <Button size="sm" variant="secondary" silent onclick={copy}>
-      {copied ? "Copied" : "Copy"}
-    </Button>
-  </div>
+  <IconButton
+    class="absolute top-1.5 right-1.5 z-10"
+    icon={copied ? "check" : "copy"}
+    label={copied ? "Copied" : "Copy code"}
+    variant="ghost"
+    size="sm"
+    onclick={copy}
+  />
   {#if html === ""}
     <pre>{code}</pre>
   {:else}

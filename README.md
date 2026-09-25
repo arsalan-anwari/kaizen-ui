@@ -78,8 +78,8 @@ from the pinned upstream releases.
 `ConfirmDialog` `CustomNumberChip` `Dialog` `EmptyState` `FitText` `Glyph` `HeatLegend` `Icon`
 `IconButton` `KeyNavBadge` `Meter` `MissBoard` `NumberField` `NumberRoller` `OptionCard`
 `PageBackdrop` `Pagination` `PlayIcon` `Popover` `Progress` `Projector` `RecordPlayer` `ResultSplash`
-`RowBar` `RowHeatmap` `Segmented` `Select` `SettingsMenu` `ShelfCard` `ShortcutHelp` `Stat` `Switch`
-`Strokes` `TextField` `TileGrid` `TreeTable` `Waveform` `WoodBlock` `WoodTray`
+`RowBar` `RowHeatmap` `Segmented` `Select` `SettingsMenu` `ShelfCard` `ShortcutHelp` `Stat` `Strokes`
+`Switch` `TextField` `TileGrid` `TreeTable` `Waveform` `WoodBlock` `WoodTray`
 
 ## Keyboard
 
@@ -145,6 +145,15 @@ registerLocales({
 });
 setLocale("auto");
 ```
+
+`setLocale` also sets `dir` on the document: `rtl` for Arabic, Persian, Hebrew, Urdu, Pashto,
+Yiddish, Sorani and Dhivehi, `ltr` otherwise. The components lay out with logical sides
+(`start`/`end`), so they mirror with it.
+
+`sfx` plays the kit's sounds from oscillators and filtered noise, no audio files: `sfx.click()`,
+`sfx.correct()`, `sfx.score(grade)` and the rest, plus `sfx.wood.*` knocks for `WoodBlock` and
+`WoodTray`. The landing knocks wait `BLOCK_DROP_SECONDS`, so they meet the drop animation.
+`setEffectsEnabled(false)` mutes them all.
 
 ## Licence
 

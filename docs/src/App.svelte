@@ -147,7 +147,10 @@
         ["Waveform", "Bars from the clip's real peaks. Everything left of the playhead fills in."],
         ["RecordPlayer", "Waveform, play button and progress in one control. Press it."],
         ["PlayIcon", "A triangle or two bars. One playing prop swaps them."],
-        ["sfx", "Oscillators, not audio files, so nothing to ship. The Sound chip mutes them."]
+        [
+          "sfx",
+          "Oscillators and filtered noise, not audio files, so nothing to ship. sfx.wood knocks for the wooden blocks. The Sound chip mutes them."
+        ]
       ]
     },
     {
@@ -185,7 +188,7 @@
         ["AppMark", "One glyph in a square. Ink, or seal red."],
         ["Glyph", "Japanese text, tagged as Japanese so a screen reader speaks it."],
         ["Announcer", "Says something to a screen reader without drawing anything."],
-        ["Icon", "All 29 of them. Pass a name, get a stroke icon."]
+        ["Icon", "All 32 of them. Pass a name, get a stroke icon."]
       ]
     }
   ];
@@ -247,6 +250,8 @@
 
   const installCss = `@import "tailwindcss";
 @import "kaizen-ui/theme.css";
+/* Optional: the bundled Japanese font, Klee One */
+@import "kaizen-ui/fonts.css";
 @source "../node_modules/kaizen-ui/src";`;
 </script>
 

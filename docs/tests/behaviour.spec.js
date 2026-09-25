@@ -256,3 +256,72 @@ test("the settings sheet writes the theme it is given", async ({ page }) => {
   await page.reload();
   await expect(page.locator("html")).toHaveClass(/high-contrast/);
 });
+
+test("a dialog closes on escape unless it has no way out", async ({ page }) => {
+  const demo = await section(page, "dialog");
+
+  await demo.getByRole("button", { name: "About this deck" }).click();
+  const details = page.getByRole("dialog", { name: "Travel phrases" });
+  await expect(details).toHaveAccessibleDescription("42 words for stations and hotels.");
+  await expect(details.getByRole("button", { name: "Close" })).toBeFocused();
+  await page.keyboard.press("Escape");
+  await expect(details).toHaveCount(0);
+
+  // No onclose: no close button, and escape leaves it up until the work is done.
+  await demo.getByRole("button", { name: "First-start download" }).click();
+  const blocking = page.getByRole("dialog", { name: "Getting the basics" });
+  await expect(blocking.getByRole("button")).toHaveCount(0);
+  await page.keyboard.press("Escape");
+  await expect(blocking).toBeVisible();
+  await expect(blocking).toHaveCount(0, { timeout: 5_000 });
+});
+
+test("a shelf card is an article named by its title", async ({ page }) => {
+  const demo = await section(page, "shelfcard");
+
+  await expect(demo.getByRole("article")).toHaveCount(2);
+  const card = demo.getByRole("article", { name: "JLPT N5" });
+  await expect(card).toContainText("184 words");
+  await expect(card.getByRole("switch", { name: "Use in practice" })).toBeVisible();
+});
+
+test("a wood tray fills its slots and gives way to the finished glyph", async ({ page }) => {
+  const demo = await section(page, "woodtray");
+  const tray = demo.getByRole("group", { name: "休" });
+
+  await tray.getByRole("button", { name: "亻, empty" }).click();
+  await expect(tray.getByRole("button", { name: "亻, placed" })).toHaveAttribute(
+    "aria-current",
+    "true"
+  );
+  await expect(tray.locator(".anim-glyph")).toHaveCount(0);
+
+  await tray.getByRole("button", { name: "木, empty" }).click();
+  await expect(tray.locator(".anim-glyph")).toHaveText("休");
+
+  // The slots stay pressable over the glyph, so a block can come back out.
+  await tray.getByRole("button", { name: "木, placed" }).click();
+  await expect(tray.locator(".anim-glyph")).toHaveCount(0);
+});
+
+test("strokes are an image only when they carry a label", async ({ page }) => {
+  const demo = await section(page, "strokes");
+  const drawings = demo.locator("svg");
+
+  await expect(drawings).toHaveCount(2);
+  await expect(demo.getByRole("img", { name: "亻, person" })).toBeVisible();
+  await expect(drawings.nth(1)).toHaveAttribute("aria-hidden", "true");
+});
+
+test("a right-to-left document mirrors the layout", async ({ page }) => {
+  const demo = await section(page, "shelfcard");
+  const card = demo.getByRole("article", { name: "JLPT N5" });
+  const corner = card.getByText("N5", { exact: true });
+  const badge = card.getByText("Installed");
+
+  const x = async (locator) => (await locator.boundingBox()).x;
+  expect(await x(corner)).toBeLessThan(await x(badge));
+
+  await page.evaluate(() => (document.documentElement.dir = "rtl"));
+  await expect.poll(async () => (await x(corner)) > (await x(badge))).toBe(true);
+});

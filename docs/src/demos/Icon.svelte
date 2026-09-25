@@ -30,7 +30,10 @@
     "sprout",
     "target",
     "trophy",
-    "info"
+    "info",
+    "keyboard",
+    "lightbulb",
+    "copy"
   ];
 </script>
 

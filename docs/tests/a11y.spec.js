@@ -11,6 +11,7 @@ for (const theme of themes) {
 const overlays = [
   "popover",
   "confirmdialog",
+  "dialog",
   "numberroller",
   "select",
   "actionselect",

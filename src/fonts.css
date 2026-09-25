@@ -1,11 +1,7 @@
 /*
  * The bundled Japanese face: Klee One, a textbook-style face that draws kanji
  * the way school teaches them to be written, subset to the kana and the jōyō
- * kanji. `--font-jp` puts it first, so every platform shows the same shapes.
- * A browser only fetches the weight a page actually uses.
- *
- * SIL Open Font License 1.1; the text travels with the files in
- * src/assets/fonts/OFL.txt. Rebuild with `npm run build:font`.
+ * kanji.
  */
 @font-face {
   font-family: "Kaizen JP";
