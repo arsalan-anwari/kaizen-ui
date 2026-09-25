@@ -105,6 +105,9 @@
   {:else if name === "info"}
     <circle cx="12" cy="12" r="8.5" />
     <path d="M12 11v5.5M12 7.8v.4" />
+  {:else if name === "warning"}
+    <path d="M10.3 4.4a2 2 0 0 1 3.4 0l7.4 12.8a2 2 0 0 1-1.7 3H4.6a2 2 0 0 1-1.7-3z" />
+    <path d="M12 9.5v4.5M12 17v.4" />
   {:else if name === "lightbulb"}
     <path d="M9.2 17.5h5.6M10 20.5h4" />
     <path

@@ -31,6 +31,7 @@
     "target",
     "trophy",
     "info",
+    "warning",
     "keyboard",
     "lightbulb",
     "copy"
