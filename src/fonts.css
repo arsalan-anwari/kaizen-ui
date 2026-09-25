@@ -1,15 +1,24 @@
 /*
- * The bundled Japanese face: Noto Sans JP, subset to the kana and the jōyō
- * kanji. Import it when the app must render Japanese on a machine that ships
- * no CJK font of its own — a minimal WebKitGTK install is the usual case.
+ * The bundled Japanese face: Klee One, a textbook-style face that draws kanji
+ * the way school teaches them to be written, subset to the kana and the jōyō
+ * kanji. `--font-jp` puts it first, so every platform shows the same shapes.
+ * A browser only fetches the weight a page actually uses.
  *
- * SIL Open Font License 1.1; the text travels with the file in
+ * SIL Open Font License 1.1; the text travels with the files in
  * src/assets/fonts/OFL.txt. Rebuild with `npm run build:font`.
  */
 @font-face {
   font-family: "Kaizen JP";
-  src: url("./assets/fonts/noto-sans-jp.woff2") format("woff2");
-  font-weight: 100 900;
+  src: url("./assets/fonts/klee-one-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Kaizen JP";
+  src: url("./assets/fonts/klee-one-600.woff2") format("woff2");
+  font-weight: 600;
   font-style: normal;
   font-display: swap;
 }

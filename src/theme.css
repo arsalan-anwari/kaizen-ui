@@ -61,6 +61,14 @@
   --board: #4b5650;
   --board-foreground: #eff1e7;
   --board-frame: #8e6647;
+  --wood: #e8cc9c;
+  --wood-grain: #c3955a;
+  --wood-edge: #a8763f;
+  --wood-ink: #2f1e10;
+  --wood-tray: #8a5a33;
+  --wood-tray-grain: #6b4222;
+  --wood-slot: #5e3a1f;
+  --wood-slot-line: #c9a070;
 
   --projector-screen: #f9f7f1;
   --projector-screen-foreground: #2c2a25;
@@ -138,6 +146,14 @@
   --board: #2b332e;
   --board-foreground: #e9ece0;
   --board-frame: #5a4229;
+  --wood: #c7a676;
+  --wood-grain: #a07a48;
+  --wood-edge: #7d5a31;
+  --wood-ink: #22160b;
+  --wood-tray: #4f3420;
+  --wood-tray-grain: #3a2415;
+  --wood-slot: #2e1d10;
+  --wood-slot-line: #8f6e48;
   --rule: color-mix(in srgb, var(--brand) 13%, transparent);
   --rule-strong: color-mix(in srgb, var(--brand) 24%, transparent);
 
@@ -222,6 +238,14 @@
   --board: #000000;
   --board-foreground: #ffffff;
   --board-frame: #ffffff;
+  --wood: #ffffff;
+  --wood-grain: transparent;
+  --wood-edge: #ffffff;
+  --wood-ink: #000000;
+  --wood-tray: #000000;
+  --wood-tray-grain: transparent;
+  --wood-slot: #000000;
+  --wood-slot-line: #ffffff;
   --projector-screen: #000000;
   --projector-screen-foreground: #ffffff;
   --projector-frame: #ffffff;
@@ -282,6 +306,14 @@
     --board: #2b332e;
     --board-foreground: #e9ece0;
     --board-frame: #5a4229;
+    --wood: #c7a676;
+    --wood-grain: #a07a48;
+    --wood-edge: #7d5a31;
+    --wood-ink: #22160b;
+    --wood-tray: #4f3420;
+    --wood-tray-grain: #3a2415;
+    --wood-slot: #2e1d10;
+    --wood-slot-line: #8f6e48;
     --rule: color-mix(in srgb, var(--brand) 13%, transparent);
     --rule-strong: color-mix(in srgb, var(--brand) 24%, transparent);
 
@@ -374,10 +406,10 @@
   --radius-xl: var(--radius);
   --radius-2xl: calc(var(--radius) + 6px);
   --font-sans: ui-sans-serif, system-ui, sans-serif;
-  /* "Kaizen JP" is the bundled subset; import "kaizen-ui/fonts.css" to ship it. */
+  /* "Kaizen JP" is the bundled Klee One; import "kaizen-ui/fonts.css" to ship it. */
   --font-jp:
-    "Hiragino Kaku Gothic ProN", "Noto Sans CJK JP", "Noto Sans JP", "Yu Gothic", Meiryo,
-    "Kaizen JP", ui-sans-serif, system-ui, sans-serif;
+    "Kaizen JP", "Klee One", "Hiragino Kaku Gothic ProN", "Noto Sans CJK JP", "Noto Sans JP",
+    "Yu Gothic", Meiryo, ui-sans-serif, system-ui, sans-serif;
   --text-ui: 0.875rem;
   --text-ui--line-height: 1.6;
   --text-body: 1rem;
@@ -709,6 +741,130 @@ dialog.dim::backdrop {
   background: var(--seal);
   color: var(--seal-foreground);
   box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--seal-foreground) 35%, transparent);
+}
+
+.wood {
+  background-color: var(--wood);
+  background-image:
+    repeating-linear-gradient(
+      91deg,
+      transparent 0 6px,
+      color-mix(in srgb, var(--wood-grain) 45%, transparent) 6px 7px,
+      transparent 7px 11px
+    ),
+    repeating-linear-gradient(
+      89deg,
+      transparent 0 17px,
+      color-mix(in srgb, var(--wood-grain) 30%, transparent) 17px 19px,
+      transparent 19px 29px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in srgb, #ffffff 22%, transparent),
+      transparent 45%,
+      color-mix(in srgb, #000000 8%, transparent)
+    );
+  color: var(--wood-ink);
+  box-shadow:
+    inset 0 1px 0 color-mix(in srgb, #ffffff 40%, transparent),
+    inset 0 -2px 0 color-mix(in srgb, var(--wood-edge) 70%, transparent),
+    0 3px 0 var(--wood-edge),
+    0 7px 10px -7px var(--shade);
+}
+
+.wood-tray {
+  background-color: var(--wood-tray);
+  background-image:
+    repeating-linear-gradient(
+      2deg,
+      transparent 0 9px,
+      color-mix(in srgb, var(--wood-tray-grain) 55%, transparent) 9px 10px,
+      transparent 10px 16px
+    ),
+    repeating-linear-gradient(
+      -1deg,
+      transparent 0 23px,
+      color-mix(in srgb, var(--wood-tray-grain) 40%, transparent) 23px 26px
+    );
+  box-shadow:
+    inset 0 2px 0 color-mix(in srgb, #ffffff 14%, transparent),
+    0 3px 0 color-mix(in srgb, var(--wood-tray) 60%, #000000),
+    0 12px 22px -14px var(--shade);
+}
+
+.wood-slot {
+  background-color: color-mix(in srgb, var(--wood-slot) 70%, transparent);
+  box-shadow: inset 0 3px 6px color-mix(in srgb, #000000 35%, transparent);
+  outline: 2px dashed color-mix(in srgb, var(--wood-slot-line) 55%, transparent);
+  outline-offset: -5px;
+}
+
+.high-contrast .wood,
+.high-contrast .wood-tray {
+  background-image: none;
+  box-shadow: none;
+  border: 2px solid var(--wood-edge);
+}
+
+.high-contrast .wood-tray {
+  border-color: var(--foreground);
+}
+
+@keyframes block-drop {
+  from {
+    opacity: 0;
+    transform: translateY(-0.75rem) scale(1.08);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes block-lift {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.anim-drop {
+  animation: block-drop 0.12s cubic-bezier(0.3, 0, 0.6, 1) both;
+}
+.anim-lift {
+  animation: block-lift 0.18s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes glyph-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.anim-glyph {
+  animation: glyph-in 0.35s ease-out both;
+}
+
+.fade-swap {
+  transition: opacity 0.35s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-drop,
+  .anim-lift,
+  .anim-glyph {
+    animation: none;
+  }
+  .fade-swap {
+    transition: none;
+  }
 }
 
 @keyframes pop-in {

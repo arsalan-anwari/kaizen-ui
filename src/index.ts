@@ -45,11 +45,14 @@ export { default as SettingsMenu } from "./components/SettingsMenu.svelte";
 export { default as ShelfCard } from "./components/ShelfCard.svelte";
 export { default as ShortcutHelp } from "./components/ShortcutHelp.svelte";
 export { default as Stat } from "./components/Stat.svelte";
+export { default as Strokes } from "./components/Strokes.svelte";
 export { default as Switch } from "./components/Switch.svelte";
 export { default as TextField } from "./components/TextField.svelte";
 export { default as TileGrid } from "./components/TileGrid.svelte";
 export { default as TreeTable } from "./components/TreeTable.svelte";
 export { default as Waveform } from "./components/Waveform.svelte";
+export { default as WoodBlock } from "./components/WoodBlock.svelte";
+export { default as WoodTray } from "./components/WoodTray.svelte";
 
 export type { IconName } from "./components/icons";
 export type { ChoiceState } from "./choice";
@@ -75,10 +78,18 @@ export {
 } from "./mastery";
 export { type MissSection, type MissTile } from "./miss-board";
 export { type TreeTableGroup, type TreeTableRow } from "./tree-table";
+export { type TrayCell } from "./wood-tray";
 export { lockScroll } from "./lockScroll";
 export { prefs, prefsKey, zoomBy, type Prefs } from "./prefs.svelte";
 export { roving, type RovingOptions } from "./roving";
-export { audioContext, fanfareGrades, setEffectsEnabled, sfx, type FanfareGrade } from "./sfx";
+export {
+  audioContext,
+  BLOCK_DROP_SECONDS,
+  fanfareGrades,
+  setEffectsEnabled,
+  sfx,
+  type FanfareGrade
+} from "./sfx";
 export { shared } from "./shared";
 export { dismissSplash } from "./splash";
 export { loadJson, storeJson } from "./storage";

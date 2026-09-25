@@ -2,6 +2,7 @@
   import { Button, fanfareGrades, sfx } from "kaizen-ui";
 
   const sounds = ["click", "select", "correct", "wrong", "tick", "start"] as const;
+  const knocks = ["slot", "pick", "place", "lift", "done", "solved", "failed"] as const;
 </script>
 
 {#each sounds as name (name)}
@@ -9,4 +10,7 @@
 {/each}
 {#each fanfareGrades as grade (grade)}
   <Button size="sm" variant="ghost" silent onclick={() => sfx.score(grade)}>{grade}</Button>
+{/each}
+{#each knocks as name (name)}
+  <Button size="sm" variant="outline" silent onclick={() => sfx.wood[name]()}>wood.{name}</Button>
 {/each}

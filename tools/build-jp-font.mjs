@@ -1,4 +1,5 @@
-// Builds the bundled Japanese font: Noto Sans JP, subset to the kana and the
+// Builds the bundled Japanese font: Klee One, a textbook-style face that draws
+// kanji the way school teaches them to be written, subset to the kana and the
 // jōyō kanji. Run it when the upstream font or KANJIDIC2 release is bumped.
 //
 //   node tools/build-jp-font.mjs
@@ -8,15 +9,16 @@ import { fileURLToPath } from "node:url";
 import subsetFont from "subset-font";
 import { gunzipSync } from "node:zlib";
 
-const FONT_URL =
-  "https://raw.githubusercontent.com/google/fonts/295d98a7a0c17c68f1341eaeea354e7960ea70d3/ofl/notosansjp/NotoSansJP%5Bwght%5D.ttf";
-const LICENCE_URL =
-  "https://raw.githubusercontent.com/google/fonts/295d98a7a0c17c68f1341eaeea354e7960ea70d3/ofl/notosansjp/OFL.txt";
+const FONT_DIR =
+  "https://raw.githubusercontent.com/google/fonts/295d98a7a0c17c68f1341eaeea354e7960ea70d3/ofl/kleeone";
+const WEIGHTS = [
+  { file: "KleeOne-Regular.ttf", out: "klee-one-400.woff2" },
+  { file: "KleeOne-SemiBold.ttf", out: "klee-one-600.woff2" }
+];
 const KANJIDIC_URL =
   "https://github.com/scriptin/jmdict-simplified/releases/download/3.6.2%2B20260914172325/kanjidic2-en-3.6.2%2B20260914172325.json.tgz";
 
 const OUT_DIR = fileURLToPath(new URL("../src/assets/fonts/", import.meta.url));
-const OUT_NAME = "noto-sans-jp.woff2";
 
 // Grades 1 to 8 are the jōyō set: the 2136 characters Japanese schooling
 // teaches, which every JLPT level is drawn from.
@@ -68,20 +70,22 @@ function charactersToKeep(kanjidic) {
   return [...kept].sort().join("");
 }
 
-const [font, licence, archive] = await Promise.all([
-  download(FONT_URL),
-  download(LICENCE_URL),
-  download(KANJIDIC_URL)
+const [licence, archive, ...fonts] = await Promise.all([
+  download(`${FONT_DIR}/OFL.txt`),
+  download(KANJIDIC_URL),
+  ...WEIGHTS.map((weight) => download(`${FONT_DIR}/${weight.file}`))
 ]);
 
 const kanjidic = JSON.parse(new TextDecoder().decode(readSingleTarEntry(gunzipSync(archive))));
 const kept = charactersToKeep(kanjidic);
-const subset = await subsetFont(font, kept, { targetFormat: "woff2" });
 
 mkdirSync(OUT_DIR, { recursive: true });
-writeFileSync(new URL(OUT_NAME, `file://${OUT_DIR}`), subset);
 writeFileSync(new URL("OFL.txt", `file://${OUT_DIR}`), licence);
 
-process.stdout.write(
-  `${OUT_NAME}: ${[...kept].length} characters, ${Math.round(subset.length / 1024)} kB\n`
-);
+for (const [index, weight] of WEIGHTS.entries()) {
+  const subset = await subsetFont(fonts[index], kept, { targetFormat: "woff2" });
+  writeFileSync(new URL(weight.out, `file://${OUT_DIR}`), subset);
+  process.stdout.write(
+    `${weight.out}: ${[...kept].length} characters, ${Math.round(subset.length / 1024)} kB\n`
+  );
+}

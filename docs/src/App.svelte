@@ -106,6 +106,15 @@
           "A Board framed by a slide projector, for the question thrown up on the wall in a group quiz."
         ],
         ["EmptyState", "What a list shows before there is anything in it."],
+        [
+          "WoodTray",
+          "A wooden tray of slots on a 4 by 4 grid, for building a character from its pieces. Tap a slot to fill or empty it; a full tray gives way to the finished glyph."
+        ],
+        [
+          "WoodBlock",
+          "A wooden block to place in a WoodTray. Its footprint follows the slot it fits."
+        ],
+        ["Strokes", "SVG brush strokes, for pieces no font draws, such as a squashed 口."],
         ["PageBackdrop", "The illustration behind this page. Mount it once and forget it."],
         [
           "dismissSplash",

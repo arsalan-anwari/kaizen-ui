@@ -57,16 +57,19 @@ the high-contrast theme keeps its own yellow either way.
 
 ## Japanese text
 
-Anything with `class="jp"` renders through `--font-jp`, which prefers the
-system's Japanese face. Add the bundled one for machines that have none
+Anything with `class="jp"` renders through `--font-jp`, which puts the bundled
+face first, so every platform shows the same shapes, and falls back to the
+system's Japanese face. Ship the bundled one with
 
 ```css
 @import "kaizen-ui/fonts.css";
 ```
 
-That ships Noto Sans JP subset to the kana and the 2136 jōyō kanji, 725 kB of
-woff2 under SIL OFL 1.1. `npm run build:font` rebuilds it from the pinned
-upstream releases.
+That ships Klee One, a textbook-style face that draws kanji the way school
+teaches them to be written, subset to the kana and the 2136 jōyō kanji: a
+regular and a semibold weight, 918 kB and 969 kB of woff2 under SIL OFL 1.1. A
+browser only fetches the weight a page uses. `npm run build:font` rebuilds them
+from the pinned upstream releases.
 
 ## Components
 
@@ -76,7 +79,7 @@ upstream releases.
 `IconButton` `KeyNavBadge` `Meter` `MissBoard` `NumberField` `NumberRoller` `OptionCard`
 `PageBackdrop` `Pagination` `PlayIcon` `Popover` `Progress` `Projector` `RecordPlayer` `ResultSplash`
 `RowBar` `RowHeatmap` `Segmented` `Select` `SettingsMenu` `ShelfCard` `ShortcutHelp` `Stat` `Switch`
-`TextField` `TileGrid` `TreeTable` `Waveform`
+`Strokes` `TextField` `TileGrid` `TreeTable` `Waveform` `WoodBlock` `WoodTray`
 
 ## Keyboard
 

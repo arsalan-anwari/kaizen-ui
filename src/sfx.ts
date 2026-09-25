@@ -15,7 +15,22 @@ type Step = [
 // How far ahead nodes are scheduled, so a ramp is not cut off mid block.
 const LEAD_SECONDS = 0.02;
 
-type Bus = { context: AudioContext; master: GainNode };
+type Knock = [frequency: number, q: number, duration: number, volume: number, delay: number];
+
+type Bus = { context: AudioContext; master: GainNode; noise: AudioBuffer };
+
+const NOISE_SECONDS = 0.3;
+
+function whiteNoise(context: AudioContext): AudioBuffer {
+  const buffer = context.createBuffer(
+    1,
+    Math.ceil(context.sampleRate * NOISE_SECONDS),
+    context.sampleRate
+  );
+  const samples = buffer.getChannelData(0);
+  for (let index = 0; index < samples.length; index += 1) samples[index] = Math.random() * 2 - 1;
+  return buffer;
+}
 
 function bus(): Bus | null {
   if (typeof window === "undefined") return null;
@@ -24,7 +39,7 @@ function bus(): Bus | null {
     const master = context.createGain();
     master.gain.value = 1;
     master.connect(context.destination);
-    return { context, master };
+    return { context, master, noise: whiteNoise(context) };
   });
 }
 
@@ -47,25 +62,97 @@ function tone(target: Bus, step: Step, base: number): void {
   oscillator.stop(start + duration + 0.02);
 }
 
-function schedule(target: Bus, steps: Step[]): void {
-  const base = target.context.currentTime + LEAD_SECONDS;
-  for (const step of steps) tone(target, step, base);
+// A tap on wood: a burst of noise narrowed to one resonance, dying out fast.
+function knock(target: Bus, step: Knock, base: number): void {
+  const [frequency, q, duration, volume, delay] = step;
+  const start = base + delay;
+  const source = target.context.createBufferSource();
+  const filter = target.context.createBiquadFilter();
+  const gain = target.context.createGain();
+  source.buffer = target.noise;
+  filter.type = "bandpass";
+  filter.frequency.setValueAtTime(frequency, start);
+  filter.Q.setValueAtTime(q, start);
+  gain.gain.setValueAtTime(volume, start);
+  gain.gain.exponentialRampToValueAtTime(0.0001, start + duration);
+  source.connect(filter).connect(gain).connect(target.master);
+  source.onended = (): void => {
+    source.disconnect();
+    filter.disconnect();
+    gain.disconnect();
+  };
+  source.start(start);
+  source.stop(start + duration + 0.02);
 }
 
-function play(steps: Step[]): void {
+type Voice = (target: Bus, base: number) => void;
+
+function schedule(target: Bus, voice: Voice): void {
+  voice(target, target.context.currentTime + LEAD_SECONDS);
+}
+
+function run(voice: Voice): void {
   if (!enabled) return;
   const target = bus();
   if (target === null) return;
   if (target.context.state === "running") {
-    schedule(target, steps);
+    schedule(target, voice);
     return;
   }
   // a suspended context has a frozen clock, so schedule only after it resumes
   void target.context
     .resume()
-    .then(() => schedule(target, steps))
+    .then(() => schedule(target, voice))
     .catch(() => undefined);
 }
+
+function play(steps: Step[]): void {
+  run((target, base) => {
+    for (const step of steps) tone(target, step, base);
+  });
+}
+
+function tap(knocks: Knock[]): void {
+  run((target, base) => {
+    for (const step of knocks) knock(target, step, base);
+  });
+}
+
+// How long a block takes to drop into its slot, so the landing knock meets it.
+export const BLOCK_DROP_SECONDS = 0.12;
+
+const wood = {
+  slot: (): void => tap([[1500, 9, 0.045, 1.6, 0]]),
+  pick: (): void => tap([[1150, 7, 0.05, 2, 0]]),
+  place: (): void =>
+    tap([
+      [720, 5, 0.09, 3, BLOCK_DROP_SECONDS],
+      [260, 3, 0.07, 2.2, BLOCK_DROP_SECONDS]
+    ]),
+  lift: (): void =>
+    tap([
+      [1700, 9, 0.04, 1.6, 0],
+      [1050, 7, 0.05, 1.4, 0.05]
+    ]),
+  done: (): void =>
+    tap([
+      [900, 7, 0.07, 2.2, BLOCK_DROP_SECONDS],
+      [1200, 8, 0.07, 2.2, BLOCK_DROP_SECONDS + 0.08],
+      [1600, 9, 0.09, 2.2, BLOCK_DROP_SECONDS + 0.16]
+    ]),
+  solved: (): void =>
+    tap([
+      [800, 6, 0.07, 2.4, BLOCK_DROP_SECONDS],
+      [1000, 7, 0.07, 2.4, BLOCK_DROP_SECONDS + 0.09],
+      [1300, 8, 0.07, 2.4, BLOCK_DROP_SECONDS + 0.18],
+      [1750, 9, 0.16, 2.6, BLOCK_DROP_SECONDS + 0.3]
+    ]),
+  failed: (): void =>
+    tap([
+      [480, 4, 0.12, 3, BLOCK_DROP_SECONDS],
+      [340, 4, 0.18, 3, BLOCK_DROP_SECONDS + 0.15]
+    ])
+};
 
 export function setEffectsEnabled(value: boolean): void {
   enabled = value;
@@ -145,7 +232,8 @@ export const sfx = {
       [659, 0.1, "sine", 0.1, 0.09],
       [784, 0.18, "sine", 0.1, 0.18]
     ]),
-  score: (grade: FanfareGrade): void => play(fanfares[grade])
+  score: (grade: FanfareGrade): void => play(fanfares[grade]),
+  wood
 };
 
 // The shared audio context, so an app can decode its own clips on the same bus.
