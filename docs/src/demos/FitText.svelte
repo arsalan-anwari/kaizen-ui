@@ -21,7 +21,7 @@
   <TextField bind:value={text} label="Type something long" />
 
   <p class="text-sm text-foreground/75">
-    The size is CSS, not a measuring pass: it comes from the glyph count against the container
-    width, so it never wraps and never reflows twice.
+    The text is measured once in its own face and sized in container units, so it never wraps and
+    keeps fitting as the box resizes without measuring again.
   </p>
 </div>
