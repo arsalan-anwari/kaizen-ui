@@ -90,16 +90,12 @@
         ["RowBar", "A list row. Give it children and it expands instead of pressing."],
         ["TileGrid", "Equal tiles, as many per row as fit."],
         [
-          "FitText",
-          "Text sized to its container in pure CSS, from the glyph count. No measuring pass, no reflow."
-        ],
-        [
           "Pagination",
           "Arrows and numbers for a long list. Beats a nested scrollbar at any window size."
         ],
         [
           "Board",
-          "A chalkboard for the character being drilled. Compact is the half-height shape a phone in landscape gets."
+          "A chalkboard for the word being drilled. Give it text and it sizes it to fit, however long. Compact is the half-height shape a phone in landscape gets."
         ],
         [
           "Projector",

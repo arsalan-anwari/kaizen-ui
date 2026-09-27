@@ -18,7 +18,6 @@ export { default as ConfirmDialog } from "./components/ConfirmDialog.svelte";
 export { default as CustomNumberChip } from "./components/CustomNumberChip.svelte";
 export { default as Dialog } from "./components/Dialog.svelte";
 export { default as EmptyState } from "./components/EmptyState.svelte";
-export { default as FitText } from "./components/FitText.svelte";
 export { default as Glyph } from "./components/Glyph.svelte";
 export { default as HeatLegend } from "./components/HeatLegend.svelte";
 export { default as Icon } from "./components/Icon.svelte";

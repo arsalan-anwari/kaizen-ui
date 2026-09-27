@@ -1,6 +1,5 @@
 <script lang="ts">
   import type { ChoiceState } from "../choice";
-  import FitText from "./FitText.svelte";
 
   let {
     slot,
@@ -36,7 +35,7 @@
 <button
   type="button"
   {disabled}
-  class="@container relative flex aspect-[3/2] w-full cursor-pointer items-center justify-center rounded-2xl border-2 transition-[transform,background-color,border-color,color] duration-100 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none disabled:cursor-default {tones[
+  class="@container relative flex aspect-[3/2] w-full self-stretch cursor-pointer items-center justify-center rounded-2xl border-2 px-3 py-7 transition-[transform,background-color,border-color,color] duration-100 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none disabled:cursor-default {tones[
     state
   ]} {className}"
   onclick={onpick}
@@ -47,13 +46,13 @@
   >
     {slot}
   </span>
-  <!-- A long answer shrinks rather than wrapping: a second line would run under
-       the slot number in the corner. -->
-  <FitText
-    text={label}
-    cap={jp ? 34 : 30}
-    em={jp ? 1 : 0.55}
+  <!-- A long answer wraps, and the tile grows to hold it: the aspect ratio is
+       only a floor, and self-stretch keeps a row of tiles level. The vertical
+       padding keeps a second line clear of the slot number. -->
+  <span
     lang={jp ? "ja" : undefined}
-    class="font-bold {jp ? 'jp' : ''}"
-  />
+    class="max-w-full text-center leading-tight font-bold [line-break:strict] [overflow-wrap:anywhere] [text-wrap:balance] {jp
+      ? 'jp text-[clamp(1.5rem,18cqi,2.75rem)]'
+      : 'text-[clamp(1rem,10cqi,1.75rem)]'}">{label}</span
+  >
 </button>

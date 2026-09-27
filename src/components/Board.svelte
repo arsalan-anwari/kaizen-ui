@@ -1,18 +1,28 @@
 <script lang="ts">
   import type { Snippet } from "svelte";
+  import { fit } from "../fit";
 
   let {
     size = "md",
+    text = undefined,
+    jp = false,
     guide = true,
     compact = false,
     class: className = "",
     children
   }: {
     size?: "md" | "lg";
+    /**
+     * What the board shows, sized to fill the room inside the guide and shrunk
+     * until it fits, whatever its length. Leave it out to draw children instead.
+     */
+    text?: string;
+    /** Renders the text through the Japanese face and tags it lang="ja". */
+    jp?: boolean;
     guide?: boolean;
     compact?: boolean;
     class?: string;
-    children: Snippet;
+    children?: Snippet;
   } = $props();
 
   const sizes = {
@@ -37,5 +47,21 @@
       aria-hidden="true"
     ></span>
   {/if}
-  {@render children()}
+  {#if text !== undefined}
+    <!-- The frame is the room inside the guide. The text starts at its largest
+         and fit shrinks it to the frame; keyed so each text is measured afresh. -->
+    <div class="absolute inset-6 flex items-center justify-center">
+      {#key text}
+        <span
+          use:fit
+          lang={jp ? "ja" : undefined}
+          class="max-w-full text-center text-[46cqmin] leading-[1.15] font-medium [line-break:strict] [text-wrap:balance] {jp
+            ? 'jp'
+            : ''}">{text}</span
+        >
+      {/key}
+    </div>
+  {:else}
+    {@render children?.()}
+  {/if}
 </div>
