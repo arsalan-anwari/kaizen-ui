@@ -1,7 +1,5 @@
 <script lang="ts">
-  import { Board, TextField } from "kaizen-ui";
-
-  let text = $state("ありがとうございます");
+  import { Board } from "kaizen-ui";
 </script>
 
 <figure class="flex flex-col items-center gap-2">
@@ -37,10 +35,11 @@
 <!-- Given text, the board sizes it itself: as large as the guide allows, on one
      line while it is short, wrapped once it is long. -->
 <figure class="flex flex-col items-center gap-2">
-  <Board size="lg" {text} jp />
-  <figcaption class="text-xs text-foreground/75">text, fitted</figcaption>
+  <Board size="lg" text="はい" jp />
+  <figcaption class="text-xs text-foreground/75">text, short</figcaption>
 </figure>
 
 <figure class="flex flex-col items-center gap-2">
-  <TextField bind:value={text} label="Board text" />
+  <Board size="lg" text="おはようございます、今日もよろしくお願いします" jp />
+  <figcaption class="text-xs text-foreground/75">text, long</figcaption>
 </figure>

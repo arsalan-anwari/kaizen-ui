@@ -202,21 +202,27 @@ test("an answer tile carries its slot number and says how the answer went", asyn
   await expect(tiles.nth(1)).toHaveClass(/opacity-40/);
 });
 
-test("fitted text shrinks as the text gets longer and never wraps", async ({ page }) => {
-  const demo = await section(page, "fittext");
-  const fitted = demo.locator("span[style*='font-size']").first();
+test("board text stays on one line while short and wraps to fit once long", async ({ page }) => {
+  const demo = await section(page, "board");
+  const fitted = demo.locator("span[lang='ja'][style*='font-size']");
+  const short = fitted.nth(0);
+  const long = fitted.nth(1);
 
-  const size = async () =>
-    Number.parseFloat(await fitted.evaluate((node) => getComputedStyle(node).fontSize));
+  const size = async (text) =>
+    Number.parseFloat(await text.evaluate((node) => getComputedStyle(node).fontSize));
+  // Inside the room the guide leaves, both ways.
+  const inside = (text) =>
+    text.evaluate(
+      (node) =>
+        node.scrollWidth <= node.clientWidth && node.offsetHeight <= node.parentElement.clientHeight
+    );
 
-  await expect(fitted).toHaveCSS("white-space", "nowrap");
-  const before = await size();
-
-  await demo.getByRole("textbox").fill("counterintuitively unabbreviated");
-  await expect.poll(size).toBeLessThan(before);
-
-  // One line, whatever the length: the box height never grows with the text.
-  await expect(fitted).toHaveCSS("white-space", "nowrap");
+  await expect(fitted).toHaveCount(2);
+  await expect(short).toHaveCSS("white-space", "nowrap");
+  await expect(long).toHaveCSS("white-space", "normal");
+  await expect.poll(() => inside(short)).toBe(true);
+  await expect.poll(() => inside(long)).toBe(true);
+  expect(await size(long)).toBeLessThan(await size(short));
 });
 
 test("a tree table group collapses and expands its rows", async ({ page }) => {
@@ -302,6 +308,32 @@ test("a wood tray fills its slots and gives way to the finished glyph", async ({
   // The slots stay pressable over the glyph, so a block can come back out.
   await tray.getByRole("button", { name: "木, placed" }).click();
   await expect(tray.locator(".anim-glyph")).toHaveCount(0);
+});
+
+test("a tray can drop its highlight once the glyph assembles", async ({ page }) => {
+  const demo = await section(page, "woodtray");
+  const tray = demo.getByRole("group", { name: "語" });
+
+  await tray.getByRole("button", { name: "言, empty" }).click();
+  await tray.getByRole("button", { name: "五, empty" }).click();
+  await expect(tray.locator("[aria-current='true']")).toHaveCount(1);
+
+  await tray.getByRole("button", { name: "口, empty" }).click();
+  await expect(tray.locator(".anim-glyph")).toHaveText("語");
+  await expect(tray.locator("[aria-current='true']")).toHaveCount(0);
+});
+
+test("a nested slot sits on top of the enclosure around it", async ({ page }) => {
+  const demo = await section(page, "woodtray");
+  const tray = demo.getByRole("group", { name: "国" });
+  const frame = tray.getByRole("button", { name: /^囗/ });
+
+  // The inner slot covers the frame's middle, so take the frame by its corner.
+  await frame.click({ position: { x: 8, y: 8 } });
+  await expect(frame).toHaveAccessibleName("囗, placed");
+
+  await tray.getByRole("button", { name: "玉, empty" }).click();
+  await expect(tray.locator(".anim-glyph")).toHaveText("国");
 });
 
 test("strokes are an image only when they carry a label", async ({ page }) => {

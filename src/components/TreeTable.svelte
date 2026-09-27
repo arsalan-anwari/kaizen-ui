@@ -39,7 +39,9 @@
 {:else}
   <table class="w-full border-separate border-spacing-y-1 text-sm {className}">
     <thead>
-      <tr class="text-start text-[0.625rem] font-bold tracking-wide text-muted-foreground uppercase">
+      <tr
+        class="text-start text-[0.625rem] font-bold tracking-wide text-muted-foreground uppercase"
+      >
         <th class="py-1 ps-2 font-bold">{columns.group}</th>
         <th class="py-1 px-2 text-end font-bold">{columns.accuracy}</th>
         <th class="hidden py-1 px-2 font-bold sm:table-cell">{columns.bar}</th>
