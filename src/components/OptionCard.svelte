@@ -26,7 +26,7 @@
   type="button"
   {disabled}
   aria-pressed={active}
-  class="flex h-full w-full cursor-pointer flex-col items-start gap-1.5 rounded-xl border p-4 text-start transition-all duration-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-40 sm:p-5 {active
+  class="flex h-full w-full min-w-0 cursor-pointer flex-col items-start gap-1.5 rounded-xl border p-4 text-start hyphens-auto [overflow-wrap:anywhere] transition-all duration-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-40 sm:p-5 {active
     ? 'lip border-selected bg-selected-soft [--lip:var(--selected)]'
     : 'lip press border-wire bg-surface [--lip:var(--color-wire)] hover:border-selected hover:bg-accent'}"
   onclick={handle}

@@ -6,6 +6,7 @@
     size = "md",
     text = undefined,
     jp = false,
+    lang = undefined,
     guide = true,
     compact = false,
     class: className = "",
@@ -19,6 +20,7 @@
     text?: string;
     /** Renders the text through the Japanese face and tags it lang="ja". */
     jp?: boolean;
+    lang?: string;
     guide?: boolean;
     compact?: boolean;
     class?: string;
@@ -54,7 +56,8 @@
       {#key text}
         <span
           use:fit
-          lang={jp ? "ja" : undefined}
+          lang={jp ? "ja" : lang}
+          dir="auto"
           class="max-w-full text-center text-[46cqmin] leading-[1.15] font-medium [line-break:strict] [text-wrap:balance] {jp
             ? 'jp'
             : ''}">{text}</span

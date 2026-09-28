@@ -42,10 +42,10 @@
 <article
   aria-labelledby="{uid}-title"
   class="sheet flex flex-col overflow-hidden rounded-2xl border-2 border-border bg-surface transition-[transform,opacity] duration-150 motion-safe:hover:-translate-y-0.5 {muted
-    ? 'opacity-70'
+    ? 'border-dashed'
     : ''}"
 >
-  <div class="ruled relative aspect-[16/7] overflow-hidden {tones[tone]}">
+  <div class="ruled relative aspect-[16/7] overflow-hidden {tones[tone]} {muted ? 'grayscale' : ''}">
     {#if art}
       {@render art()}
     {:else if glyph !== ""}

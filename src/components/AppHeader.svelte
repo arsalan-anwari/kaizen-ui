@@ -101,7 +101,7 @@
     {/if}
 
     <div class="flex items-center gap-3">
-      <AppMark {glyph} {tone} class="size-10 shrink-0 text-h3 @min-[73rem]:size-11" />
+      <AppMark {glyph} {tone} class="size-10 shrink-0 text-h3 @max-[20rem]:hidden @min-[73rem]:size-11" />
       <div class="flex flex-col">
         <span class="text-h4 font-bold leading-tight">{title}</span>
         {#if subtitle !== ""}

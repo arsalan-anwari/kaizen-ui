@@ -5,6 +5,7 @@
     slot,
     label,
     jp = false,
+    lang = undefined,
     state = "idle",
     disabled = false,
     class: className = "",
@@ -15,6 +16,7 @@
     label: string;
     /** Renders the label through the Japanese face and tags it lang="ja". */
     jp?: boolean;
+    lang?: string;
     state?: ChoiceState;
     disabled?: boolean;
     class?: string;
@@ -50,7 +52,8 @@
        only a floor, and self-stretch keeps a row of tiles level. The vertical
        padding keeps a second line clear of the slot number. -->
   <span
-    lang={jp ? "ja" : undefined}
+    lang={jp ? "ja" : lang}
+    dir="auto"
     class="max-w-full text-center leading-tight font-bold [line-break:strict] [overflow-wrap:anywhere] [text-wrap:balance] {jp
       ? 'jp text-[clamp(1.5rem,18cqi,2.75rem)]'
       : 'text-[clamp(1rem,10cqi,1.75rem)]'}">{label}</span

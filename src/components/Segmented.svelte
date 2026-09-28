@@ -31,7 +31,7 @@
   role="tablist"
   aria-label={label === "" ? undefined : label}
   use:roving={{ selector: "[role='tab']", wrap: true }}
-  class="inline-flex max-w-full gap-1 overflow-x-auto border-2 border-wire bg-surface {full
+  class="inline-flex max-w-full flex-wrap gap-1 border-2 border-wire bg-surface {full
     ? 'flex'
     : ''} {className}"
   style="padding: {pad[size]}; border-radius: calc({inner[size]} + {pad[size]})"

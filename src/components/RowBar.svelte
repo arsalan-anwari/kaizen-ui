@@ -49,10 +49,10 @@
     <button
       type="button"
       aria-pressed={onpress === undefined ? undefined : active}
-      class="flex min-w-0 flex-1 cursor-pointer items-center gap-2.5 px-3.5 py-3 text-start transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+      class="flex min-w-0 flex-1 cursor-pointer flex-wrap items-center gap-x-2.5 gap-y-0.5 px-3.5 py-3 text-start transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
       onclick={press}
     >
-      <span class="text-base font-bold tracking-tight">{label}</span>
+      <span class="min-w-0 text-base font-bold tracking-tight hyphens-auto [overflow-wrap:anywhere]">{label}</span>
       {#if hint !== ""}
         <span class="truncate text-sm tabular-nums text-muted-foreground">{hint}</span>
       {/if}

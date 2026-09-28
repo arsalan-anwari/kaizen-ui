@@ -14,6 +14,7 @@
     type = "button",
     title = "",
     full = false,
+    wrap = false,
     silent = false,
     class: className = "",
     onclick,
@@ -27,6 +28,7 @@
     type?: "button" | "submit";
     title?: string;
     full?: boolean;
+    wrap?: boolean;
     silent?: boolean;
     class?: string;
     onclick?: () => void;
@@ -53,10 +55,24 @@
   });
 
   const sizes: Record<Size, string> = {
-    sm: "h-10 px-4 text-sm rounded-lg",
-    md: "h-12 px-5 text-base rounded-xl",
-    lg: "h-14 px-7 text-base rounded-xl",
-    xl: "h-17 px-9 text-h3 rounded-2xl"
+    sm: "px-4 text-sm rounded-lg",
+    md: "px-5 text-base rounded-xl",
+    lg: "px-7 text-base rounded-xl",
+    xl: "px-9 text-h3 rounded-2xl"
+  };
+
+  const heights: Record<Size, string> = {
+    sm: "h-10",
+    md: "h-12",
+    lg: "h-14",
+    xl: "h-17"
+  };
+
+  const wrapping: Record<Size, string> = {
+    sm: "min-h-10 py-1.5",
+    md: "min-h-12 py-2",
+    lg: "min-h-14 py-2",
+    xl: "min-h-17 py-2.5"
   };
 
   function handle(): void {
@@ -69,7 +85,9 @@
   {type}
   {title}
   {disabled}
-  class="{base} {variants[variant]} {sizes[size]} {full ? 'w-full' : ''} {className}"
+  class="{base} {variants[variant]} {sizes[size]} {wrap
+    ? `${wrapping[size]} max-w-full text-center hyphens-auto [overflow-wrap:anywhere]`
+    : heights[size]} {full ? 'w-full' : ''} {className}"
   onclick={handle}
   {...rest}
 >
