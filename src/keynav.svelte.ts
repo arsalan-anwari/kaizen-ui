@@ -16,7 +16,9 @@ const SECTIONS =
 // Rendered and not hidden. offsetParent misses fixed-position elements, and
 // passes content WebKit will not focus: a closed <details>, visibility:hidden.
 function shown(element: HTMLElement): boolean {
-  return element.checkVisibility?.({ visibilityProperty: true }) ?? element.getClientRects().length > 0;
+  return (
+    element.checkVisibility?.({ visibilityProperty: true }) ?? element.getClientRects().length > 0
+  );
 }
 
 function focusable(root: HTMLElement): HTMLElement[] {

@@ -71,6 +71,15 @@ regular and a semibold weight, 918 kB and 969 kB of woff2 under SIL OFL 1.1. A
 browser only fetches the weight a page uses. `npm run build:font` rebuilds them
 from the pinned upstream releases.
 
+## Long text
+
+Labels wrap and hyphenate rather than spill out of their box, so a translated
+string longer than the English it replaced still fits. `Button` takes `wrap` to
+drop its fixed height for a floor and break the label onto a second line, and
+`Segmented` wraps its tabs instead of scrolling them. `Board` and `ChoiceTile`
+take `lang` for a script that is not Japanese and set `dir="auto"`, so a
+right-to-left word reads the right way round.
+
 ## Components
 
 `AccuracyGrid` `ActionSelect` `Announcer` `AppControls` `AppHeader` `AppMark` `AreaSpark`

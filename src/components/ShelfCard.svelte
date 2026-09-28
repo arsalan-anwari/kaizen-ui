@@ -45,7 +45,9 @@
     ? 'border-dashed'
     : ''}"
 >
-  <div class="ruled relative aspect-[16/7] overflow-hidden {tones[tone]} {muted ? 'grayscale' : ''}">
+  <div
+    class="ruled relative aspect-[16/7] overflow-hidden {tones[tone]} {muted ? 'grayscale' : ''}"
+  >
     {#if art}
       {@render art()}
     {:else if glyph !== ""}

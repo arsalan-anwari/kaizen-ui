@@ -34,3 +34,10 @@
     green and a wrong one shakes.
   </p>
 </div>
+
+<!-- A long answer wraps and the tile grows to hold it, so a translated label
+     never spills out of its box. -->
+<div class="grid w-full max-w-md grid-cols-2 gap-3">
+  <ChoiceTile slot={1} label="A long answer that wraps" onpick={() => {}} />
+  <ChoiceTile slot={2} label="Short" onpick={() => {}} />
+</div>

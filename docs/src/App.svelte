@@ -32,7 +32,10 @@
     {
       title: "Actions",
       items: [
-        ["Button", "Seven variants, four sizes. Presses down under the thumb."],
+        [
+          "Button",
+          "Seven variants, four sizes. Presses down under the thumb. Wrap lets a long label break onto a second line."
+        ],
         ["IconButton", "Icon only. The label is required, it becomes the aria-label."],
         ["Chip", "A pill that toggles. Filters, answer choices."],
         ["Badge", "Not clickable. Seven tones."]
@@ -42,11 +45,14 @@
       title: "Inputs",
       items: [
         ["Switch", "Fills the row, so the whole row is the hit target."],
-        ["Segmented", "Pick one of a few. The Preview/Code tabs above are this."],
+        [
+          "Segmented",
+          "Pick one of a few. The Preview/Code tabs above are this. Tabs wrap rather than scroll when they run out of room."
+        ],
         ["OptionCard", "Pick one, but big enough for a thumb. For setup screens."],
         [
           "ChoiceTile",
-          "One answer of a multiple-choice question. Numbered so a key answers it, and it says whether the answer was right."
+          "One answer of a multiple-choice question. Numbered so a key answers it, and it says whether the answer was right. A long answer wraps and the tile grows to hold it."
         ],
         ["TextField", "Three tones: idle, correct, wrong. Turn it green when they get it right."],
         ["NumberField", "Clamps to min/max. Commits on blur or Enter, not on every keystroke."],
@@ -95,7 +101,7 @@
         ],
         [
           "Board",
-          "A chalkboard for the word being drilled. Give it text and it sizes it to fit, however long. Compact is the half-height shape a phone in landscape gets."
+          "A chalkboard for the word being drilled. Give it text and it sizes it to fit, however long, tagging it with lang for a script that is not Japanese. Compact is the half-height shape a phone in landscape gets."
         ],
         [
           "Projector",
@@ -184,7 +190,7 @@
         ["AppMark", "One glyph in a square. Ink, or seal red."],
         ["Glyph", "Japanese text, tagged as Japanese so a screen reader speaks it."],
         ["Announcer", "Says something to a screen reader without drawing anything."],
-        ["Icon", "All 32 of them. Pass a name, get a stroke icon."]
+        ["Icon", "All 33 of them. Pass a name, get a stroke icon."]
       ]
     }
   ];

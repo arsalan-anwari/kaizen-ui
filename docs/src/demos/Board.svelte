@@ -43,3 +43,10 @@
   <Board size="lg" text="おはようございます、今日もよろしくお願いします" jp />
   <figcaption class="text-xs text-foreground/75">text, long</figcaption>
 </figure>
+
+<!-- `lang` tags a script that is not Japanese; `dir="auto"` lets the text set
+     its own direction, so a right-to-left word reads the right way round. -->
+<figure class="flex flex-col items-center gap-2">
+  <Board size="lg" text="مرحبا" lang="ar" />
+  <figcaption class="text-xs text-foreground/75">text, lang="ar"</figcaption>
+</figure>

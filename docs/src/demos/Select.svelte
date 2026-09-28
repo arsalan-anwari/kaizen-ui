@@ -7,7 +7,7 @@
 <Select
   bind:value={level}
   options={[
-    { value: "n5", label: "N5 — beginner" },
+    { value: "n5", label: "N5" },
     { value: "n4", label: "N4" },
     { value: "n3", label: "N3" }
   ]}

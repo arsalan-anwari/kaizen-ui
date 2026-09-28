@@ -188,7 +188,7 @@ test("pagination steps through the pages and walks on the arrow keys", async ({ 
 
 test("an answer tile carries its slot number and says how the answer went", async ({ page }) => {
   const demo = await section(page, "choicetile");
-  const tiles = demo.getByRole("button");
+  const tiles = demo.locator(".grid").first().getByRole("button");
 
   await expect(tiles).toHaveCount(4);
   // The number is decoration: the tile is named by its answer alone.
@@ -356,4 +356,46 @@ test("a right-to-left document mirrors the layout", async ({ page }) => {
 
   await page.evaluate(() => (document.documentElement.dir = "rtl"));
   await expect.poll(async () => (await x(corner)) > (await x(badge))).toBe(true);
+});
+
+test("a wrapping button grows to hold a long label", async ({ page }) => {
+  const demo = await section(page, "button");
+  const wrapped = demo.getByRole("button", { name: "A label long enough to wrap onto two lines" });
+  const plain = demo.getByRole("button", { name: "Primary", exact: true });
+
+  const height = (locator) => locator.evaluate((node) => node.getBoundingClientRect().height);
+  // The fixed height becomes a floor, so the second line pushes the button taller.
+  expect(await height(wrapped)).toBeGreaterThan(await height(plain));
+  // And nothing spills out of the box: the label broke instead of overflowing.
+  expect(await wrapped.evaluate((node) => node.scrollWidth <= node.clientWidth + 1)).toBe(true);
+});
+
+test("a segmented control wraps its tabs instead of scrolling them", async ({ page }) => {
+  const demo = await section(page, "segmented");
+  const strip = demo.locator("[role='tablist']").last();
+
+  await expect(strip).toHaveCSS("flex-wrap", "wrap");
+  // The long labels do not fit on one row, so the tabs stack onto a second.
+  const rows = await strip
+    .getByRole("tab")
+    .evaluateAll((tabs) => new Set(tabs.map((tab) => tab.offsetTop)).size);
+  expect(rows).toBeGreaterThan(1);
+});
+
+test("a board tags a non-japanese script and lets it set its own direction", async ({ page }) => {
+  const demo = await section(page, "board");
+  const arabic = demo.locator("span[lang='ar']");
+
+  await expect(arabic).toHaveText("مرحبا");
+  await expect(arabic).toHaveAttribute("dir", "auto");
+});
+
+test("a long answer wraps inside its tile", async ({ page }) => {
+  const demo = await section(page, "choicetile");
+  const label = demo
+    .getByRole("button", { name: "A long answer that wraps" })
+    .locator("span[dir='auto']");
+
+  await expect(label).toHaveAttribute("dir", "auto");
+  expect(await label.evaluate((node) => node.scrollWidth <= node.clientWidth + 1)).toBe(true);
 });

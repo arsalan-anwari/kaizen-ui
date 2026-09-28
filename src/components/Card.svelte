@@ -24,7 +24,9 @@
 
 <section class="sheet ruled rounded-2xl border-2 border-border bg-surface {className}">
   {#if hasHeader}
-    <header class="@container flex flex-wrap items-start justify-between gap-4 px-5 pt-5 pb-4 sm:px-6 sm:pt-6">
+    <header
+      class="@container flex flex-wrap items-start justify-between gap-4 px-5 pt-5 pb-4 sm:px-6 sm:pt-6"
+    >
       <div class="flex min-w-0 items-start gap-3.5 @max-[14rem]:flex-col">
         {#if icon}
           <span
