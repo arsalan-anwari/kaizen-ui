@@ -103,6 +103,10 @@ press to it once, then render the sheet off that flag:
 {/if}
 ```
 
+A section is the page `header`, a top-level `<section>` inside `main`, or any `[data-section]`.
+Nest `data-section` elements to split a section into smaller stops; one that only wraps others is
+skipped, so the walk goes straight into its parts.
+
 `keynavShortcuts` returns the rows describing those bindings, so the keys stay next to the code
 that implements them and the app only supplies translated labels. Give one `AppHeader` per page
 `paging` and it walks its own tabs on `Ctrl+Left` / `Ctrl+Right` and on sideways swipes.
