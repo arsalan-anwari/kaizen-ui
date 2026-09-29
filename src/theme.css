@@ -72,6 +72,7 @@
 
   --projector-screen: #f9f7f1;
   --projector-screen-foreground: #2c2a25;
+  --picture-plate: transparent;
   --projector-frame: #3d3a34;
   --projector-guide: color-mix(in srgb, var(--projector-screen-foreground) 14%, transparent);
   --projector-lens: #ffe9b3;
@@ -159,6 +160,7 @@
 
   --projector-screen: #000000;
   --projector-screen-foreground: #f5f2ea;
+  --picture-plate: #ebe7de;
   --projector-frame: #4a4640;
   --projector-guide: color-mix(in srgb, var(--projector-screen-foreground) 16%, transparent);
   --projector-lens: #ffd873;
@@ -248,6 +250,7 @@
   --wood-slot-line: #ffffff;
   --projector-screen: #000000;
   --projector-screen-foreground: #ffffff;
+  --picture-plate: #ffffff;
   --projector-frame: #ffffff;
   --projector-guide: transparent;
   --projector-lens: #ffd400;
@@ -319,6 +322,7 @@
 
     --projector-screen: #000000;
     --projector-screen-foreground: #f5f2ea;
+    --picture-plate: #ebe7de;
     --projector-frame: #4a4640;
     --projector-guide: color-mix(in srgb, var(--projector-screen-foreground) 16%, transparent);
     --projector-lens: #ffd873;
@@ -484,6 +488,14 @@ body::before {
 .paper {
   background-image: var(--sunlight), var(--paper-grain), var(--paper-mottle);
   background-blend-mode: normal, var(--paper-blend), var(--paper-blend);
+}
+
+/* A picture drawn as ink on a transparent background reads on a light surface
+   only. .picture-plate puts it on a light plate wherever the theme is dark, and
+   shows nothing on a light theme. */
+.picture-plate {
+  background-color: var(--picture-plate);
+  border-radius: 0.75rem;
 }
 
 /* Fullscreen overlay padding: drop the sheet below the system bar so its header
